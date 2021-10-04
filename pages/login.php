@@ -6,14 +6,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../styles/global.css">
     <link rel="stylesheet" href="../styles/login.css">
-    <script type="text/javascript" src="../data/books.js"></script>
     <script src="../components/navbar.js" type="text/javascript" defer></script>
     <title>Toko Buku</title>
 </head>
 <body>
     <div class="box">
         <h2 id="login-title">Login</h2>
-        <form action="../auth/sign-in.php" method="post">
+        <form action="index.php" method="post">
             <div class="form-box" id="form-top">
                 <p class="label">Username atau Email</p>
                 <div class="search-box">

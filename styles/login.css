@@ -1,6 +1,6 @@
 body {
     margin: 0;
-    background-color: #41B54A;
+    background-color: #2d7d33;
 }
 
 .company-title {
@@ -106,10 +106,6 @@ body {
     height: 40px;
     background: transparent;
     border: none;
-}
-
-.form-box input::placeholder {
-    
 }
 
 .form-box input:focus,
