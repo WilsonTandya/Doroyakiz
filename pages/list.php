@@ -17,7 +17,7 @@
         echo "<navbar-component></navbar-component>";
     ?>
     <div class="container">
-        <h2 class="page-header">Hasil Pencarian</h2>
+        <h2 class="page-header">Hasil Pencarian: "Dorayaki Nori"</h2>
         <?php
             for ($i=0;$i<3;$i++) {
                 $isFinalIndex = $i == 2;

@@ -16,13 +16,38 @@ navbarTemplate.innerHTML = `
         padding: 0 210px;
     }
 
+    .nav-search {
+      display: flex;
+      align-items: center;
+      width: 250px;
+      margin-right: 35px;
+    }
+
+    .nav-search input {
+      width: 100%;
+      height: 30px;
+      padding: 0 10px;
+      color: rgba(49, 53, 59, 0.75);
+      border-radius: 4px;
+      border: 1px solid rgba(49, 53, 59, 0.35);
+    }
+
+    .nav-search input::placeholder {
+      color: rgba(49, 53, 59, 0.3);
+      opacity: 1;
+    }
+
+    .nav-search input:focus {
+      outline: none;
+    }
+
     .nav-button-container {
         display: flex;
         align-items: center;
     }
 
     a {
-        font-size: 1em;
+        font-size: .9em;
         font-weight: bold;
         text-decoration: none;
     }
@@ -40,11 +65,11 @@ navbarTemplate.innerHTML = `
 
     a .button {
         border: none;
-        background-color: #41B54A;
+        background-color: #d8414a;
         color: #FCFEFF;
         padding: 6px 15px;
         border-radius: 5px;
-        transition: 0.1s;
+        transition: 0.2s;
     }
 
     a .button:hover {
@@ -55,12 +80,6 @@ navbarTemplate.innerHTML = `
         cursor: pointer;
         outline: none;
     }
-    
-    ul li {
-        list-style: none;
-        display: inline;
-    }
-
   </style>
   <header>
     <nav>
@@ -68,6 +87,9 @@ navbarTemplate.innerHTML = `
           <h1>Doroyaki</h1>
         </a>
         <div class="nav-button-container">
+          <div class="nav-search">
+            <input type="text" placeholder="Cari varian dorayaki..." />
+          </div>
           <a href="history.php">
             <div class="text">Riwayat</div>
           </a>
