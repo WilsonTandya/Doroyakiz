@@ -1,8 +1,10 @@
-const navbarTemplate = document.createElement('template');
+const navbarTemplate = document.createElement("template");
 navbarTemplate.innerHTML = `
   <style>
     h1 {
         font-size: 2rem;
+        color: #41B54A;
+        cursor: pointer;
     }
 
     nav {
@@ -62,7 +64,9 @@ navbarTemplate.innerHTML = `
   </style>
   <header>
     <nav>
-        <h1>Doroyaki</h1>
+        <a href="index.php">
+          <h1>Doroyaki</h1>
+        </a>
         <div class="nav-button-container">
           <a href="history.php">
             <div class="text">Riwayat</div>
@@ -76,15 +80,15 @@ navbarTemplate.innerHTML = `
 `;
 
 class Navbar extends HTMLElement {
-  constructor() {
-    super();
-  }
+    constructor() {
+        super();
+    }
 
-  connectedCallback() {
-    const shadowRoot = this.attachShadow({ mode: 'closed' });
-    // const isAuthenticated = this.getAttribute("auth");
-    shadowRoot.appendChild(navbarTemplate.content);
-  }
+    connectedCallback() {
+        const shadowRoot = this.attachShadow({ mode: "closed" });
+        // const isAuthenticated = this.getAttribute("auth");
+        shadowRoot.appendChild(navbarTemplate.content);
+    }
 }
 
-customElements.define('navbar-component', Navbar);
+customElements.define("navbar-component", Navbar);

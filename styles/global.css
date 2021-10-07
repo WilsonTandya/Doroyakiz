@@ -22,3 +22,9 @@ body {
 .subtitle {
     color: #757575;
 }
+
+.page-header {
+    color: rgba(49, 53, 59, 0.96);
+    font-weight: bold;
+    margin: 2rem 0;
+}

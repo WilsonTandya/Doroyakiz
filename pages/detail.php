@@ -21,7 +21,7 @@
                 <img src="https://pixsector.com/cache/852dce6a/avb91899cb3246210ca63.png" alt="Back"
                     class="back-arrow" />
             </a>
-            <h2 class="detail-title">Detail</h2>
+            <h2 class="page-header">Detail</h2>
         </div>
         <div class="row">
             <img class="detail-image"
@@ -36,7 +36,10 @@
                 </div>
                 <h4 class="detail-price">Rp59.000</h4>
                 <hr class="solid">
-                <p class="detail-desc">Dora The Explorer senang makan Dorayaki</p>
+                <p class="detail-desc">
+                    Dora The Explorer senang makan Dorayaki. Dorayaki lezat, enak, sehat
+                    dan bergizi. Dorayaki penuh nutrisi dan kaya akan protein serta gula. Saya suka makan dorayaki.
+                </p>
             </div>
         </div>
     </div>

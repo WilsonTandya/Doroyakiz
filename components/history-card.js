@@ -1,19 +1,19 @@
 class HistoryCard extends HTMLElement {
     constructor() {
-      super();
+        super();
     }
 
-    numberWithCommas(x) { 
-        let parts = x.toString().split("."); 
-        parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, "."); 
-        return parts.join("."); 
+    numberWithCommas(x) {
+        let parts = x.toString().split(".");
+        parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+        return parts.join(".");
     }
-  
+
     connectedCallback() {
         const bookIndex = Number(this.getAttribute("index"));
         const bookQuantity = Number(this.getAttribute("quantity"));
-        const isFinalIndex = this.getAttribute("final")
-        
+        const isFinalIndex = this.getAttribute("final");
+
         this.innerHTML = `
             <style>
                 .card-container, .card-container-final {
@@ -21,7 +21,7 @@ class HistoryCard extends HTMLElement {
                     align-items: center;
                     border-top: 2px solid rgba(0,0,0,0.15);
                     margin: 0px 0;
-                    padding: 15px 0;
+                    padding: 15px 15px;
                 }
 
                 .card-container-final {
@@ -139,7 +139,9 @@ class HistoryCard extends HTMLElement {
                     border-color: rgba(0,0,0,0.4);
                 }
             </style>
-            <div class=${isFinalIndex ? "card-container-final" : "card-container"} >
+            <div class=${
+                isFinalIndex ? "card-container-final" : "card-container"
+            } >
                 <img class="cart-thumbnail" src="https://asset.kompas.com/crops/8mYWlI9lPaf8F7XDmQOi2Rte9jo=/0x0:1000x667/750x500/data/photo/2021/07/23/60fa5f58ea527.jpg" alt="Avatar"/>
                 <div style="flex: 1;">
                     <h4 class="cart-title">Doroyaki Norimitsu</h4>
@@ -149,6 +151,6 @@ class HistoryCard extends HTMLElement {
             </div>
         `;
     }
-  }
-  
-  customElements.define('history-card', HistoryCard);
+}
+
+customElements.define("history-card", HistoryCard);
