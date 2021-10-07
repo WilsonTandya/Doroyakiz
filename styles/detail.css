@@ -1,0 +1,55 @@
+.detail-title {
+    color: rgba(49, 53, 59, 0.96);
+    font-weight: bold;
+}
+
+.detail-image {
+    width: 350px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-right: 50px;
+}
+
+.detail-info {
+    width: 100%;
+}
+
+.detail-name {
+    font-weight: bold;
+    font-size: 1.5em;
+    margin: 0 0 1rem 0;
+}
+
+.detail-sold {
+    font-size: 0.9em;
+    margin: 0 0 2rem 0;
+}
+
+.detail-dot {
+    font-size: 0.9em;
+    margin: 0 0.5rem 2rem 0.5rem;
+}
+
+.detail-stock {
+    font-size: 0.9em;
+    margin: 0 0 2rem 0;
+}
+
+.detail-price {
+    font-weight: bold;
+    font-size: 1.5em;
+    margin: 0 0 2rem 0;
+}
+
+.detail-desc {
+    color: #757575;
+    font-size: 0.9em;
+    margin: 2rem 0;
+}
+
+.back-arrow {
+    width: 25px;
+    height: 25px;
+    margin: 8px 20px 0 0;
+}

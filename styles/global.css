@@ -11,3 +11,14 @@ body {
     flex-direction: column;
     margin: 0 210px;
 }
+
+.row {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin: 5px 0;
+}
+
+.subtitle {
+    color: #757575;
+}

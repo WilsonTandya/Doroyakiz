@@ -14,8 +14,8 @@ class ListCard extends HTMLElement {
                     <img class="card-thumbnail" src="https://asset.kompas.com/crops/8mYWlI9lPaf8F7XDmQOi2Rte9jo=/0x0:1000x667/750x500/data/photo/2021/07/23/60fa5f58ea527.jpg" alt="Avatar"/>
                     <div style="flex: 1;">
                         <h4 class="card-title">Doroyaki Norimitsu</h4>
-                        <p class="card-desc">Dora The Explorer senang makan Dorayaki</p>
                         <p class="card-sold">Terjual: 15 buah</p>
+                        <p class="card-desc">Dora The Explorer senang makan Dorayaki</p>
                     </div>
                 </div>
             </a>
