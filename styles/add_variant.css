@@ -1,0 +1,137 @@
+.add_variant-title {
+    color: rgba(49,53,59,0.96);
+    font-weight: bold;
+}
+.box {
+    display: block;
+    position: relative;
+    margin: 16px;
+    padding: 35px;
+    border-radius: 8px;
+    box-shadow: 0 1px 6px 0 var(--color-shadow,rgba(49,53,59,0.12));
+    background-color: var(--color-card,#FFFFFF);
+    cursor: default;
+    
+}
+
+.form-box {
+    text-align: left;
+    padding: 5px 20px;
+    margin: 15px 0;
+    border: none;
+    width: 400px;
+}
+
+#form-top {
+    margin-bottom: 0;
+}
+
+#form-middle {
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+#form-bottom {
+    margin-top: 0;
+}
+
+#fileToUpload {
+    align-items: center;
+    color: rgba(49,53,59,0.68);
+}
+
+.form-box .search-box {
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    color: #FFEACC;
+    border-radius: 5px;
+    margin-top: 5px;
+    border: 1px solid #41B54A;
+}
+
+.form-box .harga-box {
+    display: flex;
+    position: relative;
+    align-items: center;
+    color: #FFEACC;
+    border-radius: 5px;
+    margin-top: 5px;
+    border: 1px solid #41B54A;
+}
+
+.form-box .deskripsi-box {
+    display: flex;
+    align-items: center;
+    color: #FFEACC;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+.label {
+    margin-block-start: 1em;
+    margin-block-end: .4em;
+    color: rgba(49,53,59,0.68);
+    font-weight: bold;
+    font-size: .9rem;
+}
+
+.form-box input {
+    width: 400px;
+    height: 40px;
+    background: transparent;
+    border: none;
+}
+
+.form-box input:focus,
+.form-box textarea:focus,
+.form-box select:focus {
+    outline: none;
+    color: #171123;
+}
+
+.form-box p {
+    margin-left: 5px;
+}
+
+
+.inter {
+    width: 400px;
+    height: 40px;
+    background: #41B54A;
+    border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+    margin: 15px 0 15px 0;
+    outline: none;
+    border: none;
+    font-weight: bold;
+    font-size: medium;
+    margin-left: 20px;
+}
+
+.inter:hover, .inter:focus {
+    outline: none;
+}
+
+.left-icon {
+    font-size: 14px;
+    font-weight: 800;
+    line-height: 22px;
+    white-space: nowrap;
+    display: flex;
+    align-self: stretch;
+    -webkit-box-align: center;
+    align-items: center;
+    padding-left: 12px;
+    background-color: var(--color-chip-disabled,#F3F4F5);
+    color: var(--color-text-low,rgba(49,53,59,0.68));
+    padding-right: 12px;
+}
+
+/*Untuk hide arrow*/
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
