@@ -1,25 +1,13 @@
 <?php
-   class DB extends SQLite3 {
-      function __construct() {
-         $this->open('./database.db');
-      }
-   }
-   $db = new DB();
-   
-   if (!$db) {
-      echo $db->lastErrorMsg();
-   } else {
-      echo "Successfully connected to database<br/>";
-   }
-
+   /* START DORAYAKI TABLE*/
    $sql =<<<EOF
       CREATE TABLE IF NOT EXISTS DORAYAKI
       (
-         ID INT PRIMARY KEY,
+         ID INTEGER PRIMARY KEY AUTOINCREMENT,
          NAME CHAR(255) NOT NULL,
          DESCRIPTION TEXT,
          PRICE REAL NOT NULL,
-         STOCK INT NOT NULL
+         STOCK INTEGER NOT NULL
       );
    EOF;
 
@@ -29,12 +17,16 @@
    } else {
       echo "Successfully created Dorayaki table<br/>";
    }
+   /* END DORAYAKI TABLE*/
 
+
+   /* START ACCOUNT TABLE*/
    $sql =<<<EOF
       CREATE TABLE IF NOT EXISTS ACCOUNT
       (
-         ID INT PRIMARY KEY,
+         ID INTEGER PRIMARY KEY AUTOINCREMENT,
          NAME CHAR(255) NOT NULL,
+         USERNAME CHAR(255) NOT NULL,
          EMAIL CHAR(255) NOT NULL,
          HASHED_PASSWORD CHAR(255) NOT NULL,
          ISADMIN BOOL DEFAULT 0
@@ -47,15 +39,18 @@
    } else {
       echo "Successfully created Account table<br/>";
    }
+   /* END ACCOUNT TABLE*/
 
+
+   /* START PURCHASE TABLE*/
    $sql =<<<EOF
       CREATE TABLE IF NOT EXISTS PURCHASE
       (
-         DORAYAKI_ID INT,
-         BUYER_ID INT,
-         QUANTITY INT NOT NULL,
+         ID INTEGER PRIMARY KEY AUTOINCREMENT,
+         DORAYAKI_ID INTEGER,
+         BUYER_ID INTEGER,
+         QUANTITY INTEGER NOT NULL,
          CREATED_AT DATE NOT NULL,
-         PRIMARY KEY (DORAYAKI_ID, BUYER_ID),
          FOREIGN KEY (DORAYAKI_ID) REFERENCES Dorayaki(ID),
          FOREIGN KEY (BUYER_ID) REFERENCES Account(ID)
       );
@@ -67,14 +62,16 @@
    } else {
       echo "Successfully created Purchase table<br/>";
    }
+   /* END PURCHASE TABLE*/
 
+   /* START CHANGE_STOCK TABLE*/
    $sql =<<<EOF
       CREATE TABLE IF NOT EXISTS CHANGE_STOCK
       (
-         DORAYAKI_ID INT,
-         CHANGER_ID INT,
+         ID INTEGER PRIMARY KEY AUTOINCREMENT,
+         DORAYAKI_ID INTEGER,
+         CHANGER_ID INTEGER,
          CREATED_AT DATE NOT NULL,
-         PRIMARY KEY (DORAYAKI_ID, CHANGER_ID),
          FOREIGN KEY (DORAYAKI_ID) REFERENCES Dorayaki(ID),
          FOREIGN KEY (CHANGER_ID) REFERENCES Account(ID)
       );
@@ -84,8 +81,8 @@
    if(!$res){
       echo $db->lastErrorMsg();
    } else {
-      echo "Successfully created Purchase table<br/>";
+      echo "Successfully created ChangeStock table<br/>";
    }
-   
-   $db->close();
+   /* END CHANGE_STOCK TABLE*/
+
 ?>

@@ -1,21 +1,9 @@
 <?php
-   class DB extends SQLite3 {
-      function __construct() {
-         $this->open('./database.db');
-      }
-   }
-   $db = new DB();
-   
-   if (!$db) {
-      echo $db->lastErrorMsg();
-   } else {
-      echo "Successfully connected to database<br/>";
-   }
-
    $sql =<<<EOF
       DROP TABLE IF EXISTS DORAYAKI;
       DROP TABLE IF EXISTS ACCOUNT;
       DROP TABLE IF EXISTS PURCHASE;
+      DROP TABLE IF EXISTS CHANGE_STOCK;
    EOF;
 
    $res = $db->exec($sql);
@@ -25,5 +13,4 @@
       echo "Successfully reset the database<br/>";
    }
    
-   $db->close();
 ?>
