@@ -9,7 +9,7 @@ extension=pdo_sqlite
 sqlite3.extension_dir = "C:\xampp\php\ext"
 ```
 
-![External reference](https://www.nyingspot.com/2017/10/cara-mengaktifkan-sqlite3-di-php-windows/)
+[External reference](https://www.nyingspot.com/2017/10/cara-mengaktifkan-sqlite3-di-php-windows/)
 
 ## Panduan Pengerjaan
 
