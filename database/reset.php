@@ -6,11 +6,10 @@
       DROP TABLE IF EXISTS CHANGE_STOCK;
    EOF;
 
-   $res = $db->exec($sql);
-   if(!$res){
-      echo $db->lastErrorMsg();
-   } else {
+   try {
+      $res = $db->exec($sql);
       echo "Successfully reset the database<br/>";
+   } catch (PDOException $e) {
+      echo "Error: " . $e->getMessage();
    }
-   
 ?>

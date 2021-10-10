@@ -15,11 +15,11 @@
       ;
    EOF;
 
-   $res = $db->exec($sql);
-   if(!$res){
-      echo $db->lastErrorMsg();
-   } else {
-      echo "Successfully inserted dummy data to Dorayaki table<br/>";
+   try {
+      $res = $db->exec($sql);
+      echo "Successfully inserted dummy data to Dorayaki table<br/>";   
+   } catch (PDOException $e) {
+      echo "Error: " . $e->getMessage();
    }
    /* END DORAYAKI TABLE*/
 
@@ -35,11 +35,11 @@
       ;
    EOF;
 
-   $res = $db->exec($sql);
-   if(!$res){
-      echo $db->lastErrorMsg();
-   } else {
-      echo "Successfully inserted dummy data to Account table<br/>";
+   try {
+      $res = $db->exec($sql);
+      echo "Successfully inserted dummy data to Account table<br/>";   
+   } catch (PDOException $e) {
+      echo "Error: " . $e->getMessage();
    }
    /* END ACCOUNT TABLE*/
 
@@ -60,11 +60,11 @@
       ;
    EOF;
 
-   $res = $db->exec($sql);
-   if(!$res){
-      echo $db->lastErrorMsg();
-   } else {
-      echo "Successfully inserted dummy data to Purchase table<br/>";
+   try {
+      $res = $db->exec($sql);
+      echo "Successfully inserted dummy data to Purchase table<br/>";   
+   } catch (PDOException $e) {
+      echo "Error: " . $e->getMessage();
    }
    /* END PURCHASE TABLE*/
 
@@ -81,11 +81,11 @@
       ;
    EOF;
 
-   $res = $db->exec($sql);
-   if(!$res){
-      echo $db->lastErrorMsg();
-   } else {
-      echo "Successfully inserted dummy data to Purchase table<br/>";
+   try {
+      $res = $db->exec($sql);
+      echo "Successfully inserted dummy data to Purchase table<br/>";   
+   } catch (PDOException $e) {
+      echo "Error: " . $e->getMessage();
    }
    /* END CHANGE_STOCK TABLE*/
 

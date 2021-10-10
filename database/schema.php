@@ -11,11 +11,11 @@
       );
    EOF;
 
-   $res = $db->exec($sql);
-   if(!$res){
-      echo $db->lastErrorMsg();
-   } else {
+   try {
+      $res = $db->exec($sql);
       echo "Successfully created Dorayaki table<br/>";
+   } catch (PDOException $e) {
+      echo "Error: " . $e->getMessage();
    }
    /* END DORAYAKI TABLE*/
 
@@ -33,11 +33,11 @@
       );
    EOF;
 
-   $res = $db->exec($sql);
-   if(!$res){
-      echo $db->lastErrorMsg();
-   } else {
+   try {
+      $res = $db->exec($sql);
       echo "Successfully created Account table<br/>";
+   } catch (PDOException $e) {
+      echo "Error: " . $e->getMessage();
    }
    /* END ACCOUNT TABLE*/
 
@@ -56,11 +56,11 @@
       );
    EOF;
 
-   $res = $db->exec($sql);
-   if(!$res){
-      echo $db->lastErrorMsg();
-   } else {
+   try {
+      $res = $db->exec($sql);
       echo "Successfully created Purchase table<br/>";
+   } catch (PDOException $e) {
+      echo "Error: " . $e->getMessage();
    }
    /* END PURCHASE TABLE*/
 
@@ -77,11 +77,11 @@
       );
    EOF;
 
-   $res = $db->exec($sql);
-   if(!$res){
-      echo $db->lastErrorMsg();
-   } else {
+   try {
+      $res = $db->exec($sql);
       echo "Successfully created ChangeStock table<br/>";
+   } catch (PDOException $e) {
+      echo "Error: " . $e->getMessage();
    }
    /* END CHANGE_STOCK TABLE*/
 

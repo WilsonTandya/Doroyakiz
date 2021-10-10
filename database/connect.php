@@ -1,15 +1,8 @@
 <?php
-    class DB extends SQLite3 {
-        function __construct() {
-            $this->open('./database.db');
-        }
-    }
-    
-    $db = new DB();
-
-    if (!$db) {
-        echo $db->lastErrorMsg();
-    } else {
+    try {
+        $db = new PDO("sqlite:database.db");
         echo "Successfully connected to database<br/>";
+    } catch (PDOException $e) {
+        echo "Error: " . $e->getMessage();
     }
 ?>

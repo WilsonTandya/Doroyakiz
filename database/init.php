@@ -4,5 +4,6 @@
     include 'schema.php';
     include 'data.php';
 
-    $db->close();
+    // close connection
+    $db = null;
 ?>
