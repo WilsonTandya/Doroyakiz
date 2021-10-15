@@ -1,3 +1,11 @@
+<?php
+require_once "../app/dorayaki.php";
+require_once "util.php";
+
+$dorayaki = new Dorayaki();
+$res = $dorayaki->list_popular();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,7 +20,7 @@
     <link rel="stylesheet" href="../styles/list.css">
     <script src="../components/navbar.js" type="text/javascript" defer></script>
     <script src="../components/list-card.js" type="text/javascript" defer></script>
-    <title>Document</title>
+    <title>Dorayaki</title>
 </head>
 
 <body>
@@ -22,9 +30,21 @@
     <div class="container">
         <h2 class="page-header">Top 10 Dorayaki</h2>
         <?php
-            for ($i=0;$i<10;$i++) {
-                $isFinalIndex = $i == 9;
-                echo "<list-card final=$isFinalIndex></list-card>";
+            for ($i=0; $i<count($res); $i++) {
+                $isFinalIndex = $i == count($res);
+                $sold = preprocess($res[$i]->SOLD);
+                $name = preprocess($res[$i]->NAME);
+                $description = preprocess($res[$i]->DESCRIPTION);
+                $price = preprocess($res[$i]->PRICE);
+                $stock = preprocess($res[$i]->STOCK);
+                echo "<list-card 
+                        sold=$sold 
+                        name=$name 
+                        description=$description 
+                        price=$price 
+                        stock=$stock 
+                        final=$isFinalIndex
+                    ></list-card>";
             }
         ?>
     </div>

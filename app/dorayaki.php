@@ -13,9 +13,11 @@ class Dorayaki extends Controller {
     {
         // $name nanti ganti jadi $_GET
         $sql =<<<EOF
-        SELECT *
+        SELECT IFNULL(SUM(QUANTITY), 0) AS SOLD, DORAYAKI.ID, NAME, DESCRIPTION, PRICE, STOCK
         FROM DORAYAKI
+        LEFT JOIN PURCHASE P ON DORAYAKI.ID = P.DORAYAKI_ID
         WHERE NAME LIKE (?)
+        GROUP BY DORAYAKI_ID
         ORDER BY NAME ASC
         LIMIT (?), (?)
         ;
@@ -29,7 +31,7 @@ class Dorayaki extends Controller {
             $res[] = $row;
         }
 
-		return $res;
+        return $res;
     }
 
     public function detail($id) 
@@ -149,22 +151,22 @@ class Dorayaki extends Controller {
 }
 
 /* TEST CONSTANT */
-$page_no = 1;
-$n_records_per_page = 5;
-$offset = ($page_no-1) * $n_records_per_page;
+// $page_no = 1;
+// $n_records_per_page = 5;
+// $offset = ($page_no-1) * $n_records_per_page;
 
-$test = new Dorayaki();
-$res = $test->search("Rasa",$offset,$n_records_per_page);
-print_r($res);
-echo "<br/>";
-$res = $test->detail(3);
-print_r($res); 
-echo "<br/>";
-$res = $test->list_popular();
-echo "<br/>" . $res[0]->NAME . "<br/>";
-$res = $test->buy(7,3,1);
-echo "<br/>" .  $res . "<br/>";
-$res = $test->change_stock(4,1,1000);
-echo $res;
+// $test = new Dorayaki();
+// $res = $test->search("Rasa",$offset,$n_records_per_page);
+// print_r($res);
+// echo "<br/>";
+// $res = $test->detail(3);
+// print_r($res); 
+// echo "<br/>";
+// $res = $test->list_popular();
+// echo "<br/>" . $res[0]->NAME . "<br/>";
+// $res = $test->buy(7,3,1);
+// echo "<br/>" .  $res . "<br/>";
+// $res = $test->change_stock(4,1,1000);
+// echo $res;
 
 ?>

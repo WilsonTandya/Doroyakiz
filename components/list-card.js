@@ -4,7 +4,12 @@ class ListCard extends HTMLElement {
     }
 
     connectedCallback() {
-        const isFinalIndex = this.getAttribute("final");
+        const isFinalIndex = this.attributes.final.value;
+        const name = this.attributes.name.value.replaceAll("%20", " ");
+        const description = this.attributes.description.value.replaceAll("%20", " ");
+        const sold = this.attributes.sold.value.replaceAll("%20", " ");
+        const price = this.attributes.price.value.replaceAll("%20", " ");
+        const stock = this.attributes.stock.value.replaceAll("%20", " ");
 
         this.innerHTML = `
             <a class="card-href" href="detail.php">
@@ -13,10 +18,9 @@ class ListCard extends HTMLElement {
                 }>
                     <img class="card-thumbnail" src="https://asset.kompas.com/crops/8mYWlI9lPaf8F7XDmQOi2Rte9jo=/0x0:1000x667/750x500/data/photo/2021/07/23/60fa5f58ea527.jpg" alt="Avatar"/>
                     <div class="card-info">
-                        <h4 class="card-title">Doroyaki Norimitsu</h4>
-                        <p class="card-sold">Terjual: 15 buah</p>
-                        <p class="card-desc">Dora The Explorer senang makan Dorayaki. Dorayaki lezat, enak, sehat
-                        dan bergizi. Dorayaki penuh nutrisi dan kaya akan protein serta gula. Saya suka makan dorayaki.</p>
+                        <h4 class="card-title">${name}</h4>
+                        <p class="card-sold">Terjual: ${sold} buah</p>
+                        <p class="card-desc">${description}</p>
                     </div>
                 </div>
             </a>
