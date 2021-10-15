@@ -9,18 +9,20 @@ class Dorayaki extends Controller {
         parent::__construct();
     }
 
-    public function search($name) 
+    public function search($name, $offset, $n_records_per_page) 
     {
         // $name nanti ganti jadi $_GET
         $sql =<<<EOF
         SELECT *
         FROM DORAYAKI
         WHERE NAME LIKE (?)
+        ORDER BY NAME ASC
+        LIMIT (?), (?)
         ;
         EOF;
 
         $stmt = $this->db->prepare($sql);
-        $stmt->execute(array("%" . $name . "%"));
+        $stmt->execute(array("%" . $name . "%", $offset, $n_records_per_page));
 
         $res = array();
         while ($row = $stmt->fetch(PDO::FETCH_OBJ)) {
@@ -55,6 +57,7 @@ class Dorayaki extends Controller {
         NATURAL INNER JOIN DORAYAKI D
         GROUP BY DORAYAKI_ID
         ORDER BY SUM(QUANTITY) DESC
+        LIMIT 10
         ;
         EOF;
 
@@ -145,9 +148,15 @@ class Dorayaki extends Controller {
     }
 }
 
+/* TEST CONSTANT */
+$page_no = 1;
+$n_records_per_page = 5;
+$offset = ($page_no-1) * $n_records_per_page;
+
 $test = new Dorayaki();
-$res = $test->search("Rasa");
-echo $res[0]->NAME . "<br/>";
+$res = $test->search("Rasa",$offset,$n_records_per_page);
+print_r($res);
+echo "<br/>";
 $res = $test->detail(3);
 print_r($res); 
 echo "<br/>";
