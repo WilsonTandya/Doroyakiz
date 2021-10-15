@@ -16,12 +16,24 @@ class HistoryCard extends HTMLElement {
 
         this.innerHTML = `
             <style>
+                .card-href {
+                    text-decoration: none;
+                    color: #000;
+                }
+
                 .card-container, .card-container-final {
                     display: flex;
                     align-items: center;
                     border-top: 2px solid rgba(0,0,0,0.15);
                     margin: 0px 0;
                     padding: 15px 15px;
+                    cursor: pointer;
+                    transition-duration: .15s;
+                }
+
+                .card-container:hover, .card-container-final:hover {                
+                    background: rgb(240, 240, 240);
+                    transition-duration: .15s;
                 }
 
                 .card-container-final {
@@ -139,16 +151,18 @@ class HistoryCard extends HTMLElement {
                     border-color: rgba(0,0,0,0.4);
                 }
             </style>
-            <div class=${
-                isFinalIndex ? "card-container-final" : "card-container"
-            } >
-                <img class="cart-thumbnail" src="https://asset.kompas.com/crops/8mYWlI9lPaf8F7XDmQOi2Rte9jo=/0x0:1000x667/750x500/data/photo/2021/07/23/60fa5f58ea527.jpg" alt="Avatar"/>
-                <div style="flex: 1;">
-                    <h4 class="cart-title">Doroyaki Norimitsu</h4>
-                    <p class="cart-writer">Agustinus Suparjono</p>
-                    <p class="cart-price">15 Februari 2021</p>
+            <a class="card-href" href="detail.php">
+                <div class=${
+                    isFinalIndex ? "card-container-final" : "card-container"
+                } >
+                    <img class="cart-thumbnail" src="https://asset.kompas.com/crops/8mYWlI9lPaf8F7XDmQOi2Rte9jo=/0x0:1000x667/750x500/data/photo/2021/07/23/60fa5f58ea527.jpg" alt="Avatar"/>
+                    <div style="flex: 1;">
+                        <h4 class="cart-title">Doroyaki Norimitsu</h4>
+                        <p class="cart-writer">Agustinus Suparjono</p>
+                        <p class="cart-price">15 Februari 2021</p>
+                    </div>
                 </div>
-            </div>
+            </a>
         `;
     }
 }

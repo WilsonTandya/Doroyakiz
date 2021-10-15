@@ -1,3 +1,26 @@
+<?php
+    require_once "../app/account.php";
+
+    $account = new Account();
+    
+    $login_fail = false;
+
+    
+    if (isset($_POST["username"]) && isset($_POST["password"])) {
+        $username = $_POST["username"];
+        $password = $_POST["password"];
+        $res = $account->login($username, $password);
+        if ($res != NULL) {
+            session_start();
+            $_SESSION["username"] = $username;
+            header("Location: " . "index.php");
+        }
+        else {
+            $login_fail = true;
+        }
+    }
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,7 +35,7 @@
 <body>
     <div class="box">
         <h2 id="login-title">Login</h2>
-        <form action="index.php" method="post">
+        <form action="login.php" method="post">
             <div class="form-box" id="form-top">
                 <p class="label">Username atau Email</p>
                 <div class="search-box">
@@ -26,8 +49,8 @@
                 </div>
             </div>
             <?php
-                if (isset($_POST["login-failed-message"])) {
-                    $message = $_POST["login-failed-message"];
+                if ($login_fail) {
+                    $message = "Username dan password tidak cocok";
                     echo "<p style='color: #D9534F;'>$message</p>";
                 }
             ?>

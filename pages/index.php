@@ -1,9 +1,9 @@
 <?php
-require_once "../app/dorayaki.php";
-require_once "util.php";
+    require_once "../app/dorayaki.php";
+    require_once "util.php";
 
-$dorayaki = new Dorayaki();
-$res = $dorayaki->list_popular();
+    $dorayaki = new Dorayaki();
+    $res = $dorayaki->list_popular();
 ?>
 
 <!DOCTYPE html>
