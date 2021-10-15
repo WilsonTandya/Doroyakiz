@@ -3,13 +3,13 @@ require_once "../app/dorayaki.php";
 require_once "util.php";
 
 // static data for testing
-$query = "Rasa";
+$query = "RaSA";
 $page_no = 1;
 $n_records_per_page = 5;
 $offset = ($page_no-1) * $n_records_per_page;
 
 $dorayaki = new Dorayaki();
-$res = $dorayaki->search($query,$offset,$n_records_per_page);
+$res = $dorayaki->search(strtolower($query),$offset,$n_records_per_page);
 ?>
 
 <!DOCTYPE html>
