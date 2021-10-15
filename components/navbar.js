@@ -109,7 +109,7 @@ navbarTemplate.innerHTML = `
             <input type="text" name="query" placeholder="Cari varian dorayaki..." />
           </form>
           <button class="btn-submit" type="submit" form="form-search" value="Submit">
-            <img src="https://www.freeiconspng.com/thumbs/search-icon-png/search-icon-png-5.png" alt="Cari" />
+            <img src="../assets/icon-search.png" alt="Cari" />
           </button>
           <a href="history.php">
             <div class="text">Riwayat</div>

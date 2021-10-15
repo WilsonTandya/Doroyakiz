@@ -30,15 +30,15 @@ if(isset($_GET['id'])){
     <div class="container">
         <div class="row" style="align-items: center;">
             <a href="javascript:history.go(-1)">
-                <img src="https://pixsector.com/cache/852dce6a/avb91899cb3246210ca63.png" alt="Back"
+                <img src="../assets/icon-arrow-back.png" alt="Back"
                     class="back-arrow" />
             </a>
             <h2 class="page-header">Detail</h2>
         </div>
         <div class="row">
             <img class="detail-image"
-                src="https://asset.kompas.com/crops/8mYWlI9lPaf8F7XDmQOi2Rte9jo=/0x0:1000x667/750x500/data/photo/2021/07/23/60fa5f58ea527.jpg"
-                alt="Product" />
+                src="../assets/dorayaki.jpeg"
+                alt="Dorayaki" />
             <div class="detail-info">
                 <h4 class="detail-name"><?php echo $res->NAME ?></h4>
                 <div class="row" style="align-items: center;">

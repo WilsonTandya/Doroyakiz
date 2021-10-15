@@ -155,7 +155,7 @@ class HistoryCard extends HTMLElement {
                 <div class=${
                     isFinalIndex ? "card-container-final" : "card-container"
                 } >
-                    <img class="cart-thumbnail" src="https://asset.kompas.com/crops/8mYWlI9lPaf8F7XDmQOi2Rte9jo=/0x0:1000x667/750x500/data/photo/2021/07/23/60fa5f58ea527.jpg" alt="Avatar"/>
+                    <img class="cart-thumbnail" src="../assets/dorayaki.jpeg" alt="Dorayaki"/>
                     <div style="flex: 1;">
                         <h4 class="cart-title">Doroyaki Norimitsu</h4>
                         <p class="cart-writer">Agustinus Suparjono</p>
