@@ -78,9 +78,9 @@ class Dorayaki extends Controller {
         $stmt = $this->db->prepare($sql);
         $stmt->bindParam(":dorayaki_id", $dorayaki_id);
         $stmt->bindParam(":qty", $qty);
-        $stmt->execute();
+        $res = $stmt->execute();
 
-        return $stmt->execute();
+        return $res;
     }
 
     public function make_purchase($dorayaki_id, $buyer_id, $qty) 
@@ -97,15 +97,50 @@ class Dorayaki extends Controller {
         $stmt->bindParam(":dorayaki_id", $dorayaki_id);
         $stmt->bindParam(":buyer_id", $buyer_id);
         $stmt->bindParam(":qty", $qty);
-        $stmt->execute();
+        $res = $stmt->execute();
 
-        return $stmt->execute();
+        return $res;
     }
 
     public function buy($dorayaki_id, $buyer_id, $qty) 
     {
         $res1 = $this->substract_stock($dorayaki_id, $qty);
         $res2 = $this->make_purchase($dorayaki_id, $buyer_id, $qty);
+        return $res1 && $res2;
+    }
+
+    public function update_stock($dorayaki_id, $qty) 
+    {
+        // ganti jadi $_GET
+        $sql =<<<EOF
+        UPDATE DORAYAKI
+        SET STOCK = :qty
+        WHERE ID = :dorayaki_id;
+        EOF;
+
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindParam(":dorayaki_id", $dorayaki_id);
+        $stmt->bindParam(":qty", $qty);
+        $res = $stmt->execute();
+
+        return $res;
+    }
+
+    public function change_stock($dorayaki_id, $changer_id, $qty) 
+    {
+        $res1 = $this->update_stock($dorayaki_id, $qty);
+        
+        $sql =<<<EOF
+        INSERT INTO CHANGE_STOCK
+        (DORAYAKI_ID,CHANGER_ID,CREATED_AT)
+        VALUES (:dorayaki_id,:changer_id,DATE());
+        EOF;
+
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindParam(":dorayaki_id", $dorayaki_id);
+        $stmt->bindParam(":changer_id", $changer_id);
+        $res2 = $stmt->execute();
+
         return $res1 && $res2;
     }
 }
@@ -119,6 +154,8 @@ echo "<br/>";
 $res = $test->list_popular();
 echo "<br/>" . $res[0]->NAME . "<br/>";
 $res = $test->buy(7,3,1);
+echo "<br/>" .  $res . "<br/>";
+$res = $test->change_stock(4,1,1000);
 echo $res;
 
 ?>
