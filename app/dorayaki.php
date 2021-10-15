@@ -36,11 +36,12 @@ class Dorayaki extends Controller {
 
     public function detail($id) 
     {
-        // $id nanti ganti jadi $_GET
         $sql =<<<EOF
-        SELECT *
+        SELECT IFNULL(SUM(QUANTITY), 0) AS SOLD, DORAYAKI.ID, NAME, DESCRIPTION, PRICE, STOCK
         FROM DORAYAKI
-        WHERE ID = (?)
+        LEFT JOIN PURCHASE P ON DORAYAKI.ID = P.DORAYAKI_ID
+        WHERE DORAYAKI.ID = (?)
+        GROUP BY DORAYAKI.ID
         ;
         EOF;
 
@@ -54,7 +55,7 @@ class Dorayaki extends Controller {
     public function list_popular() 
     {
         $sql =<<<EOF
-        SELECT SUM(QUANTITY) AS SOLD, DORAYAKI_ID, NAME, DESCRIPTION, PRICE, STOCK
+        SELECT SUM(QUANTITY) AS SOLD, D.ID, NAME, DESCRIPTION, PRICE, STOCK
         FROM PURCHASE
         NATURAL INNER JOIN DORAYAKI D
         GROUP BY DORAYAKI_ID
