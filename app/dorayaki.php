@@ -90,7 +90,7 @@ class Dorayaki extends Controller {
         $sql =<<<EOF
         INSERT INTO PURCHASE
         (DORAYAKI_ID,BUYER_ID,QUANTITY,CREATED_AT)
-        VALUES (:dorayaki_id,:buyer_id,:qty,DATE());
+        VALUES (:dorayaki_id,:buyer_id,:qty,DATETIME());
         EOF;
 
         $stmt = $this->db->prepare($sql);
@@ -133,7 +133,7 @@ class Dorayaki extends Controller {
         $sql =<<<EOF
         INSERT INTO CHANGE_STOCK
         (DORAYAKI_ID,CHANGER_ID,CREATED_AT)
-        VALUES (:dorayaki_id,:changer_id,DATE());
+        VALUES (:dorayaki_id,:changer_id,DATETIME());
         EOF;
 
         $stmt = $this->db->prepare($sql);
