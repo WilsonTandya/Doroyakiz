@@ -1,3 +1,15 @@
+<?php
+require_once "../app/dorayaki.php";
+require_once "util.php";
+
+if(isset($_GET['id'])){
+    $id = $_GET['id'];
+    $dorayaki = new Dorayaki();
+    $res = $dorayaki->detail($id);
+}
+
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -28,17 +40,16 @@
                 src="https://asset.kompas.com/crops/8mYWlI9lPaf8F7XDmQOi2Rte9jo=/0x0:1000x667/750x500/data/photo/2021/07/23/60fa5f58ea527.jpg"
                 alt="Product" />
             <div class="detail-info">
-                <h4 class="detail-name">Doroyaki Norimitsu</h4>
+                <h4 class="detail-name"><?php echo $res->NAME ?></h4>
                 <div class="row" style="align-items: center;">
-                    <p class="detail-sold">Terjual: <span class="subtitle">15 buah</span></p>
+                    <p class="detail-sold">Terjual: <span class="subtitle"><?php echo $res->SOLD ?> buah</span></p>
                     <p class="detail-dot">•</p>
-                    <p class="detail-stock">Stok: <span class="subtitle">39 buah</span></p>
+                    <p class="detail-stock">Stok: <span class="subtitle"><?php echo $res->STOCK ?> buah</span></p>
                 </div>
-                <h4 class="detail-price">Rp59.000</h4>
+                <h4 class="detail-price">Rp<?php echo formatPrice($res->PRICE) ?></h4>
                 <hr class="solid">
                 <p class="detail-desc">
-                    Dora The Explorer senang makan Dorayaki. Dorayaki lezat, enak, sehat
-                    dan bergizi. Dorayaki penuh nutrisi dan kaya akan protein serta gula. Saya suka makan dorayaki.
+                    <?php echo $res->DESCRIPTION ?>
                 </p>
             </div>
         </div>

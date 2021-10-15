@@ -5,6 +5,7 @@ class ListCard extends HTMLElement {
 
     connectedCallback() {
         const isFinalIndex = this.attributes.final.value;
+        const id = this.attributes.id.value.replaceAll("%20", " ");
         const name = this.attributes.name.value.replaceAll("%20", " ");
         const description = this.attributes.description.value.replaceAll("%20", " ");
         const sold = this.attributes.sold.value.replaceAll("%20", " ");
@@ -12,7 +13,7 @@ class ListCard extends HTMLElement {
         const stock = this.attributes.stock.value.replaceAll("%20", " ");
 
         this.innerHTML = `
-            <a class="card-href" href="detail.php">
+            <a class="card-href" href="detail.php?id=${id}">
                 <div class=${
                     isFinalIndex ? "card-container-final" : "card-container"
                 }>
