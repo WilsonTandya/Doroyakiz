@@ -18,9 +18,9 @@ navbarTemplate.innerHTML = `
 
     .nav-search {
       display: flex;
+      flex-direction: row;
       align-items: center;
       width: 250px;
-      margin-right: 35px;
     }
 
     .nav-search input {
@@ -28,7 +28,7 @@ navbarTemplate.innerHTML = `
       height: 30px;
       padding: 0 10px;
       color: rgba(49, 53, 59, 0.75);
-      border-radius: 4px;
+      border-radius: 4px 0 0 4px;
       border: 1px solid rgba(49, 53, 59, 0.35);
     }
 
@@ -39,6 +39,24 @@ navbarTemplate.innerHTML = `
 
     .nav-search input:focus {
       outline: none;
+    }
+
+    .btn-submit {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 8%;
+      text-align: center;
+      height: 33px !important;
+      margin-right: 35px;
+      border: none;
+      border-radius: 0 4px 4px 0;
+      cursor: pointer;
+      outline: none;
+    }
+
+    .btn-submit img {
+      width: 20px;
     }
 
     .nav-button-container {
@@ -87,9 +105,12 @@ navbarTemplate.innerHTML = `
           <h1>Doroyaki</h1>
         </a>
         <div class="nav-button-container">
-          <div class="nav-search">
-            <input type="text" placeholder="Cari varian dorayaki..." />
-          </div>
+          <form class="nav-search" id="form-search" name="form-search" action="list.php" method="GET" autocomplete="off" >
+            <input type="text" name="query" placeholder="Cari varian dorayaki..." />
+          </form>
+          <button class="btn-submit" type="submit" form="form-search" value="Submit">
+            <img src="https://www.freeiconspng.com/thumbs/search-icon-png/search-icon-png-5.png" alt="Cari" />
+          </button>
           <a href="history.php">
             <div class="text">Riwayat</div>
           </a>

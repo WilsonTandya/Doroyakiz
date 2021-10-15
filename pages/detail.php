@@ -29,7 +29,7 @@ if(isset($_GET['id'])){
     ?>
     <div class="container">
         <div class="row" style="align-items: center;">
-            <a href="list.php">
+            <a href="javascript:history.go(-1)">
                 <img src="https://pixsector.com/cache/852dce6a/avb91899cb3246210ca63.png" alt="Back"
                     class="back-arrow" />
             </a>
