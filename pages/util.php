@@ -6,4 +6,8 @@ function preprocess($str) {
 function formatPrice($price) {
     return number_format($price,0,',','.');
 }
+
+function isEmailValid($email) {
+    return filter_var($email, FILTER_VALIDATE_EMAIL);
+}
 ?>

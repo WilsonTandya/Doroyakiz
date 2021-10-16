@@ -95,7 +95,7 @@ body {
     color: #FFEACC;
     border-radius: 5px;
     margin-top: 5px;
-    border: 1px solid #41B54A;
+    border: 1px solid rgba(49,53,59,0.4);
 }
 
 .label {
@@ -104,6 +104,14 @@ body {
     color: rgba(49,53,59,0.68);
     font-weight: bold;
     font-size: .9rem;
+}
+
+.input-error {
+    margin-block-start: .7em;
+    margin-block-end: 0em;
+    font-size: .8rem;
+    color: #d8414a;
+    display: none;
 }
 
 .form-box input {

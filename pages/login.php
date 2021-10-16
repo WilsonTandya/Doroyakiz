@@ -4,7 +4,6 @@
     $account = new Account();
     
     $login_fail = false;
-
     
     if (isset($_POST["username"]) && isset($_POST["password"])) {
         $username = $_POST["username"];
@@ -34,8 +33,24 @@
 </head>
 <body>
     <div class="box">
+        <script>
+            function handleChangeFormLogin(event) {
+                var usernameValue = document.getElementsByName("username")[0].value;
+                var passwordValue = document.getElementsByName("password")[0].value;
+                console.log(usernameValue, passwordValue);
+                if (usernameValue != "" && passwordValue != "") {
+                    console.log("Hello");
+                    document.getElementById("login-button").className = "inter";
+                    document.getElementById("login-button").disabled = false;
+                }
+                else {
+                    document.getElementById("login-button").className = "inter-disabled";
+                    document.getElementById("login-button").disabled = true;
+                }
+            }
+        </script>
         <h2 id="login-title">Login</h2>
-        <form action="login.php" method="post">
+        <form action="login.php" method="post" oninput="handleChangeFormLogin(event)">
             <div class="form-box" id="form-top">
                 <p class="label">Username atau Email</p>
                 <div class="search-box">
@@ -54,7 +69,7 @@
                     echo "<p style='color: #D9534F;'>$message</p>";
                 }
             ?>
-            <input type="submit" class="inter" value="Masuk" name="submit"/>
+            <input type="submit" class="inter-disabled" value="Masuk" name="submit" id="login-button" disabled/>
         </form>
         <a href="register.php" class="register">Daftar</a>
     </div>

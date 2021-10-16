@@ -36,7 +36,7 @@ body {
     margin-bottom: 15px;
 }
   
-.inter {
+.inter, .inter-disabled {
     width: 300px;
     height: 40px;
     background: #41B54A;
@@ -48,6 +48,11 @@ body {
     border: none;
     font-weight: bold;
     font-size: medium;
+}
+
+.inter-disabled {
+    background: rgba(49,53,59,0.4);
+    cursor: not-allowed;
 }
 
 .inter:hover, .inter:focus {
@@ -90,7 +95,7 @@ body {
     color: #FFEACC;
     border-radius: 5px;
     margin-top: 5px;
-    border: 1px solid #41B54A;
+    border: 1px solid rgba(49,53,59,0.4);
 }
 
 .label {

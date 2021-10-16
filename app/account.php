@@ -12,10 +12,10 @@ class Account extends Controller {
     public function login($username, $password) 
     {
         $sql =<<<EOF
-        SELECT USERNAME
-        FROM ACCOUNT
-        WHERE USERNAME = (?) AND HASHED_PASSWORD = (?)
-        ;
+            SELECT USERNAME
+            FROM ACCOUNT
+            WHERE USERNAME = (?) AND HASHED_PASSWORD = (?)
+            ;
         EOF;
 
         $stmt = $this->db->prepare($sql);
@@ -26,25 +26,42 @@ class Account extends Controller {
         return $res;
     }
 
-    public function register($username, $password) 
+    public function register($email, $fullname, $username, $password) 
     {
         $sql =<<<EOF
-        SELECT *
-        FROM ACCOUNT
-        WHERE USERNAME = (?) AND HASHED_PASSWORD = (?)
-        ;
+            INSERT INTO ACCOUNT (NAME, USERNAME, EMAIL, HASHED_PASSWORD, ISADMIN)
+            VALUES ((?), (?), (?), (?), 0)
+            ;
+        EOF;
+
+        $registerSuccess = false;
+        try {
+            $stmt = $this->db->prepare($sql);
+            $stmt->execute(array($fullname, $username, $email, $password));
+            $registerSuccess = true; 
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+
+        return $registerSuccess;
+    }
+
+    public function isUsernameExist($username) 
+    {
+        $sql =<<<EOF
+            SELECT USERNAME
+            FROM ACCOUNT
+            WHERE USERNAME = (?)
+            ;
         EOF;
 
         $stmt = $this->db->prepare($sql);
-        $stmt->execute(array($username, $password));
+        $stmt->execute(array($username));
 
-        $res = array();
-        while ($row = $stmt->fetch(PDO::FETCH_OBJ)) {
-            $res[] = $row;
-        }
+        $res = $stmt->fetch(PDO::FETCH_OBJ);
 
-        return $res;
-    }  
+        return $res != NULL;
+    }
 }
 
 ?>
