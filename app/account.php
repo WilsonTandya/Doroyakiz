@@ -46,8 +46,12 @@ class Account extends Controller {
         return $registerSuccess;
     }
 
-    public function isUsernameExist($username) 
+    public function isUsernameAvailable($username) 
     {
+        if (!preg_match('/^[a-zA-Z0-9_]+$/', $username)) {
+            return false;
+        }
+
         $sql =<<<EOF
             SELECT USERNAME
             FROM ACCOUNT
@@ -60,7 +64,7 @@ class Account extends Controller {
 
         $res = $stmt->fetch(PDO::FETCH_OBJ);
 
-        return $res != NULL;
+        return $res == NULL;
     }
 }
 

@@ -39,7 +39,6 @@
                 var passwordValue = document.getElementsByName("password")[0].value;
                 console.log(usernameValue, passwordValue);
                 if (usernameValue != "" && passwordValue != "") {
-                    console.log("Hello");
                     document.getElementById("login-button").className = "inter";
                     document.getElementById("login-button").disabled = false;
                 }
@@ -66,7 +65,7 @@
             <?php
                 if ($login_fail) {
                     $message = "Username dan password tidak cocok";
-                    echo "<p style='color: #D9534F;'>$message</p>";
+                    echo "<p style='color: #D9534F; font-size: .9rem'>$message</p>";
                 }
             ?>
             <input type="submit" class="inter-disabled" value="Masuk" name="submit" id="login-button" disabled/>
