@@ -2,6 +2,7 @@
     require_once "../pages/util.php";
     require_once "../app/account.php";
 
+    // Validasi seluruh form (untuk reload button Daftar)
     if ($_POST["validate"] == "all") {
         $account = new Account();
         if ($_POST["email"] != "empty" && $_POST["username"] != "empty") {
@@ -10,6 +11,7 @@
             }
         }
     }
+    // Validasi email
     else if ($_POST["validate"] == "email") {
         if ($_POST["email"] == "empty") {
             echo "email-empty";
@@ -21,6 +23,7 @@
             echo "email-invalid";
         }
     }
+    // Validasi username
     else {
         $account = new Account();
         if ($_POST["username"] == "empty") {

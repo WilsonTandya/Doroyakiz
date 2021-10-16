@@ -57,7 +57,7 @@
                         }
                     }
                 };
-                xhttp.open("POST", "../ajax/ajax-register.php", true);
+                xhttp.open("POST", "../ajax/ajax_register.php", true);
                 xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
                 var email = emailValue != "" ? emailValue : "empty";
                 var username = usernameValue != "" ? usernameValue : "empty";
@@ -86,7 +86,7 @@
                         }
                     }
                 };
-                xhttp.open("POST", "../ajax/ajax-register.php", true);
+                xhttp.open("POST", "../ajax/ajax_register.php", true);
                 xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
                 var value = event.target.value != "" ? event.target.value : "empty";
                 var param = `email=${value}&validate=email`;
@@ -115,7 +115,7 @@
                         }
                     }
                 };
-                xhttp.open("POST", "../ajax/ajax-register.php", true);
+                xhttp.open("POST", "../ajax/ajax_register.php", true);
                 xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
                 var value = event.target.value != "" ? event.target.value : "empty";
                 var param = `username=${value}&validate=username`;

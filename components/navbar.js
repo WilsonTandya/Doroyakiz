@@ -111,7 +111,7 @@ navbarTemplate.innerHTML = `
           <button class="btn-submit" type="submit" form="form-search" value="Submit">
             <img src="../assets/icon-search.png" alt="Cari" />
           </button>
-          <a href="history.php">
+          <a href="purchase_history.php">
             <div class="text">Riwayat</div>
           </a>
           <a href="login.php">

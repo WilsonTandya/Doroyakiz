@@ -146,6 +146,40 @@ class Dorayaki extends Controller {
 
         return $res1 && $res2;
     }
+
+    public function purchase_history() {
+        $sql =<<<EOF
+        SELECT D.NAME as VARIANT, A.NAME as BUYER, PURCHASE.CREATED_AT as BUY_DATE, PURCHASE.QUANTITY as QUANTITY, D.ID as DORAYAKI_ID
+        FROM PURCHASE
+        INNER JOIN DORAYAKI D ON PURCHASE.DORAYAKI_ID = D.ID
+        INNER JOIN ACCOUNT A ON PURCHASE.BUYER_ID = A.ID
+        ;
+        EOF;
+
+        $q = $this->db->query($sql);
+        $res = array();
+        while ($row = $q->fetch(PDO::FETCH_OBJ)) {
+            $res[] = $row;
+        }
+		return $res;
+    }
+
+    public function change_history() {
+        $sql =<<<EOF
+        SELECT D.NAME as VARIANT, A.NAME as CHANGER, CHANGE_STOCK.CREATED_AT as CHANGE_DATE, D.ID as DORAYAKI_ID
+        FROM CHANGE_STOCK
+        INNER JOIN DORAYAKI D ON CHANGE_STOCK.DORAYAKI_ID = D.ID
+        INNER JOIN ACCOUNT A ON CHANGE_STOCK.CHANGER_ID = A.ID
+        ;
+        EOF;
+
+        $q = $this->db->query($sql);
+        $res = array();
+        while ($row = $q->fetch(PDO::FETCH_OBJ)) {
+            $res[] = $row;
+        }
+		return $res;
+    }
 }
 
 /* TEST CONSTANT */
