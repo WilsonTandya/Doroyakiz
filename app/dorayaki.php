@@ -11,7 +11,6 @@ class Dorayaki extends Controller {
 
     public function search($name, $offset, $n_records_per_page) 
     {
-        // $name nanti ganti jadi $_GET
         $sql =<<<EOF
         SELECT IFNULL(SUM(QUANTITY), 0) AS SOLD, DORAYAKI.ID, NAME, DESCRIPTION, PRICE, STOCK
         FROM DORAYAKI
@@ -74,7 +73,6 @@ class Dorayaki extends Controller {
 
     public function substract_stock($dorayaki_id, $qty) 
     {
-        // ganti jadi $_GET
         $sql =<<<EOF
         UPDATE DORAYAKI
         SET STOCK = STOCK - :qty
@@ -117,7 +115,6 @@ class Dorayaki extends Controller {
 
     public function update_stock($dorayaki_id, $qty) 
     {
-        // ganti jadi $_GET
         $sql =<<<EOF
         UPDATE DORAYAKI
         SET STOCK = :qty

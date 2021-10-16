@@ -17,7 +17,7 @@ class ListCard extends HTMLElement {
                 <div class=${
                     isFinalIndex ? "card-container-final" : "card-container"
                 }>
-                    <img class="card-thumbnail" src="https://asset.kompas.com/crops/8mYWlI9lPaf8F7XDmQOi2Rte9jo=/0x0:1000x667/750x500/data/photo/2021/07/23/60fa5f58ea527.jpg" alt="Avatar"/>
+                    <img class="card-thumbnail" src="../assets/dorayaki.jpeg" alt="Dorayaki"/>
                     <div class="card-info">
                         <h4 class="card-title">${name}</h4>
                         <p class="card-sold">Terjual: ${sold} buah</p>
