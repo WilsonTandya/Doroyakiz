@@ -54,9 +54,9 @@ class Dorayaki extends Controller {
     public function list_popular() 
     {
         $sql =<<<EOF
-        SELECT SUM(QUANTITY) AS SOLD, D.ID, NAME, DESCRIPTION, PRICE, STOCK
-        FROM PURCHASE
-        NATURAL INNER JOIN DORAYAKI D
+        SELECT SUM(QUANTITY) AS SOLD, DORAYAKI_ID, NAME, DESCRIPTION, PRICE, STOCK
+        FROM PURCHASE P
+        LEFT JOIN DORAYAKI D ON D.ID = P.DORAYAKI_ID
         GROUP BY DORAYAKI_ID
         ORDER BY SUM(QUANTITY) DESC
         LIMIT 10
