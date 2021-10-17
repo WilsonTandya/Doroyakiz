@@ -32,6 +32,9 @@
 }
 
 .purchase-total {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     margin-top: 5px;
     font-weight: bold;
     font-size: 1em;
@@ -57,7 +60,7 @@
 .purchase-info button {
     border: none;
     background-color: #45b54a;
-    color: #FCFEFF;
+    color: #fcfeff;
     width: inherit;
     padding: 8px 0;
     border-radius: 5px;

@@ -2,8 +2,6 @@
 require_once "../app/dorayaki.php";
 require_once "util.php";
 
-$qty = 0;
-
 if(isset($_GET['id'])){
     $id = $_GET['id'];
     $dorayaki = new Dorayaki();
@@ -32,15 +30,12 @@ if(isset($_GET['id'])){
     <div class="container">
         <div class="row" style="align-items: center;">
             <a href="javascript:history.go(-1)">
-                <img src="../assets/icon-arrow-back.png" alt="Back"
-                    class="back-arrow" />
+                <img src="../assets/icon-arrow-back.png" alt="Back" class="back-arrow" />
             </a>
             <h2 class="page-header">Beli</h2>
         </div>
         <div class="row">
-            <img class="purchase-image"
-                src="../assets/dorayaki.jpeg"
-                alt="Dorayaki" />
+            <img class="purchase-image" src="../assets/dorayaki.jpeg" alt="Dorayaki" />
             <div class="purchase-info">
                 <h4 class="purchase-name"><?php echo $res->NAME ?></h4>
                 <p class="purchase-stock">Stok: <span class="subtitle"><?php echo $res->STOCK ?> buah</span></p>
@@ -50,14 +45,15 @@ if(isset($_GET['id'])){
                 </div>
                 <div class="row">
                     <p class="purchase-price" style="margin-right: auto;">Jumlah</p>
-                    <form class="purchase-form" method="post">
-                        <input type="number" id="quantity" name="qty" min="1" step="1" value=<?php echo $qty ?>>
+                    <form class="purchase-form" method="post" oninput="updateTotalPrice(event)">
+                        <input type="number" name="quantity" min="1" step="1" value="1" />
                     </form>
                 </div>
                 <hr class="solid">
                 <div class="row" style="margin-top: 25px;">
-                    <p class="purchase-total" style="margin-right: auto;">Total harga</p>
-                    <p class="purchase-total">Rp<?php echo formatPrice($res->PRICE * $qty) ?></p>
+                    <span class="purchase-total" style="margin-right: auto;">Total harga</span>
+                    <span class="purchase-total">Rp<p name="purchase-total"><?php echo formatPrice($res->PRICE) ?></p>
+                        </span>
                 </div>
                 <button>Beli</button>
             </div>
@@ -65,5 +61,25 @@ if(isset($_GET['id'])){
     </div>
     </div>
 </body>
+
+<script>
+function updateTotalPrice(event) {
+    let xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            console.log(this.responseText)
+            document.getElementsByName("purchase-total")[0].innerHTML = this.responseText
+        }
+    };
+    xhttp.open("POST", "../ajax/ajax_purchase.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    let priceVal = <?php echo $res->PRICE ?>;
+    let qtyVal = document.getElementsByName("quantity")[0].value;
+    let price = priceVal ? priceVal : 0;
+    let qty = qtyVal ? qtyVal : 0;
+    let param = `price=${price}&qty=${qty}`;
+    xhttp.send(param);
+}
+</script>
 
 </html>
