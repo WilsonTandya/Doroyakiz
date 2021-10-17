@@ -2,6 +2,9 @@
 require_once "../app/dorayaki.php";
 require_once "util.php";
 
+// REMINDER- change to session
+$isadmin = false;
+
 if(isset($_GET['id'])){
     $id = $_GET['id'];
     $dorayaki = new Dorayaki();
@@ -51,6 +54,15 @@ if(isset($_GET['id'])){
                 <p class="detail-desc">
                     <?php echo $res->DESCRIPTION ?>
                 </p>
+                <?php if ($isadmin): ?>
+                    <a href="edit.php">
+                        <button>Edit</button>
+                    </a>
+                <?php else: ?>
+                    <a href=<?php echo "purchase.php?id=" . $id ?>>
+                        <button>Beli</button>
+                    </a>
+                <?php endif; ?>
             </div>
         </div>
     </div>

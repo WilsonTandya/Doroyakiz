@@ -1,9 +1,9 @@
-.detail-title {
+.purchase-title {
     color: rgba(49, 53, 59, 0.96);
     font-weight: bold;
 }
 
-.detail-image {
+.purchase-image {
     width: 350px;
     height: 300px;
     object-fit: cover;
@@ -11,41 +11,31 @@
     margin-right: 50px;
 }
 
-.detail-info {
+.purchase-info {
     width: 100%;
 }
 
-.detail-name {
+.purchase-name {
     font-weight: bold;
     font-size: 1.5em;
     margin: 0 0 1rem 0;
 }
 
-.detail-sold {
+.purchase-stock {
     font-size: 0.9em;
     margin: 0 0 2rem 0;
 }
 
-.detail-dot {
-    font-size: 0.9em;
-    margin: 0 0.5rem 2rem 0.5rem;
-}
-
-.detail-stock {
-    font-size: 0.9em;
+.purchase-price {
+    font-size: 1em;
     margin: 0 0 2rem 0;
 }
 
-.detail-price {
+.purchase-total {
+    margin-top: 5px;
     font-weight: bold;
-    font-size: 1.5em;
+    font-size: 1em;
     margin: 0 0 2rem 0;
-}
-
-.detail-desc {
-    color: #757575;
-    font-size: 0.9em;
-    margin: 2rem 0;
 }
 
 .back-arrow {
@@ -54,11 +44,17 @@
     margin: 8px 20px 0 0;
 }
 
-.detail-info a {
+.purchase-info .row {
+    height: 35px;
+    align-items: center;
+    margin: 0;
+}
+
+.purchase-info a {
     width: 100%;
 }
 
-.detail-info button {
+.purchase-info button {
     border: none;
     background-color: #45b54a;
     color: #FCFEFF;
@@ -72,7 +68,17 @@
     transition-duration: 0.2s;
 }
 
-.detail-info button:hover {
+.purchase-info button:hover {
     opacity: 0.75;
     transition-duration: 0.2s;
+}
+
+.purchase-form {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.purchase-form input {
+    width: 20%;
+    outline: 1px solid #45b54a;
 }
