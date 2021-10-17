@@ -71,19 +71,19 @@
    /* START CHANGE_STOCK TABLE*/
    $sql =<<<EOF
       INSERT INTO CHANGE_STOCK 
-      (DORAYAKI_ID,CHANGER_ID,CREATED_AT)
+      (DORAYAKI_ID,CHANGER_ID,QUANTITY,CREATED_AT)
       VALUES
-      (8,1,'2021-09-12 19:21:40'),
-      (10,1,'2021-09-12 17:00:00'),
-      (2,2,'2021-09-12 09:00:00'),
-      (3,1,'2021-09-13 01:30:00'),
-      (1,1,'2021-09-13 00:00:30')
+      (8,1,100,'2021-09-12 19:21:40'),
+      (10,1,132,'2021-09-12 17:00:00'),
+      (2,2,100,'2021-09-12 09:00:00'),
+      (3,1,350,'2021-09-13 01:30:00'),
+      (1,1,10,'2021-09-13 00:00:30')
       ;
    EOF;
 
    try {
       $res = $db->exec($sql);
-      echo "Successfully inserted dummy data to Purchase table<br/>";   
+      echo "Successfully inserted dummy data to Change Stock table<br/>";   
    } catch (PDOException $e) {
       echo "Error: " . $e->getMessage();
    }
