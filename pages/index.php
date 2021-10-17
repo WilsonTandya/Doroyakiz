@@ -4,6 +4,9 @@
 
     $dorayaki = new Dorayaki();
     $res = $dorayaki->list_popular();
+
+    // REMINDER- change to session
+    $isadmin = true;
 ?>
 
 <!DOCTYPE html>
@@ -28,7 +31,16 @@
         echo "<navbar-component></navbar-component>";
     ?>
     <div class="container">
-        <h2 class="page-header">Top 10 Dorayaki</h2>
+        <div class="flex-box">
+            <h2 class="page-header">Top 10 Dorayaki</h2>
+            <?php if ($isadmin): ?>
+                <div class="admin">
+                    <a href="add_variant.php" id="add_var">
+                        <button>Add Variant</button>
+                    </a>
+                </div>
+            <?php endif; ?>
+        </div>
         <?php
             for ($i=0; $i<count($res); $i++) {
                 $isFinalIndex = $i == count($res);

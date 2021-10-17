@@ -195,6 +195,23 @@ class Dorayaki extends Controller {
 
         return $res;
     }
+
+    public function add_dorayaki($dorayaki_id, $name, $price, $qty, $desc) {
+        $sql =<<<EOF
+        INSERT INTO DORAYAKI VALUES
+        (:dorayaki_id, :name, :desc, :price, :qty),
+        EOF;
+
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindParam(":dorayaki_id", $dorayaki_id);
+        $stmt->bindParam(":name", $name);
+        $stmt->bindParam(":desc", $desc);
+        $stmt->bindParam(":price", $price);
+        $stmt->bindParam(":qty", $qty);
+        $res = $stmt->execute();
+
+        return $res;
+    }
 }
 
 /* TEST CONSTANT */

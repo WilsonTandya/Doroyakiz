@@ -1,3 +1,11 @@
+<?php
+
+if (isset($_POST["dorayaki_name"]) && isset($_POST["dorayaki_harga"])&&isset($_POST["dorayaki_stok"]) && isset($_POST["dorayaki_deskripsi"])){
+    //$res = $dorayaki->add_dorayaki($id,$_POST['dorayaki_name'],$_POST['dorayaki_harga'],$_POST['dorayaki_stok'],$_POST['dorayaki_deskripsi']);
+}
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,7 +15,7 @@
     <link rel="stylesheet" href="../styles/global.css">
     <link rel="stylesheet" href="../styles/add_variant.css">
     <script src="../components/navbar.js" type="text/javascript" defer></script>
-    <title>Toko Buku</title>
+    <title>Doroyaki</title>
 </head>
 <body>
     <?php
