@@ -3,7 +3,7 @@ require_once "../app/dorayaki.php";
 require_once "util.php";
 
 // REMINDER- change to session
-$isadmin = false;
+$isadmin = true;
 
 if(isset($_GET['id'])){
     $id = $_GET['id'];
@@ -55,9 +55,16 @@ if(isset($_GET['id'])){
                     <?php echo $res->DESCRIPTION ?>
                 </p>
                 <?php if ($isadmin): ?>
-                    <a href="edit.php">
-                        <button>Edit</button>
-                    </a>
+                    <div class="admin">
+                            <!-- Bonus -->
+                            <a href="#" id="Edit">
+                                <button>Edit</button>
+                            </a>
+                            <!-- ------- -->
+                            <a href=<?php echo "delete.php?id=" . $id ?> id="Delete">
+                                <button>Delete</button>
+                        </div>
+                    </div>
                 <?php else: ?>
                     <a href=<?php echo "purchase.php?id=" . $id ?>>
                         <button>Beli</button>

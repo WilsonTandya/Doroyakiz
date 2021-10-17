@@ -181,6 +181,20 @@ class Dorayaki extends Controller {
         }
 		return $res;
     }
+
+    public function delete_dorayaki($dorayaki_id) {
+        $sql =<<<EOF
+        DELETE FROM DORAYAKI
+        WHERE ID = :dorayaki_id;
+        ;
+        EOF;
+
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindParam(":dorayaki_id", $dorayaki_id);
+        $res = $stmt->execute();
+
+        return $res;
+    }
 }
 
 /* TEST CONSTANT */
