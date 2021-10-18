@@ -37,7 +37,15 @@ $res = $dorayaki->search(strtolower($query),$offset,$n_records_per_page);
     ?>
     <div class="container">
         <h2 class="page-header">Hasil Pencarian: "<?php echo $query ?>"</h2>
-        <?php
+
+        <button onclick="updateDorayakiList('back')">
+            <a href="#">Back</a>
+        </button>
+        <button onclick="updateDorayakiList('next')">
+            <a href="#">Next</a>
+        </button>
+        <div class="list-content">
+            <?php
             for ($i=0; $i<count($res); $i++) {
                 $isFinalIndex = $i == count($res);
                 $id = preprocess($res[$i]->ID);
@@ -57,10 +65,37 @@ $res = $dorayaki->search(strtolower($query),$offset,$n_records_per_page);
                     ></list-card>";
             }
         ?>
+        </div>
         <?php if (count($res) == 0) {
             echo "<p>Dorayaki yang kamu cari tidak ditemukan.</p>";
         } ?>
     </div>
+
+    <script>
+    function updateDorayakiList(type) {
+        let xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                // let response = JSON.parse(this.responseText);
+                console.log(this.responseText)
+            }
+        };
+        xhttp.open("POST", "../ajax/ajax_list.php", true);
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        let query = <?php echo "'" . $query . "'"; ?>;
+        let pageno = <?php echo $page_no; ?>;
+
+        if (type == "next") {
+            pageno = <?php echo $page_no + 1; ?>;
+        } else {
+            pageno = <?php echo $page_no - 1; ?>;
+        }
+        let nrecords = <?php echo $n_records_per_page; ?>;
+        let offset = (parseInt(pageno) - 1) * parseInt(nrecords);
+        let param = `offset=${offset}&nrecords=${nrecords}&query=${query}`;
+        xhttp.send(param);
+    }
+    </script>
 </body>
 
 </html>

@@ -18,3 +18,7 @@
     cursor: pointer;
     transition-duration: 0.2s;
 }
+
+.list-content {
+    width: 100%;
+}
