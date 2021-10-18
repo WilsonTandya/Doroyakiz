@@ -27,11 +27,11 @@
    /* START ACCOUNT TABLE*/
    $sql =<<<EOF
       INSERT INTO ACCOUNT VALUES
-      (1, 'John Doe', 'john_d', 'john.doe21@gmail.com', '123', 1),
-      (2, 'Jane Doe', 'jane_d', 'jane.doe43@gmail.com', '123', 1),
-      (3, 'Nazh Meh', 'nazhm', 'naaaaz@gmail.com', '345', 0),
-      (4, 'Lee Bob', 'leebob12', 'leebob123@yahoo.com', '345', 0),
-      (5, 'Udin Syarifudin', 'udins', 'udins@gmail.com', '345', 0)
+      (1, 'John Doe', 'john_d', 'john.doe21@gmail.com', '9OlX', 1),
+      (2, 'Jane Doe', 'jane_d', 'jane.doe43@gmail.com', '9OlX', 1),
+      (3, 'Nazh Meh', 'nazhm', 'naaaaz@gmail.com', '9u9R', 0),
+      (4, 'Lee Bob', 'leebob12', 'leebob123@yahoo.com', '9u9R', 0),
+      (5, 'Udin Syarifudin', 'udins', 'udins@gmail.com', '9u9R', 0)
       ;
    EOF;
 

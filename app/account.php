@@ -9,8 +9,25 @@ class Account extends Controller {
         parent::__construct();
     }
 
+    public static function encrypt($string)
+    {        
+        $ciphering = "AES-128-CTR";
+        
+        $iv_length = openssl_cipher_iv_length($ciphering);
+        $options = 0;
+        
+        $encryption_iv = '1234567891011121';
+        $encryption_key = "haissemconservative";
+        
+        $encrypted_string = openssl_encrypt($string, $ciphering,
+                    $encryption_key, $options, $encryption_iv);
+
+        return $encrypted_string;
+    }
+
     public function login($username, $password) 
     {
+        $encrypted_password = self::encrypt($password);
         $sql =<<<EOF
             SELECT *
             FROM ACCOUNT
@@ -19,7 +36,7 @@ class Account extends Controller {
         EOF;
 
         $stmt = $this->db->prepare($sql);
-        $stmt->execute(array($username, $password));
+        $stmt->execute(array($username, $encrypted_password));
 
         $res = $stmt->fetch(PDO::FETCH_OBJ);
 
@@ -28,6 +45,7 @@ class Account extends Controller {
 
     public function register($email, $fullname, $username, $password) 
     {
+        $encrypted_password = self::encrypt($password);
         $sql =<<<EOF
             INSERT INTO ACCOUNT (NAME, USERNAME, EMAIL, HASHED_PASSWORD, ISADMIN)
             VALUES ((?), (?), (?), (?), 0)
@@ -37,7 +55,7 @@ class Account extends Controller {
         $registerSuccess = false;
         try {
             $stmt = $this->db->prepare($sql);
-            $stmt->execute(array($fullname, $username, $email, $password));
+            $stmt->execute(array($fullname, $username, $email, $encrypted_password));
             $registerSuccess = true; 
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
