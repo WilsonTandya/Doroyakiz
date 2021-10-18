@@ -14,6 +14,8 @@ $userid = 5;
 
 if (isset($_POST['quantity'])){
     $res2 = $dorayaki->buy($id,$userid,$_POST['quantity']);
+    $id = $_GET['id'];
+    $res = $dorayaki->detail($id);
 }
 
 ?>
@@ -100,20 +102,6 @@ function updateTotalPrice(event) {
     let price = priceVal ? priceVal : 0;
     let qty = qtyVal ? qtyVal : 0;
     let param = `price=${price}&qty=${qty}&stock=${stock}`;
-    xhttp.send(param);
-}
-
-function updateQuantity(event) {
-    let xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            document.getElementsByName("purchase-stock")[0].innerHTML = this.responseText
-        }
-    };
-    xhttp.open("POST", "../ajax/ajax_purchase.php", true);
-    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    let id = <?php echo $id ?>;
-    let param = `id=${id}`;
     xhttp.send(param);
 }
 </script>
