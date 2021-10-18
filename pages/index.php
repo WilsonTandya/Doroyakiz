@@ -44,7 +44,7 @@
         <?php
             for ($i=0; $i<count($res); $i++) {
                 $isFinalIndex = $i == count($res);
-                $id = preprocess($res[$i]->DORAYAKI_ID);
+                $id = preprocess($res[$i]->ID);
                 $sold = preprocess($res[$i]->SOLD);
                 $name = preprocess($res[$i]->NAME);
                 $description = preprocess($res[$i]->DESCRIPTION);
