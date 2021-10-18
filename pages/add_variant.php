@@ -1,8 +1,21 @@
 <?php
 
-if (isset($_POST["dorayaki_name"]) && isset($_POST["dorayaki_harga"])&&isset($_POST["dorayaki_stok"]) && isset($_POST["dorayaki_deskripsi"])){
-    //$res = $dorayaki->add_dorayaki($id,$_POST['dorayaki_name'],$_POST['dorayaki_harga'],$_POST['dorayaki_stok'],$_POST['dorayaki_deskripsi']);
-}
+    require_once "../app/dorayaki.php";
+    require_once "util.php";
+
+    $dorayaki = new Dorayaki();
+
+    if (isset($_POST["dorayaki_name"]) && isset($_POST["dorayaki_harga"])&&isset($_POST["dorayaki_stok"]) && isset($_POST["dorayaki_deskripsi"])){
+        $name = $_POST["dorayaki_name"];
+        $price = $_POST["dorayaki_harga"];
+        $qty = $_POST["dorayaki_stok"];
+        $desc = $_POST["dorayaki_deskripsi"];
+
+        $res = $dorayaki->add_dorayaki($name, $price, $qty, $desc);
+        if($res) {
+            header("Location: " . "index.php");
+        }
+    }
 
 ?>
 
@@ -23,7 +36,8 @@ if (isset($_POST["dorayaki_name"]) && isset($_POST["dorayaki_harga"])&&isset($_P
     ?>
        <div class="box">
         <h2 class="add_variant-title">Menambah Varian Dorayaki</h2>
-        <form action="#" method="post">
+
+        <form action="add_variant.php" method="post">
             <div class="form-box" id="form-top">
                 <p class="label">Nama Dorayaki</p>
                 <div class="search-box">
@@ -34,7 +48,7 @@ if (isset($_POST["dorayaki_name"]) && isset($_POST["dorayaki_harga"])&&isset($_P
                 <p class="label">Harga</p>
                 <div class="harga-box">
                 <div class="left-icon">Rp</div>
-                    <input type="number" placeholder="Masukkan Harga Dorayaki" type="dorayaki_harga" name="password" min=1 autocomplete="off"/>
+                    <input type="number" placeholder="Masukkan Harga Dorayaki" name="dorayaki_harga" min=1 autocomplete="off"/>
                 </div>
             </div>
             <div class="form-box" id="form-middle">

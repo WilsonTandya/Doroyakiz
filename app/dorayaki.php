@@ -196,21 +196,22 @@ class Dorayaki extends Controller {
         return $res;
     }
 
-    public function add_dorayaki($dorayaki_id, $name, $price, $qty, $desc) {
+    public function add_dorayaki($name, $price, $qty, $desc) {
         $sql =<<<EOF
-        INSERT INTO DORAYAKI VALUES
-        (:dorayaki_id, :name, :desc, :price, :qty),
+        INSERT INTO DORAYAKI (NAME, DESCRIPTION, PRICE, STOCK)
+        VALUES ((?), (?), (?), (?))
         EOF;
 
-        $stmt = $this->db->prepare($sql);
-        $stmt->bindParam(":dorayaki_id", $dorayaki_id);
-        $stmt->bindParam(":name", $name);
-        $stmt->bindParam(":desc", $desc);
-        $stmt->bindParam(":price", $price);
-        $stmt->bindParam(":qty", $qty);
-        $res = $stmt->execute();
+        $addVariantSuccess = false;
+        try {
+            $stmt = $this->db->prepare($sql);
+            $stmt->execute(array($name, $desc, $price, $qty));
+            $addVariantSuccess = true; 
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
 
-        return $res;
+        return $addVariantSuccess;
     }
 }
 
