@@ -12,7 +12,7 @@ class Account extends Controller {
     public function login($username, $password) 
     {
         $sql =<<<EOF
-            SELECT USERNAME
+            SELECT *
             FROM ACCOUNT
             WHERE USERNAME = (?) AND HASHED_PASSWORD = (?)
             ;

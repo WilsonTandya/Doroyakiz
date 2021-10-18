@@ -11,7 +11,7 @@
         $res = $account->login($username, $password);
         if ($res != NULL) {
             session_start();
-            $_SESSION["username"] = $username;
+            $_SESSION["user"] = array("id" => $res->ID, "username" => $res->USERNAME, "is_admin" => $res->ISADMIN);
             header("Location: " . "index.php");
         }
         else {
