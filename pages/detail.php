@@ -9,6 +9,9 @@ if(isset($_GET['id'])){
     $id = $_GET['id'];
     $dorayaki = new Dorayaki();
     $res = $dorayaki->detail($id);
+    if($res == NULL) {
+        header("Location: " . "detail_not_available.php");
+    }
 }
 
 ?>
