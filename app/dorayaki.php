@@ -148,35 +148,78 @@ class Dorayaki extends Controller {
         return $res1 && $res2;
     }
 
-    public function purchase_history() {
-        $sql =<<<EOF
-        SELECT D.NAME as VARIANT, A.NAME as BUYER, PURCHASE.CREATED_AT as BUY_DATE, PURCHASE.QUANTITY as QUANTITY, D.ID as DORAYAKI_ID
-        FROM PURCHASE
-        INNER JOIN DORAYAKI D ON PURCHASE.DORAYAKI_ID = D.ID
-        INNER JOIN ACCOUNT A ON PURCHASE.BUYER_ID = A.ID
-        ;
-        EOF;
+    public function purchase_history($id, $is_admin) {
+        if ($is_admin == 1) {
+            $sql =<<<EOF
+            SELECT D.NAME as VARIANT, A.NAME as BUYER, PURCHASE.CREATED_AT as BUY_DATE, 
+            PURCHASE.QUANTITY as QUANTITY, D.ID as DORAYAKI_ID, D.PRICE * PURCHASE.QUANTITY AS TOTAL
+            FROM PURCHASE
+            INNER JOIN DORAYAKI D ON PURCHASE.DORAYAKI_ID = D.ID
+            INNER JOIN ACCOUNT A ON PURCHASE.BUYER_ID = A.ID
+            WHERE A.ISADMIN = 0 OR A.ID = (?)
+            ORDER BY BUY_DATE ASC
+            ;
+            EOF;
 
-        $q = $this->db->query($sql);
+            $stmt = $this->db->prepare($sql);
+            $stmt->execute(array($id));
+        }
+        else {
+            $sql =<<<EOF
+            SELECT D.NAME as VARIANT, A.NAME as BUYER, PURCHASE.CREATED_AT as BUY_DATE, 
+            PURCHASE.QUANTITY as QUANTITY, D.ID as DORAYAKI_ID, D.PRICE * PURCHASE.QUANTITY AS TOTAL
+            FROM PURCHASE
+            INNER JOIN DORAYAKI D ON PURCHASE.DORAYAKI_ID = D.ID
+            INNER JOIN ACCOUNT A ON PURCHASE.BUYER_ID = A.ID
+            WHERE A.ID = (?)
+            ORDER BY BUY_DATE ASC
+            ;
+            EOF;
+
+            $stmt = $this->db->prepare($sql);
+            $stmt->execute(array($id));
+        }
+
         $res = array();
-        while ($row = $q->fetch(PDO::FETCH_OBJ)) {
+        while ($row = $stmt->fetch(PDO::FETCH_OBJ)) {
             $res[] = $row;
         }
 		return $res;
     }
 
-    public function change_history() {
-        $sql =<<<EOF
-        SELECT D.NAME as VARIANT, A.NAME as CHANGER, CHANGE_STOCK.CREATED_AT as CHANGE_DATE, D.ID as DORAYAKI_ID
-        FROM CHANGE_STOCK
-        INNER JOIN DORAYAKI D ON CHANGE_STOCK.DORAYAKI_ID = D.ID
-        INNER JOIN ACCOUNT A ON CHANGE_STOCK.CHANGER_ID = A.ID
-        ;
-        EOF;
+    public function change_history($id, $is_admin) {
+        if ($is_admin == 1) {
+            $sql =<<<EOF
+            SELECT D.NAME as VARIANT, A.NAME as CHANGER, CHANGE_STOCK.CREATED_AT as CHANGE_DATE, 
+            CHANGE_STOCK.QUANTITY as QUANTITY, D.ID as DORAYAKI_ID
+            FROM CHANGE_STOCK
+            INNER JOIN DORAYAKI D ON CHANGE_STOCK.DORAYAKI_ID = D.ID
+            INNER JOIN ACCOUNT A ON CHANGE_STOCK.CHANGER_ID = A.ID
+            WHERE A.ID = (?)
+            ORDER BY CHANGE_DATE ASC
+            ;
+            EOF;
 
-        $q = $this->db->query($sql);
+            $stmt = $this->db->prepare($sql);
+            $stmt->execute(array($id));
+        }
+        else {
+            $sql =<<<EOF
+            SELECT D.NAME as VARIANT, A.NAME as CHANGER, CHANGE_STOCK.CREATED_AT as CHANGE_DATE, 
+            CHANGE_STOCK.QUANTITY as QUANTITY, D.ID as DORAYAKI_ID
+            FROM CHANGE_STOCK
+            INNER JOIN DORAYAKI D ON CHANGE_STOCK.DORAYAKI_ID = D.ID
+            INNER JOIN ACCOUNT A ON CHANGE_STOCK.CHANGER_ID = A.ID
+            ORDER BY CHANGE_DATE ASC
+            ;
+            EOF;
+
+            $stmt = $this->db->prepare($sql);
+            $stmt->execute(array());
+        }
+
         $res = array();
-        while ($row = $q->fetch(PDO::FETCH_OBJ)) {
+        while ($row = $stmt->fetch(PDO::FETCH_OBJ)) {
             $res[] = $row;
         }
 		return $res;

@@ -2,7 +2,8 @@
     require_once "../app/dorayaki.php";
 
     $dorayaki = new Dorayaki();
-    $res = $dorayaki->purchase_history();
+    session_start();
+    $res = $dorayaki->purchase_history($_SESSION["user"]["id"], $_SESSION["user"]["is_admin"]);
 ?>
 
 <!DOCTYPE html>
@@ -31,12 +32,13 @@
                 </a>
             </div>
         </div>
-        <table>
+        <table class="purchase-table">
             <tr>
                 <th>Varian</th>
                 <th>Pembeli</th>
                 <th>Tanggal Pembelian</th>
-                <th id="right-align">Jumlah Beli</th>
+                <th id="center-align">Jumlah Beli</th>
+                <th id="right-align">Total Harga</th>
             </tr>
             <?php
                 foreach ($res as $row) {
@@ -44,13 +46,15 @@
                     $buyer = $row->BUYER;
                     $buy_date = $row->BUY_DATE;
                     $quantity = $row->QUANTITY;
+                    $total = number_format(round($row->TOTAL),0,",",".");
                     $dorayaki_id = $row->DORAYAKI_ID;
                     echo "
                         <tr>
                             <td><a href='detail.php?id=$dorayaki_id' class='unselected-link variant'>$variant</a></td>
                             <td>$buyer</td>
                             <td>$buy_date</td>
-                            <td id='right-align'>$quantity</td>
+                            <td id='center-align'>$quantity</td>
+                            <td id='right-align'>$total</td>
                         </tr>
                     ";
                 }

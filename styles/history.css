@@ -2,20 +2,49 @@ table {
     margin-bottom: 60px;
 }
 
-th {
+.change-table th {
     text-align: left;
     border-top: 2px solid rgba(0,0,0,0.15);
     border-bottom: 2px solid rgba(0,0,0,0.15);
     padding: 10px 10px;
+    width: 25%;
 }
 
-td {
+.change-table td {
     padding: 10px 10px;
     border-bottom: 1px solid rgba(0,0,0,0.15);
+    width: 25%;
+}
+
+.purchase-table th {
+    text-align: left;
+    border-top: 2px solid rgba(0,0,0,0.15);
+    border-bottom: 2px solid rgba(0,0,0,0.15);
+    padding: 10px 10px;
+    width: 25%;
+}
+
+.purchase-table td {
+    padding: 10px 10px;
+    border-bottom: 1px solid rgba(0,0,0,0.15);
+    width: 25%;
 }
 
 #right-align {
     text-align: right;
+}
+
+.purchase-table #center-align {
+    text-align: center;
+    padding: 10px 10px;
+    border-bottom: 1px solid rgba(0,0,0,0.15);
+    width: 12.5%;
+}
+
+.purchase-table #right-align {
+    padding: 10px 10px;
+    border-bottom: 1px solid rgba(0,0,0,0.15);
+    width: 12.5%;
 }
 
 .flex-row {

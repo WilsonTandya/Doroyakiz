@@ -2,7 +2,8 @@
     require_once "../app/dorayaki.php";
 
     $dorayaki = new Dorayaki();
-    $res = $dorayaki->change_history();
+    session_start();
+    $res = $dorayaki->change_history($_SESSION["user"]["id"], $_SESSION["user"]["is_admin"]);
 ?>
 
 <!DOCTYPE html>
@@ -31,23 +32,26 @@
                 <p class="selected-button">Perubahan</p>
             </div>
         </div>
-        <table>
+        <table class="change-table">
             <tr>
                 <th>Varian</th>
                 <th>Perubah</th>
-                <th id="right-align">Tanggal Perubahan</th>
+                <th>Tanggal Perubahan</th>
+                <th id="right-align">Jumlah Setelah Perubahan</th>
             </tr>
             <?php
                 foreach ($res as $row) {
                     $variant = $row->VARIANT;
                     $changer = $row->CHANGER;
                     $change_date = $row->CHANGE_DATE;
+                    $quantity = $row->QUANTITY;
                     $dorayaki_id = $row->DORAYAKI_ID;
                     echo "
                         <tr>
                             <td><a href='detail.php?id=$dorayaki_id' class='unselected-link variant'>$variant</a></td>
                             <td>$changer</td>
-                            <td id='right-align'>$change_date</td>
+                            <td>$change_date</td>
+                            <td id='right-align'>$quantity</td>
                         </tr>
                     ";
                 }
