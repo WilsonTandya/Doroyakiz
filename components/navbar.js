@@ -114,7 +114,7 @@ navbarTemplate.innerHTML = `
           <a href="purchase_history.php">
             <div class="text">Riwayat</div>
           </a>
-          <a href="login.php">
+          <a href="sign_out.php">
             <div class="button">Keluar</div>
           </a>
         </div>
@@ -129,7 +129,6 @@ class Navbar extends HTMLElement {
 
     connectedCallback() {
         const shadowRoot = this.attachShadow({ mode: "closed" });
-        // const isAuthenticated = this.getAttribute("auth");
         shadowRoot.appendChild(navbarTemplate.content);
     }
 }

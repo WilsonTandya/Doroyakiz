@@ -1,4 +1,10 @@
 <?php
+    session_start();
+    if (!isset($_SESSION["user"])) {
+        header("Location: " . "login.php");
+    }
+?>
+<?php
     require_once "../app/dorayaki.php";
     require_once "util.php";
 
@@ -36,7 +42,7 @@
             <?php if ($isadmin): ?>
                 <div class="admin">
                     <a href="add_variant.php" id="add_var">
-                        <button>Add Variant</button>
+                        <button>Tambah varian</button>
                     </a>
                 </div>
             <?php endif; ?>

@@ -1,4 +1,10 @@
 <?php
+    session_start();
+    if (!isset($_SESSION["user"])) {
+        header("Location: " . "login.php");
+    }
+?>
+<?php
 require_once "../app/dorayaki.php";
 require_once "util.php";
 

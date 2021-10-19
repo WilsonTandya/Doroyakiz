@@ -9,14 +9,14 @@
     border: none;
     background-color: #45b54a;
     color: #FCFEFF;
-    width: 120%;
-    padding: 8px 0;
+    padding: 8px 10px;
     border-radius: 5px;
     font-size: 16px;
     font-weight: 500;
     letter-spacing: 0.5px;
     cursor: pointer;
     transition-duration: 0.2s;
+    font-weight: bold;
 }
 
 .list-content {
