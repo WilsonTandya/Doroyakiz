@@ -32,8 +32,8 @@
 }
 
 .btn-pagination {
-    width: 28px;
-    height: 28px;
+    width: 35px;
+    height: 35px;
     border: 1px solid rgba(0, 0, 0, 0.3);
     border-radius: 1px;
     color: #41b54a;
@@ -44,10 +44,12 @@
     font-weight: bold;
 }
 
-.list-pagination .before {
+.list-pagination .before-inactive,
+.list-pagination .next-inactive {
     color: #fff;
     background: rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(0, 0, 0, 0.3);
+    border: none;
+    cursor: not-allowed;
 }
 
 .list-pagination .selected {

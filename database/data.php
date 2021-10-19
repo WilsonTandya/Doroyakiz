@@ -11,7 +11,13 @@
       (7, 'Dorayaki Biasa', 'Dorayaki ini biasa aja bro', 1000, 500),
       (8, 'Dorayaki Cokelat Mayonais', 'Dorayaki ini sangat lezat, sehat, dan bergizi', 5000, 250),
       (9, 'Dorayaki Wortel Jelly', 'Dorayaki ini manis dan sehat', 3000, 350),
-      (10, 'Dorayaki Terasi', 'Dorayaki ini dibuat dari terasi pilihan berkualitas', 10000, 350)
+      (10, 'Dorayaki Palsu', 'Dorayaki KW gan', 500, 550),
+      (11, 'Dorayaki Doraemon', 'Dorayaki ini dicuri dari Doraemon', 50000, 950),
+      (12, 'Dorayaki Teppanyaki', 'Dorayaki ini dibuat oleh koki Jepang yang hebat', 10550, 150),
+      (13, 'Dorayaki Dorayaki', 'Dorayaki ini rekursif', 19500, 450),
+      (14, 'Dorayaki Isi Kacang Merah', 'Dorayaki ini bukan berisi kacang hijau', 5000, 350),
+      (15, 'Dorayaki Isi Kacang Hijau', 'Dorayaki ini bukan berisi kacang merah', 8150, 500),
+      (16, 'Dorayaki Asus', 'Dorayaki ini canggih', 19000, 500)
       ;
    EOF;
 

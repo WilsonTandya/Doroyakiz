@@ -71,9 +71,10 @@ $res = $dorayaki->search(strtolower($query),$offset,$n_records_per_page);
             echo "<p>Dorayaki yang kamu cari tidak ditemukan.</p>";
         } ?>
         <div class="list-pagination">
-            <button class="btn-pagination before" onclick="updateDorayakiList('back')">&laquo;</button>
+            <button class="btn-pagination before-inactive" disabled">&laquo;</button>
             <?php
-                for ($i=1; $i<=$total_pages; $i++) {
+                $shown_pages = $total_pages-$total_pages%3;
+                for ($i=1; $i<=$shown_pages; $i++) {
                     if ($i == $page_no) {
                         echo "<button class='btn-pagination selected' onclick='updateDorayakiList($i)'>$i</button>";
                     } else {
@@ -81,7 +82,8 @@ $res = $dorayaki->search(strtolower($query),$offset,$n_records_per_page);
                     }
                 }
             ?>
-            <button class="btn-pagination next" onclick="updateDorayakiList('next')">&raquo;</button>
+            <button class='btn-pagination' onclick="updateDorayakiList('last')">...</button>
+            <button class=" btn-pagination next" onclick="updateDorayakiList('next')">&raquo;</button>
         </div>
     </div>
 
@@ -92,46 +94,47 @@ $res = $dorayaki->search(strtolower($query),$offset,$n_records_per_page);
             if (this.readyState == 4 && this.status == 200) {
                 let content = document.getElementsByClassName("list-content")[0];
                 content.innerHTML = this.responseText
+                generatePagination(pageno)
             }
         };
         xhttp.open("POST", "../ajax/ajax_list.php", true);
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         let query = <?php echo "'" . $query . "'"; ?>;
-        let pageno = <?php echo $page_no; ?>;
+        let pageno = parseInt(document.getElementsByClassName('btn-pagination selected')[0].innerHTML);
         let totalpages = <?php echo $total_pages; ?>;
 
 
         // REMINDER- TODO CHANGE PAGENO
-        if (type == "next") {
-            pageno = <?php echo $page_no + 1; ?>;
-        } else if (type == "back") {
-            pageno = <?php echo $page_no - 1; ?>;
+        if (type == 'next') {
+            pageno += 1;
+        } else if (type == 'back') {
+            pageno -= 1;
+        } else if (type == 'first') {
+            pageno = 1;
+        } else if (type == 'last') {
+            pageno = totalpages;
         } else {
             pageno = type;
-        }
-
-        let btnNext = document.getElementsByClassName("btn-pagination next")[0]
-        let btnBefore = document.getElementsByClassName("btn-pagination before")[0]
-
-        if (pageno == totalpages) {
-            btnNext.style.background = "rgba(0,0,0,0.3)";
-            btnNext.style.color = "#FFF";
-        } else {
-            btnNext.style.background = "#FFF";
-            btnNext.style.color = "#41b54a";
-        }
-
-        if (pageno == 1) {
-            btnBefore.style.background = "rgba(0,0,0,0.3)";
-            btnBefore.style.color = "#FFF";
-        } else {
-            btnBefore.style.background = "#FFF";
-            btnBefore.style.color = "#41b54a";
         }
 
         let nrecords = <?php echo $n_records_per_page; ?>;
         let offset = (parseInt(pageno) - 1) * parseInt(nrecords);
         let param = `offset=${offset}&nrecords=${nrecords}&query=${query}`;
+        xhttp.send(param);
+    }
+
+    function generatePagination(pageno) {
+        let xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                let pagination = document.getElementsByClassName("list-pagination")[0];
+                pagination.innerHTML = this.responseText
+            }
+        };
+        xhttp.open("POST", "../ajax/ajax_list.php", true);
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        let totalpages = <?php echo $total_pages; ?>;
+        let param = `pageno=${pageno}&totalpages=${totalpages}`;
         xhttp.send(param);
     }
     </script>
