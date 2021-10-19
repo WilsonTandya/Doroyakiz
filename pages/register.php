@@ -32,7 +32,7 @@
     <link rel="stylesheet" href="../styles/global.css">
     <link rel="stylesheet" href="../styles/register.css">
     <script src="../components/navbar.js" type="text/javascript" defer></script>
-    <title>Toko Buku</title>
+    <title>Doroyaki</title>
 </head>
 <body>
     <div class="box">
