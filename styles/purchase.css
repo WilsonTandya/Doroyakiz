@@ -86,3 +86,9 @@
     width: 30%;
     outline: 1px solid #45b54a;
 }
+
+.purchase-success {
+    font-size: 12px;
+    font-weight: bold;
+    color: #45b54a;
+}

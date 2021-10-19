@@ -9,7 +9,7 @@ require_once "../app/dorayaki.php";
 require_once "util.php";
 
 // REMINDER- change to session
-$isadmin = true;
+$isadmin = $_SESSION["user"]["is_admin"];
 
 if(isset($_GET['id'])){
     $id = $_GET['id'];
@@ -42,15 +42,12 @@ if(isset($_GET['id'])){
     <div class="container">
         <div class="row" style="align-items: center;">
             <a href="javascript:history.go(-1)">
-                <img src="../assets/icon-arrow-back.png" alt="Back"
-                    class="back-arrow" />
+                <img src="../assets/icon-arrow-back.png" alt="Back" class="back-arrow" />
             </a>
             <h2 class="page-header">Detail</h2>
         </div>
         <div class="row">
-            <img class="detail-image"
-                src="../assets/dorayaki.jpeg"
-                alt="Dorayaki" />
+            <img class="detail-image" src="../assets/dorayaki.jpeg" alt="Dorayaki" />
             <div class="detail-info">
                 <h4 class="detail-name"><?php echo $res->NAME ?></h4>
                 <div class="row" style="align-items: center;">
@@ -64,21 +61,21 @@ if(isset($_GET['id'])){
                     <?php echo $res->DESCRIPTION ?>
                 </p>
                 <?php if ($isadmin): ?>
-                    <div class="admin">
-                            <a href=<?php echo "edit_stock.php?id=" . $id ?> id="Edit">
-                                <button>Edit</button>
-                            </a>
-                            <a href=<?php echo "delete.php?id=" . $id ?> id="Delete">
-                                <button>Delete</button>
-                        </div>
-                    </div>
-                <?php else: ?>
-                    <a href=<?php echo "purchase.php?id=" . $id ?>>
-                        <button>Beli</button>
+                <div class="admin">
+                    <a href=<?php echo "edit_stock.php?id=" . $id ?> id="Edit">
+                        <button>Edit</button>
                     </a>
-                <?php endif; ?>
+                    <a href=<?php echo "delete.php?id=" . $id ?> id="Delete">
+                        <button>Delete</button>
+                </div>
             </div>
+            <?php else: ?>
+            <a href=<?php echo "purchase.php?id=" . $id ?>>
+                <button>Beli</button>
+            </a>
+            <?php endif; ?>
         </div>
+    </div>
     </div>
     </div>
 </body>

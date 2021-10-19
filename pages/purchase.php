@@ -15,14 +15,7 @@ if (isset($_GET['id'])){
     $res = $dorayaki->detail($id);
 }
 
-// REMINDER- static
-$userid = 5;
-
-if (isset($_POST['quantity'])){
-    $res2 = $dorayaki->buy($id,$userid,$_POST['quantity']);
-    $id = $_GET['id'];
-    $res = $dorayaki->detail($id);
-}
+$userid = $_SESSION["user"]["id"];
 
 ?>
 
@@ -62,8 +55,7 @@ if (isset($_POST['quantity'])){
                 </div>
                 <div class="row" style="justify-content: center;">
                     <p class="purchase-price" style="margin-right: auto; margin-top: 25px;">Jumlah</p>
-                    <form class="purchase-form" id="purchase-form" action=<?php echo "purchase.php?id=" . $id ?>
-                        method="post" oninput="updateTotalPrice(event)">
+                    <form class="purchase-form" id="purchase-form" oninput="updateTotalPrice(event)">
                         <input type="number" name="quantity" min="1" step="1" value="1" />
                     </form>
                 </div>
@@ -72,9 +64,10 @@ if (isset($_POST['quantity'])){
                     <span class="purchase-total" style="margin-right: auto;">Total harga</span>
                     <span class="purchase-total" name="purchase-total">Rp<?php echo formatPrice($res->PRICE) ?></span>
                 </div>
-                <button name="submit-button" type="submit" form="purchase-form">
+                <button name="submit-button" onclick="buy(event)">
                     Beli
                 </button>
+                <p class="purchase-success"></p>
             </div>
         </div>
     </div>
@@ -87,8 +80,13 @@ function updateTotalPrice(event) {
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             let submitButton = document.getElementsByName("submit-button")[0]
-            if (this.responseText == "quantity-error") {
+            if (this.responseText == "quantity-exceed") {
                 document.getElementsByName("purchase-total")[0].innerHTML = "Kuantitas pembelian melebih stok!"
+                submitButton.disabled = true;
+                submitButton.style.background = "#777";
+                submitButton.style.cursor = "not-allowed";
+            } else if (this.responseText == "quantity-invalid") {
+                document.getElementsByName("purchase-total")[0].innerHTML = "Kuantitas pembelian tidak valid!"
                 submitButton.disabled = true;
                 submitButton.style.background = "#777";
                 submitButton.style.cursor = "not-allowed";
@@ -108,6 +106,27 @@ function updateTotalPrice(event) {
     let price = priceVal ? priceVal : 0;
     let qty = qtyVal ? qtyVal : 0;
     let param = `price=${price}&qty=${qty}&stock=${stock}`;
+    xhttp.send(param);
+}
+
+function buy(event) {
+    let xhttp = new XMLHttpRequest();
+    let qtyVal = document.getElementsByName("quantity")[0].value;
+    let qty = qtyVal ? qtyVal : 0;
+    let id = <?php echo $id; ?>;
+    let userid = <?php echo $userid; ?>;
+    let param = `id=${id}&userid=${userid}&qty=${qty}`;
+    xhttp.onreadystatechange = function() {
+        document.getElementsByName("submit-button")[0].innerHTML = "Sedang membeli..."
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementsByName("submit-button")[0].innerHTML = "Beli"
+            document.getElementsByName("purchase-stock")[0].innerHTML = this.responseText
+            document.getElementsByClassName("purchase-success")[0].innerHTML =
+                `*Pembelian ${qty} buah dorayaki berhasil!`
+        }
+    };
+    xhttp.open("POST", "../ajax/ajax_purchase.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send(param);
 }
 </script>
