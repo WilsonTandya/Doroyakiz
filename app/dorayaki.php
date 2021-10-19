@@ -16,7 +16,7 @@ class Dorayaki extends Controller {
         FROM DORAYAKI
         LEFT JOIN PURCHASE P ON DORAYAKI.ID = P.DORAYAKI_ID
         WHERE LOWER(NAME) LIKE (?)
-        GROUP BY DORAYAKI_ID
+        GROUP BY DORAYAKI.ID
         ORDER BY NAME ASC
         LIMIT (?), (?)
         ;
@@ -31,6 +31,22 @@ class Dorayaki extends Controller {
         }
 
         return $res;
+    }
+
+    public function search_total_records($name) 
+    {
+        $sql =<<<EOF
+        SELECT COUNT(*) AS TOTAL
+        FROM DORAYAKI
+        WHERE LOWER(NAME) LIKE (?)
+        ;
+        EOF;
+
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute(array("%" . $name . "%"));
+        $res = $stmt->fetch(PDO::FETCH_OBJ);
+
+        return $res->TOTAL;
     }
 
     public function detail($id) 
@@ -89,8 +105,6 @@ class Dorayaki extends Controller {
 
     public function make_purchase($dorayaki_id, $buyer_id, $qty) 
     {
-        // REMINDER- Move to new controller
-        // ganti jadi $_GET
         $sql =<<<EOF
         INSERT INTO PURCHASE
         (DORAYAKI_ID,BUYER_ID,QUANTITY,CREATED_AT)
@@ -265,6 +279,8 @@ class Dorayaki extends Controller {
 
 // $test = new Dorayaki();
 // $res = $test->search("Rasa",$offset,$n_records_per_page);
+// print_r($res);
+// $res = $test->search_total_records("doR");
 // print_r($res);
 // echo "<br/>";
 // $res = $test->detail(3);

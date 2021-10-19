@@ -4,11 +4,10 @@
     justify-content: space-between;
 }
 
-
 .admin #add_var button {
     border: none;
     background-color: #45b54a;
-    color: #FCFEFF;
+    color: #fcfeff;
     padding: 8px 10px;
     border-radius: 5px;
     font-size: 16px;
@@ -21,4 +20,43 @@
 
 .list-content {
     width: 100%;
+}
+
+.list-pagination {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 25px 0;
+}
+
+.btn-pagination {
+    width: 28px;
+    height: 28px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 1px;
+    color: #41b54a;
+    background-color: #fff;
+    outline: none;
+    cursor: pointer;
+    margin: 0 3px;
+    font-weight: bold;
+}
+
+.list-pagination .before {
+    color: #fff;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.list-pagination .selected {
+    color: #fff !important;
+    background-color: #41b54a !important;
+    border: 1px solid #41b54a;
+}
+
+.btn-pagination:hover,
+.btn-pagination:focus {
+    outline: none;
 }

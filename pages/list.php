@@ -20,6 +20,8 @@ if (isset($_GET['query'])){
 }
 
 $dorayaki = new Dorayaki();
+$total_records = $dorayaki->search_total_records(strtolower($query));
+$total_pages = ceil($total_records/$n_records_per_page);
 $res = $dorayaki->search(strtolower($query),$offset,$n_records_per_page);
 ?>
 
@@ -43,13 +45,6 @@ $res = $dorayaki->search(strtolower($query),$offset,$n_records_per_page);
     ?>
     <div class="container">
         <h2 class="page-header">Hasil Pencarian: "<?php echo $query ?>"</h2>
-
-        <button onclick="updateDorayakiList('back')">
-            <a href="#">Back</a>
-        </button>
-        <button onclick="updateDorayakiList('next')">
-            <a href="#">Next</a>
-        </button>
         <div class="list-content">
             <?php
             for ($i=0; $i<count($res); $i++) {
@@ -70,11 +65,24 @@ $res = $dorayaki->search(strtolower($query),$offset,$n_records_per_page);
                         final=$isFinalIndex
                     ></list-card>";
             }
-        ?>
+            ?>
         </div>
         <?php if (count($res) == 0) {
             echo "<p>Dorayaki yang kamu cari tidak ditemukan.</p>";
         } ?>
+        <div class="list-pagination">
+            <button class="btn-pagination before" onclick="updateDorayakiList('back')">&laquo;</button>
+            <?php
+                for ($i=1; $i<=$total_pages; $i++) {
+                    if ($i == $page_no) {
+                        echo "<button class='btn-pagination selected' onclick='updateDorayakiList($i)'>$i</button>";
+                    } else {
+                        echo "<button class='btn-pagination' onclick='updateDorayakiList($i)'>$i</button>";
+                    }
+                }
+            ?>
+            <button class="btn-pagination next" onclick="updateDorayakiList('next')">&raquo;</button>
+        </div>
     </div>
 
     <script>
@@ -82,20 +90,45 @@ $res = $dorayaki->search(strtolower($query),$offset,$n_records_per_page);
         let xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
-                // let response = JSON.parse(this.responseText);
-                console.log(this.responseText)
+                let content = document.getElementsByClassName("list-content")[0];
+                content.innerHTML = this.responseText
             }
         };
         xhttp.open("POST", "../ajax/ajax_list.php", true);
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         let query = <?php echo "'" . $query . "'"; ?>;
         let pageno = <?php echo $page_no; ?>;
+        let totalpages = <?php echo $total_pages; ?>;
 
+
+        // REMINDER- TODO CHANGE PAGENO
         if (type == "next") {
             pageno = <?php echo $page_no + 1; ?>;
-        } else {
+        } else if (type == "back") {
             pageno = <?php echo $page_no - 1; ?>;
+        } else {
+            pageno = type;
         }
+
+        let btnNext = document.getElementsByClassName("btn-pagination next")[0]
+        let btnBefore = document.getElementsByClassName("btn-pagination before")[0]
+
+        if (pageno == totalpages) {
+            btnNext.style.background = "rgba(0,0,0,0.3)";
+            btnNext.style.color = "#FFF";
+        } else {
+            btnNext.style.background = "#FFF";
+            btnNext.style.color = "#41b54a";
+        }
+
+        if (pageno == 1) {
+            btnBefore.style.background = "rgba(0,0,0,0.3)";
+            btnBefore.style.color = "#FFF";
+        } else {
+            btnBefore.style.background = "#FFF";
+            btnBefore.style.color = "#41b54a";
+        }
+
         let nrecords = <?php echo $n_records_per_page; ?>;
         let offset = (parseInt(pageno) - 1) * parseInt(nrecords);
         let param = `offset=${offset}&nrecords=${nrecords}&query=${query}`;
