@@ -92,22 +92,26 @@ function updateTotalPrice(event) {
     let xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            let submitButton = document.getElementsByName("submit-button")[0]
+            let btnSubmit = document.getElementsByName("submit-button")[0]
+            let textPurchaseTotal = document.getElementsByName("purchase-total")[0]
             if (this.responseText == "quantity-exceed") {
-                document.getElementsByName("purchase-total")[0].innerHTML = "Kuantitas pembelian melebih stok!"
-                submitButton.disabled = true;
-                submitButton.style.background = "#777";
-                submitButton.style.cursor = "not-allowed";
+                textPurchaseTotal.innerHTML = "Kuantitas pembelian melebih stok!";
+                textPurchaseTotal.style.color = "#d8414a";
+                btnSubmit.disabled = true;
+                btnSubmit.style.background = "#777";
+                btnSubmit.style.cursor = "not-allowed";
             } else if (this.responseText == "quantity-invalid") {
-                document.getElementsByName("purchase-total")[0].innerHTML = "Kuantitas pembelian tidak valid!"
-                submitButton.disabled = true;
-                submitButton.style.background = "#777";
-                submitButton.style.cursor = "not-allowed";
+                textPurchaseTotal.innerHTML = "Kuantitas pembelian tidak valid!";
+                textPurchaseTotal.style.color = "#d8414a";
+                btnSubmit.disabled = true;
+                btnSubmit.style.background = "#777";
+                btnSubmit.style.cursor = "not-allowed";
             } else {
-                document.getElementsByName("purchase-total")[0].innerHTML = this.responseText
-                submitButton.disabled = false;
-                submitButton.style.background = "#45b54a";
-                submitButton.style.cursor = "pointer";
+                textPurchaseTotal.innerHTML = this.responseText;
+                textPurchaseTotal.style.color = "#000";
+                btnSubmit.disabled = false;
+                btnSubmit.style.background = "#45b54a";
+                btnSubmit.style.cursor = "pointer";
             }
         }
     };
@@ -130,12 +134,20 @@ function buy(event) {
     let userid = <?php echo $userid; ?>;
     let param = `id=${id}&userid=${userid}&qty=${qty}`;
     xhttp.onreadystatechange = function() {
-        document.getElementsByName("submit-button")[0].innerHTML = "Sedang membeli..."
+        let btnSubmit = document.getElementsByName("submit-button")[0]
+        let textPurchaseSuccess = document.getElementsByClassName("purchase-success")[0]
+        btnSubmit.innerHTML = "Sedang membeli..."
+        btnSubmit.disabled = true
+        btnSubmit.style.cursor = "not-allowed"
+        btnSubmit.style.background = "rgba(0,0,0,0.3)"
+        textPurchaseSuccess.innerHTML = "Memproses"
         if (this.readyState == 4 && this.status == 200) {
-            document.getElementsByName("submit-button")[0].innerHTML = "Beli"
             document.getElementsByName("purchase-stock")[0].innerHTML = this.responseText
-            document.getElementsByClassName("purchase-success")[0].innerHTML =
-                `*Pembelian ${qty} buah dorayaki berhasil!`
+            textPurchaseSuccess.innerHTML = `*Pembelian ${qty} buah dorayaki berhasil!`
+            btnSubmit.innerHTML = "Beli"
+            btnSubmit.disabled = false
+            btnSubmit.style.cursor = "pointer"
+            btnSubmit.style.background = "#45b54a"
         }
     };
     xhttp.open("POST", "../ajax/ajax_purchase.php", true);
