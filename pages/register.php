@@ -14,6 +14,12 @@
         $res = $account->register($email, $fullname, $username, $password);
         if ($res != NULL) {
             session_start();
+
+            $_SESSION = array(
+                "login" => true,
+                "data" => array("time" => time()+60*10) //10 menit expiry time
+              );
+              
             $_SESSION["user"] = array("id" => $res->ID, "username" => $res->USERNAME, "is_admin" => $res->ISADMIN);
             header("Location: " . "index.php");
         }

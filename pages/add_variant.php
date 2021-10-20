@@ -3,6 +3,18 @@
     if (!isset($_SESSION["user"])) {
         header("Location: " . "login.php");
     }
+
+    //check expiry time
+    ob_start();
+    if (isset($_SESSION["login"])) {
+
+        if ($_SESSION["data"]["time"] < time()) { 
+            $_SESSION["login"] = false;
+            header('Location: login.php');
+            exit();
+        }
+    }
+    ob_end_flush();
 ?>
 <?php
 
