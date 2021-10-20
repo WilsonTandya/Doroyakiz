@@ -11,8 +11,7 @@
     $dorayaki = new Dorayaki();
     $res = $dorayaki->list_popular();
 
-    // REMINDER- change to session
-    $isadmin = true;
+    $isadmin = $_SESSION["user"]["is_admin"];
 ?>
 
 <!DOCTYPE html>

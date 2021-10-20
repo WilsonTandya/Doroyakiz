@@ -8,7 +8,6 @@
 require_once "../app/dorayaki.php";
 require_once "util.php";
 
-// REMINDER- change to session
 $isadmin = $_SESSION["user"]["is_admin"];
 
 if(isset($_GET['id'])){
