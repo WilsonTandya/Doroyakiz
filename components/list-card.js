@@ -83,6 +83,12 @@ class ListCard extends HTMLElement {
                     margin-block-start: 1em;
                     margin-block-end: .4rem;
                 }
+
+                @media screen and (max-width: 800px) {
+                    .card-container, .card-container-final {
+                        padding: 15px 0px;
+                    }
+                }
             </style>
         `;
     }

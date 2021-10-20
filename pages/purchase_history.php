@@ -21,7 +21,6 @@
     <link rel="stylesheet" href="../styles/history.css">
     <link rel="stylesheet" href="../styles/not_available.css">
     <script src="../components/navbar.js" type="text/javascript" defer></script>
-    <script src="../components/history-card.js" type="text/javascript" defer></script>
     <title>Riwayat Doroyaki</title>
 </head>
 <body>
@@ -34,14 +33,14 @@
             <h2 class="page-header">Riwayat Pembelian</h2>
             <?php
                 if ($_SESSION["user"]["is_admin"] == 1) {
-                    echo `
+                    echo '
                         <div class="flex-row">
                             <p class="selected-button" id="margin-right">Pembelian</p>
                             <a href="change_stock_history.php" class="unselected-link">
                                 <p class="unselected-button">Perubahan</p>
                             </a>
                         </div>
-                    `;
+                    ';
                 }
             ?>
         </div>

@@ -10,7 +10,7 @@ body {
 .container {
     display: flex;
     flex-direction: column;
-    margin: 0 210px;
+    margin: 0 210px 60px 210px;
 }
 
 .row {
@@ -28,4 +28,16 @@ body {
     color: rgba(49, 53, 59, 0.96);
     font-weight: bold;
     margin: 2rem 0;
+}
+
+@media screen and (max-width: 1280px) {
+    .container {
+        margin: 0 120px 60px 120px;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .container {
+        margin: 0 20px 60px 20px;
+    }
 }

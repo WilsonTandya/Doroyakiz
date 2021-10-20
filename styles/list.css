@@ -62,3 +62,29 @@
 .btn-pagination:focus {
     outline: none;
 }
+
+@media screen and (max-width: 1280px) {
+    
+}
+
+@media screen and (max-width: 800px) {
+    /* .admin #add_var button {
+        visibility: hidden;
+    }
+
+    .admin #add_var button:after {
+        content: "+";
+        visibility: visible;
+        border: none;
+        background-color: #45b54a;
+        color: #fcfeff;
+        padding: 8px 10px;
+        border-radius: 5px;
+        font-size: 16px;
+        font-weight: 500;
+        letter-spacing: 0.5px;
+        cursor: pointer;
+        transition-duration: 0.2s;
+        font-weight: bold;
+    } */
+}

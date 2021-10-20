@@ -17,51 +17,52 @@ navbarTemplate.innerHTML = `
     }
 
     .nav-search {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      width: 250px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        width: 250px;
     }
 
     .nav-search input {
-      width: 100%;
-      height: 30px;
-      padding: 0 10px;
-      color: rgba(49, 53, 59, 0.75);
-      border-radius: 4px 0 0 4px;
-      border: 1px solid rgba(49, 53, 59, 0.35);
+        width: 100%;
+        height: 30px;
+        padding: 0 10px;
+        color: rgba(49, 53, 59, 0.75);
+        border-radius: 4px 0 0 4px;
+        border: 1px solid rgba(49, 53, 59, 0.35);
     }
 
     .nav-search input::placeholder {
-      color: rgba(49, 53, 59, 0.3);
-      opacity: 1;
+        color: rgba(49, 53, 59, 0.3);
+        opacity: 1;
     }
 
     .nav-search input:focus {
-      outline: none;
+        outline: none;
     }
 
     .btn-submit {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 8%;
-      text-align: center;
-      height: 33px !important;
-      margin-right: 35px;
-      border: none;
-      border-radius: 0 4px 4px 0;
-      cursor: pointer;
-      outline: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 10%;
+        text-align: center;
+        height: 33px !important;
+        margin-right: 35px;
+        border: none;
+        border-radius: 0 4px 4px 0;
+        cursor: pointer;
+        outline: none;
     }
 
     .btn-submit img {
-      width: 20px;
+        width: 20px;
     }
 
     .nav-button-container {
         display: flex;
         align-items: center;
+        justify-content: flex-end;
     }
 
     a {
@@ -98,11 +99,68 @@ navbarTemplate.innerHTML = `
         cursor: pointer;
         outline: none;
     }
+
+    .history-img {
+        display: none;
+        width: 25px;
+        margin-right: 10px;
+    }
+
+    .exit-img {
+        display: none;
+        width: 20px;
+    }
+
+    @media screen and (max-width: 1280px) {
+        nav {
+            padding: 0 120px;
+        }
+
+        .nav-search {
+            width: 200px;
+        }
+
+        .btn-submit {
+            margin-right: 20px;
+        }
+    }
+
+    @media screen and (max-width: 1000px) {
+        .nav-search {
+            width: 150px;
+        }
+    }
+
+    @media screen and (max-width: 800px) {
+        nav {
+            padding: 0 20px;
+        }
+
+        .text {
+            display: none
+        }
+
+        .button {
+            display: none
+        }
+
+        .history-img {
+            display: flex;
+        }
+
+        .exit-img {
+            display: flex;
+        }
+
+        .btn-submit {
+            margin-right: 10px;
+        }
+    }
   </style>
   <header>
     <nav>
         <a href="index.php">
-          <h1>Doroyaki</h1>
+          <h1>Doroyakiz</h1>
         </a>
         <div class="nav-button-container">
           <form class="nav-search" id="form-search" name="form-search" action="list.php" method="GET" autocomplete="off" >
@@ -113,9 +171,11 @@ navbarTemplate.innerHTML = `
           </button>
           <a href="purchase_history.php">
             <div class="text">Riwayat</div>
+            <img class="history-img" src="../assets/icon-history.png" alt="Riwayat" />
           </a>
           <a href="sign_out.php">
             <div class="button">Keluar</div>
+            <img class="exit-img" src="../assets/icon-exit.png" alt="Keluar" />
           </a>
         </div>
     </nav>

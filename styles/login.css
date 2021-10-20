@@ -1,6 +1,6 @@
 body {
     margin: 0;
-    background-color: rgba(65, 181, 74, 0.5);
+    background-color: rgba(65, 181, 74, 0.85);
 }
 
 .company-title {
@@ -11,8 +11,8 @@ body {
 .box {
     background-color: #ffffff;
     width: 420px;
-    box-shadow: 0px 4px 20px rgba(0,0,0,0.4);
-    border-radius: 5px;
+    box-shadow: 0 0 6px 4px rgba(0,0,0,.12);
+    border-radius: 12px;
     text-align: center;
     padding: 35px 0 40px 0;
     display: flex;

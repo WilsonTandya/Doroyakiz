@@ -1,3 +1,10 @@
+.detail-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin: 5px 0;
+}
+
 .detail-title {
     color: rgba(49, 53, 59, 0.96);
     font-weight: bold;
@@ -66,7 +73,7 @@
     padding: 8px 0;
     border-radius: 5px;
     font-size: 16px;
-    font-weight: 500;
+    font-weight: bold;
     letter-spacing: 2px;
     cursor: pointer;
     transition-duration: 0.2s;
@@ -79,7 +86,7 @@
     padding: 8px 0;
     border-radius: 5px;
     font-size: 16px;
-    font-weight: 500;
+    font-weight: bold;
     letter-spacing: 2px;
     cursor: pointer;
     transition-duration: 0.2s;
@@ -97,4 +104,87 @@
 .detail-info button:hover {
     opacity: 0.75;
     transition-duration: 0.2s;
+}
+
+@media screen and (max-width: 1280px) {
+    .detail-image {
+        width: 300px;
+        height: 300px;
+        object-fit: cover;
+        border-radius: 10px;
+        margin-right: 50px;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .detail-image {
+        width: 250px;
+        height: 300px;
+        object-fit: cover;
+        border-radius: 10px;
+        margin-right: 50px;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .detail-image {
+        width: 200px;
+        height: 170px;
+        object-fit: cover;
+        border-radius: 10px;
+        margin-right: 0;
+    }
+
+    .detail-container {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        margin: 5px 0;
+    }
+
+    .detail-name {
+        margin: 1rem 0 1rem 0;
+    }
+
+    h4 {
+        text-align: center;
+    }
+
+    p {
+        text-align: center;
+    }
+
+    .admin {
+        display: flex;
+        justify-content: center;
+    }
+
+    .detail-info a {
+        width: 90px;
+        margin: 0 5px;
+    }
+
+    .detail-info .admin button {
+        width: 90px; 
+    }
+
+    #sold-stock {
+        justify-content: center;
+    }
+
+    .detail-sold, .detail-stock, .detail-price {
+        margin-bottom: 1rem;
+    }
+
+    .detail-desc {
+        margin: 1rem 0;
+    }
+
+    .detail-dot {
+        margin: 0 0.5rem 1rem 0.5rem;
+    }
+
+    hr {
+        display: none;
+    }
 }

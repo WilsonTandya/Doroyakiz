@@ -23,6 +23,9 @@ if(isset($_GET['id'])){
 <html>
 
 <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope&display=swap" rel="stylesheet">
@@ -45,11 +48,11 @@ if(isset($_GET['id'])){
             </a>
             <h2 class="page-header">Detail</h2>
         </div>
-        <div class="row">
+        <div class="detail-container">
             <img class="detail-image" src=<?php echo "../assets/dorayaki/" . $res->IMG_FILE ?> alt="Dorayaki" />
             <div class="detail-info">
                 <h4 class="detail-name"><?php echo $res->NAME ?></h4>
-                <div class="row" style="align-items: center;">
+                <div class="row" style="align-items: center;" id="sold-stock">
                     <p class="detail-sold">Terjual: <span class="subtitle"><?php echo $res->SOLD ?> buah</span></p>
                     <p class="detail-dot">•</p>
                     <p class="detail-stock">Stok: <span class="subtitle"><?php echo $res->STOCK ?> buah</span></p>
