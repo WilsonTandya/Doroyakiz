@@ -52,16 +52,27 @@ class Account extends Controller {
             ;
         EOF;
 
-        $registerSuccess = false;
+        $sql_get_data =<<<EOF
+            SELECT *
+            FROM ACCOUNT
+            WHERE USERNAME = (?)
+            ;
+        EOF;
+
+        $res = NULL;
         try {
             $stmt = $this->db->prepare($sql);
             $stmt->execute(array($fullname, $username, $email, $encrypted_password));
-            $registerSuccess = true; 
+
+            $stmt_get_data = $this->db->prepare($sql_get_data);
+            $stmt_get_data->execute(array($username));
+
+            $res = $stmt_get_data->fetch(PDO::FETCH_OBJ);
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
         }
 
-        return $registerSuccess;
+        return $res;
     }
 
     public function isUsernameAvailable($username) 

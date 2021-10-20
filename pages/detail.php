@@ -28,6 +28,7 @@ if(isset($_GET['id'])){
     <link href="https://fonts.googleapis.com/css2?family=Manrope&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../styles/global.css">
     <link rel="stylesheet" href="../styles/detail.css">
+    <link rel="stylesheet" href="../styles/not_available.css">
     <script src="../components/navbar.js" type="text/javascript" defer></script>
     <title>Doroyaki</title>
 </head>

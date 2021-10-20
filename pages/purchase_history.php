@@ -8,7 +8,6 @@
     require_once "../app/dorayaki.php";
 
     $dorayaki = new Dorayaki();
-    session_start();
     $res = $dorayaki->purchase_history($_SESSION["user"]["id"], $_SESSION["user"]["is_admin"]);
 ?>
 
@@ -20,6 +19,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Manrope&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../styles/global.css">
     <link rel="stylesheet" href="../styles/history.css">
+    <link rel="stylesheet" href="../styles/not_available.css">
     <script src="../components/navbar.js" type="text/javascript" defer></script>
     <script src="../components/history-card.js" type="text/javascript" defer></script>
     <title>Riwayat Doroyaki</title>
@@ -28,15 +28,22 @@
     <?php
         echo "<navbar-component></navbar-component>";
     ?>
+    <?php if ($res != null): ?>
     <div class="container">
         <div class="flex-row" id="flex-between">
             <h2 class="page-header">Riwayat Pembelian</h2>
-            <div class="flex-row">
-                <p class="selected-button" id="margin-right">Pembelian</p>
-                <a href="change_stock_history.php" class="unselected-link">
-                    <p class="unselected-button">Perubahan</p>
-                </a>
-            </div>
+            <?php
+                if ($_SESSION["user"]["is_admin"] == 1) {
+                    echo `
+                        <div class="flex-row">
+                            <p class="selected-button" id="margin-right">Pembelian</p>
+                            <a href="change_stock_history.php" class="unselected-link">
+                                <p class="unselected-button">Perubahan</p>
+                            </a>
+                        </div>
+                    `;
+                }
+            ?>
         </div>
         <table class="purchase-table">
             <tr>
@@ -67,5 +74,15 @@
             ?>
         </table>
     </div>
+    <?php else: ?>
+    <div class="container-not-available">
+        <img src="../assets/not_available.png"/>
+        <p class="title">Ups, Riwayat pembelian kamu masih kosong.</p>
+        <p class="subtitle">Mari membeli Doroyaki!</p>
+        <a href="index.php">
+            <p class="button">Menu Utama</p>
+        </a>
+    </div>
+    <?php endif; ?>
 </body>
 </html>
