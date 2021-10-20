@@ -43,6 +43,9 @@ $userid = $_SESSION["user"]["id"];
             </a>
             <h2 class="page-header">Beli</h2>
         </div>
+    </div>
+    <?php if ($res != null): ?>
+    <div class="container">
         <div class="row">
             <img class="purchase-image" src=<?php echo "../assets/dorayaki/" . $res->IMG_FILE ?> alt="Dorayaki" />
             <div class="purchase-info">
@@ -72,6 +75,16 @@ $userid = $_SESSION["user"]["id"];
         </div>
     </div>
     </div>
+    <?php else: ?>
+    <div class="container-not-available">
+        <img src="../assets/not_available.png"/>
+        <p class="title">Maaf, Doroyaki tidak tersedia</p>
+        <p class="subtitle">Mari cari Doroyaki yang lain!</p>
+        <a href="index.php">
+            <p class="button">Menu Utama</p>
+        </a>
+    </div>
+    <?php endif; ?>
 </body>
 
 <script>
