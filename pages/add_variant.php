@@ -11,13 +11,37 @@
 
     $dorayaki = new Dorayaki();
 
+
     if (isset($_POST["dorayaki_name"]) && isset($_POST["dorayaki_harga"])&&isset($_POST["dorayaki_stok"]) && isset($_POST["dorayaki_deskripsi"])){
         $name = $_POST["dorayaki_name"];
         $price = $_POST["dorayaki_harga"];
         $qty = $_POST["dorayaki_stok"];
         $desc = $_POST["dorayaki_deskripsi"];
 
-        $res = $dorayaki->add_dorayaki($name, $price, $qty, $desc);
+        if (($_FILES['dorayaki_gambar']['name']!="")){
+            $target_dir = "../assets/dorayaki/";
+            $file = $_FILES['dorayaki_gambar']['name'];
+            $path = pathinfo($file);
+            $filename = $path['filename'];
+            $ext = $path['extension'];
+            $temp_name = $_FILES['dorayaki_gambar']['tmp_name'];
+            $path_filename_ext = $target_dir.$filename.".".$ext;
+             
+            move_uploaded_file($temp_name,$path_filename_ext);
+        }
+            /*
+            // Buat Cek Sukses (Navbarnya jadi jelek tapi)
+            if (file_exists($path_filename_ext)) {
+                echo "Sorry, file already exists.";
+                }
+            else{
+                move_uploaded_file($temp_name,$path_filename_ext);
+                echo "Congratulations! File Uploaded Successfully.";
+                }
+            */
+        $img = strval($filename.".".$ext);
+
+        $res = $dorayaki->add_dorayaki($name, $price, $qty, $desc, $img);
         if($res) {
             header("Location: " . "index.php");
         }
@@ -28,9 +52,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope&display=swap" rel="stylesheet">
@@ -43,9 +64,10 @@
     <?php
         echo "<navbar-component></navbar-component>";
     ?>
-    <div class="box">
+       <div class="box">
         <h2 class="add_variant-title">Menambah Varian Dorayaki</h2>
-        <form action="add_variant.php" method="post">
+
+        <form action="add_variant.php" method="post" enctype="multipart/form-data">
             <div class="form-box" id="form-top">
                 <p class="label">Nama Dorayaki</p>
                 <div class="search-box">
@@ -74,11 +96,12 @@
             <div class="form-box" id="form-bottom">
                 <p class="label">Gambar</p>
                 <div class="deskripsi-box">
-                <input type="file" name="fileToUpload" id="fileToUpload"/>
+                <input type="file" name="dorayaki_gambar" id="fileToUpload"/>
                 </div>
             </div>
-            <input type="submit" class="inter" value="Tambah" name="dorayaki_submit"/>
-        </form>
+            
+            <input type="submit" class="inter" value="Submit" name="dorayaki_submit"/>
     </div>
+    
 </body>
 </html>
