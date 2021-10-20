@@ -39,7 +39,7 @@
 </head>
 <body>
     <div class="box">
-        <h2 id="login-title">Registrasi</h2>
+        <h2 id="register-title">Registrasi</h2>
         <script>
             function handleChangeFormRegister(event) {
                 var emailValue = document.getElementsByName("email")[0].value;

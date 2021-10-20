@@ -28,6 +28,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope&display=swap" rel="stylesheet">
@@ -40,9 +43,8 @@
     <?php
         echo "<navbar-component></navbar-component>";
     ?>
-       <div class="box">
+    <div class="box">
         <h2 class="add_variant-title">Menambah Varian Dorayaki</h2>
-
         <form action="add_variant.php" method="post">
             <div class="form-box" id="form-top">
                 <p class="label">Nama Dorayaki</p>
@@ -75,9 +77,8 @@
                 <input type="file" name="fileToUpload" id="fileToUpload"/>
                 </div>
             </div>
-            
-            <input type="submit" class="inter" value="Submit" name="dorayaki_submit"/>
+            <input type="submit" class="inter" value="Tambah" name="dorayaki_submit"/>
+        </form>
     </div>
-    
 </body>
 </html>

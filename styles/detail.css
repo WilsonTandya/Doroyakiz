@@ -63,6 +63,7 @@
 
 .detail-info a {
     width: 100%;
+    text-decoration: none;
 }
 
 .detail-info button {
@@ -151,12 +152,19 @@
     }
 
     p {
+        margin-block-start: 0;
         text-align: center;
     }
 
     .admin {
         display: flex;
         justify-content: center;
+    }
+
+    .detail-info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
     .detail-info a {
@@ -177,7 +185,7 @@
     }
 
     .detail-desc {
-        margin: 1rem 0;
+        margin: 0 0 1.5rem 0;
     }
 
     .detail-dot {

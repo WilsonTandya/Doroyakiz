@@ -4,12 +4,13 @@
 }
 
 .box {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     position: relative;
     margin: 16px;
     padding: 35px;
     border-radius: 8px;
-    box-shadow: 0 1px 6px 0 var(--color-shadow, rgba(49, 53, 59, 0.12));
     background-color: var(--color-card, #ffffff);
     cursor: default;
 }
@@ -127,6 +128,8 @@
     background-color: var(--color-chip-disabled, #f3f4f5);
     color: var(--color-text-low, rgba(49, 53, 59, 0.68));
     padding-right: 12px;
+    border-radius: 5px 0 0 5px;
+    margin-right: 5px;
 }
 
 /*Untuk hide arrow*/
@@ -134,4 +137,7 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
+}
+
+@media screen and (max-width: 800px) {
 }

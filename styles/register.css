@@ -32,8 +32,10 @@ body {
     margin: 15px 0;
 }
 
-#login-title {
+#register-title {
     margin-bottom: 15px;
+    color: rgba(49, 53, 59, 0.96);
+    font-weight: bold;
 }
   
 .inter, .inter-disabled {

@@ -68,7 +68,8 @@ if(isset($_GET['id'])){
                         <button>Edit</button>
                     </a>
                     <a href=<?php echo "delete.php?id=" . $id ?> id="Delete">
-                        <button>Delete</button>
+                        <button>Hapus</button>
+                    </a>
                 </div>
             </div>
             <?php else: ?>
