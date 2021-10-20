@@ -82,8 +82,17 @@ $res = $dorayaki->search(strtolower($query),$offset,$n_records_per_page);
                     }
                 }
             ?>
-            <button class='btn-pagination' onclick="updateDorayakiList('last')">...</button>
-            <button class=" btn-pagination next" onclick="updateDorayakiList('next')">&raquo;</button>
+            <?php
+                if ($total_pages == 0) {
+                    echo "<button class='btn-pagination next-inactive' onclick='updateDorayakiList(" . '"next"' . ")''>&raquo;</button>";
+                } else if ($total_pages == 1) {
+                    echo "<button class='btn-pagination selected' onclick='updateDorayakiList(1)'>1</button>";
+                    echo "<button class='btn-pagination next-inactive' onclick='updateDorayakiList(" . '"next"' . ")''>&raquo;</button>";
+                } else {
+                    echo "<button class='btn-pagination' onclick='updateDorayakiList(" . '"last"' . ")'>...</button>";
+                    echo "<button class='btn-pagination next' onclick='updateDorayakiList(" . '"next"' . ")''>&raquo;</button>";
+                }
+            ?>
         </div>
     </div>
 
