@@ -15,9 +15,6 @@ if(isset($_GET['id'])){
     $id = $_GET['id'];
     $dorayaki = new Dorayaki();
     $res = $dorayaki->detail($id);
-    if($res == NULL) {
-        header("Location: " . "detail_not_available.php");
-    }
 }
 
 ?>
@@ -39,6 +36,7 @@ if(isset($_GET['id'])){
     <?php
         echo "<navbar-component></navbar-component>";
     ?>
+    <?php if ($res != null): ?>
     <div class="container">
         <div class="row" style="align-items: center;">
             <a href="javascript:history.go(-1)">
@@ -78,6 +76,16 @@ if(isset($_GET['id'])){
     </div>
     </div>
     </div>
+    <?php else: ?>
+    <div class="container-not-available">
+        <img src="../assets/detail_not_available.png"/>
+        <p class="title">Maaf, Doroyaki tidak tersedia</p>
+        <p class="subtitle">Mari cari Doroyaki yang lain!</p>
+        <a href="index.php">
+            <p class="button">Menu Utama</p>
+        </a>
+    </div>
+    <?php endif; ?>
 </body>
 
 </html>
