@@ -28,6 +28,7 @@ $userid = $_SESSION["user"]["id"];
     <link href="https://fonts.googleapis.com/css2?family=Manrope&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../styles/global.css">
     <link rel="stylesheet" href="../styles/purchase.css">
+    <link rel="stylesheet" href="../styles/not-available.css">
     <script src="../components/navbar.js" type="text/javascript" defer></script>
     <title>Doroyaki</title>
 </head>
@@ -36,6 +37,7 @@ $userid = $_SESSION["user"]["id"];
     <?php
         echo "<navbar-component></navbar-component>";
     ?>
+    <?php if ($res != null): ?>
     <div class="container">
         <div class="row" style="align-items: center;">
             <a href="javascript:history.go(-1)">
@@ -43,9 +45,6 @@ $userid = $_SESSION["user"]["id"];
             </a>
             <h2 class="page-header">Beli</h2>
         </div>
-    </div>
-    <?php if ($res != null): ?>
-    <div class="container">
         <div class="row">
             <img class="purchase-image" src=<?php echo "../assets/dorayaki/" . $res->IMG_FILE ?> alt="Dorayaki" />
             <div class="purchase-info">
@@ -77,7 +76,7 @@ $userid = $_SESSION["user"]["id"];
     </div>
     <?php else: ?>
     <div class="container-not-available">
-        <img src="../assets/not_available.png"/>
+        <img src="../assets/not_available.png" />
         <p class="title">Maaf, Doroyaki tidak tersedia</p>
         <p class="subtitle">Mari cari Doroyaki yang lain!</p>
         <a href="index.php">

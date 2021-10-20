@@ -37,6 +37,7 @@ if(isset($_GET['id'])){
     <?php
         echo "<navbar-component></navbar-component>";
     ?>
+    <?php if ($res != null): ?>
     <div class="container">
         <div class="row" style="align-items: center;">
             <a href="javascript:history.go(-1)">
@@ -44,9 +45,6 @@ if(isset($_GET['id'])){
             </a>
             <h2 class="page-header">Detail</h2>
         </div>
-    </div>
-    <?php if ($res != null): ?>
-    <div class="container">
         <div class="row">
             <img class="detail-image" src=<?php echo "../assets/dorayaki/" . $res->IMG_FILE ?> alt="Dorayaki" />
             <div class="detail-info">
@@ -81,7 +79,7 @@ if(isset($_GET['id'])){
     </div>
     <?php else: ?>
     <div class="container-not-available">
-        <img src="../assets/not_available.png"/>
+        <img src="../assets/not_available.png" />
         <p class="title">Maaf, Doroyaki tidak tersedia</p>
         <p class="subtitle">Mari cari Doroyaki yang lain!</p>
         <a href="index.php">
