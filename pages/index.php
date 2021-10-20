@@ -56,6 +56,7 @@
                 $description = preprocess($res[$i]->DESCRIPTION);
                 $price = preprocess($res[$i]->PRICE);
                 $stock = preprocess($res[$i]->STOCK);
+                $imgFile = preprocess($res[$i]->IMG_FILE);
                 echo "<list-card 
                         id=$id
                         sold=$sold 
@@ -63,6 +64,7 @@
                         description=$description 
                         price=$price 
                         stock=$stock 
+                        imgFile=$imgFile
                         final=$isFinalIndex
                     ></list-card>";
             }

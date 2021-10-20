@@ -11,13 +11,14 @@ class ListCard extends HTMLElement {
         const sold = this.attributes.sold.value.replaceAll("%20", " ");
         const price = this.attributes.price.value.replaceAll("%20", " ");
         const stock = this.attributes.stock.value.replaceAll("%20", " ");
+        const imgFile = this.attributes.imgFile.value.replaceAll("%20", " ");
 
         this.innerHTML = `
             <a class="card-href" href="detail.php?id=${id}">
                 <div class=${
                     isFinalIndex ? "card-container-final" : "card-container"
                 }>
-                    <img class="card-thumbnail" src="../assets/dorayaki.jpeg" alt="Dorayaki"/>
+                    <img class="card-thumbnail" src="../assets/dorayaki/${imgFile}" alt="Dorayaki"/>
                     <div class="card-info">
                         <h4 class="card-title">${name}</h4>
                         <p class="card-sold">Terjual: ${sold} buah</p>

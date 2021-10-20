@@ -47,7 +47,7 @@ if(isset($_GET['id'])){
             <h2 class="page-header">Detail</h2>
         </div>
         <div class="row">
-            <img class="detail-image" src="../assets/dorayaki.jpeg" alt="Dorayaki" />
+            <img class="detail-image" src=<?php echo "../assets/dorayaki/" . $res->IMG_FILE ?> alt="Dorayaki" />
             <div class="detail-info">
                 <h4 class="detail-name"><?php echo $res->NAME ?></h4>
                 <div class="row" style="align-items: center;">

@@ -12,7 +12,7 @@ class Dorayaki extends Controller {
     public function search($name, $offset, $n_records_per_page) 
     {
         $sql =<<<EOF
-        SELECT IFNULL(SUM(QUANTITY), 0) AS SOLD, DORAYAKI.ID, NAME, DESCRIPTION, PRICE, STOCK
+        SELECT IFNULL(SUM(QUANTITY), 0) AS SOLD, DORAYAKI.ID, NAME, DESCRIPTION, PRICE, STOCK, IMG_FILE
         FROM DORAYAKI
         LEFT JOIN PURCHASE P ON DORAYAKI.ID = P.DORAYAKI_ID
         WHERE LOWER(NAME) LIKE (?)
@@ -52,7 +52,7 @@ class Dorayaki extends Controller {
     public function detail($id) 
     {
         $sql =<<<EOF
-        SELECT IFNULL(SUM(QUANTITY), 0) AS SOLD, DORAYAKI.ID, NAME, DESCRIPTION, PRICE, STOCK
+        SELECT IFNULL(SUM(QUANTITY), 0) AS SOLD, DORAYAKI.ID, NAME, DESCRIPTION, PRICE, STOCK, IMG_FILE
         FROM DORAYAKI
         LEFT JOIN PURCHASE P ON DORAYAKI.ID = P.DORAYAKI_ID
         WHERE DORAYAKI.ID = (?)
@@ -70,7 +70,7 @@ class Dorayaki extends Controller {
     public function list_popular() 
     {
         $sql =<<<EOF
-        SELECT IFNULL(SUM(QUANTITY), 0) AS SOLD, DORAYAKI.ID, NAME, DESCRIPTION, PRICE, STOCK
+        SELECT IFNULL(SUM(QUANTITY), 0) AS SOLD, DORAYAKI.ID, NAME, DESCRIPTION, PRICE, STOCK, IMG_FILE
         FROM DORAYAKI
         LEFT JOIN PURCHASE P ON DORAYAKI.ID = P.DORAYAKI_ID
         GROUP BY DORAYAKI.ID

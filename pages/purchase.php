@@ -44,7 +44,7 @@ $userid = $_SESSION["user"]["id"];
             <h2 class="page-header">Beli</h2>
         </div>
         <div class="row">
-            <img class="purchase-image" src="../assets/dorayaki.jpeg" alt="Dorayaki" />
+            <img class="purchase-image" src=<?php echo "../assets/dorayaki/" . $res->IMG_FILE ?> alt="Dorayaki" />
             <div class="purchase-info">
                 <h4 class="purchase-name"><?php echo $res->NAME ?></h4>
                 <p class="purchase-stock">Stok: <span class="subtitle" name="purchase-stock"><?php echo $res->STOCK ?>

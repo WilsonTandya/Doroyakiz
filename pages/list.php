@@ -55,6 +55,7 @@ $res = $dorayaki->search(strtolower($query),$offset,$n_records_per_page);
                 $description = preprocess($res[$i]->DESCRIPTION);
                 $price = preprocess($res[$i]->PRICE);
                 $stock = preprocess($res[$i]->STOCK);
+                $imgFile = preprocess($res[$i]->IMG_FILE);
                 echo "<list-card 
                         id=$id
                         sold=$sold 
@@ -62,6 +63,7 @@ $res = $dorayaki->search(strtolower($query),$offset,$n_records_per_page);
                         description=$description 
                         price=$price 
                         stock=$stock 
+                        imgFile=$imgFile
                         final=$isFinalIndex
                     ></list-card>";
             }

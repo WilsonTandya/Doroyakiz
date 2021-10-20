@@ -15,7 +15,8 @@
             $description = preprocess($res[$i]->DESCRIPTION);
             $price = preprocess($res[$i]->PRICE);
             $stock = preprocess($res[$i]->STOCK);
-            $content = $content .  "<list-card id=$id sold=$sold name=$name description=$description price=$price  stock=$stock final=$isFinalIndex></list-card>";
+            $imgFile = preprocess($res[$i]->IMG_FILE);
+            $content = $content .  "<list-card id=$id sold=$sold name=$name description=$description price=$price  stock=$stock imgFile=$imgFile final=$isFinalIndex></list-card>";
         }
         echo $content;
     } else if (isset($_POST["pageno"]) && isset($_POST["totalpages"])) {
