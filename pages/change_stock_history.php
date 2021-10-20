@@ -72,14 +72,25 @@
         </table>
     </div>
     <?php else: ?>
-    <div class="container-not-available">
-        <img src="../assets/not_available.png"/>
-        <p class="title">Ups, Riwayat perubahan kamu masih kosong.</p>
-        <p class="subtitle">Mari merubah stok Doroyaki!</p>
-        <a href="index.php">
-            <p class="button">Menu Utama</p>
-        </a>
-    </div>
+        <?php if ($_SESSION["user"]["is_admin"] == 0): ?>
+        <div class="container-not-available">
+            <img src="../assets/not_available.png"/>
+            <p class="title">Halaman ini tidak tersedia</p>
+            <p class="subtitle">Mari berselancar ke halaman lain!</p>
+            <a href="index.php">
+                <p class="button">Menu Utama</p>
+            </a>
+        </div>
+        <?php else: ?>
+        <div class="container-not-available">
+            <img src="../assets/not_available.png"/>
+            <p class="title">Ups, Riwayat perubahan kamu masih kosong.</p>
+            <p class="subtitle">Mari merubah stok Doroyaki!</p>
+            <a href="index.php">
+                <p class="button">Menu Utama</p>
+            </a>
+        </div>
+        <?php endif; ?>
     <?php endif; ?>
 </body>
 </html>

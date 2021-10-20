@@ -216,27 +216,16 @@ class Dorayaki extends Controller {
 
             $stmt = $this->db->prepare($sql);
             $stmt->execute(array($id));
+
+            $res = array();
+            while ($row = $stmt->fetch(PDO::FETCH_OBJ)) {
+                $res[] = $row;
+            }
+            return $res;
         }
         else {
-            $sql =<<<EOF
-            SELECT D.NAME as VARIANT, A.NAME as CHANGER, CHANGE_STOCK.CREATED_AT as CHANGE_DATE, 
-            CHANGE_STOCK.QUANTITY as QUANTITY, D.ID as DORAYAKI_ID
-            FROM CHANGE_STOCK
-            INNER JOIN DORAYAKI D ON CHANGE_STOCK.DORAYAKI_ID = D.ID
-            INNER JOIN ACCOUNT A ON CHANGE_STOCK.CHANGER_ID = A.ID
-            ORDER BY CHANGE_DATE ASC
-            ;
-            EOF;
-
-            $stmt = $this->db->prepare($sql);
-            $stmt->execute(array());
+            return NULL;
         }
-
-        $res = array();
-        while ($row = $stmt->fetch(PDO::FETCH_OBJ)) {
-            $res[] = $row;
-        }
-		return $res;
     }
 
     public function delete_dorayaki($dorayaki_id) {
