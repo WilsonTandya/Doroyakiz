@@ -1,12 +1,12 @@
 # Tugas Besar WBD 1 - IF3110-2021-01-20
 
-## Dorayakiz: Dorayaki Management System
+## Doroyakiz: Dorayaki Management System
 
 ## Kelompok 20: haissem
 
-- 13519058 - Dionisius Darryl Hermansyah
-- 13519190 - Gregorius Dimas Baskara
-- 13519209 - Wilson Tandya
+-   13519058 - Dionisius Darryl Hermansyah
+-   13519190 - Gregorius Dimas Baskara
+-   13519209 - Wilson Tandya
 
 ## Deskripsi Aplikasi web
 
@@ -37,18 +37,18 @@ Spesifikasi bonus yang tersedia yaitu:
 
 ## Daftar Requirement
 
-- PHP 8
-- SQLite3
+-   PHP 8
+-   SQLite3
 
 Untuk menjalankan server secara lokal tanpa Docker:
 
-- XAMPP
+-   XAMPP
 
 Untuk menjalankan dengan Docker:
 
-- OS Ubuntu / Windows dengan WSL2
-- Docker
-- Docker Compose
+-   OS Ubuntu / Windows dengan WSL2
+-   Docker
+-   Docker Compose
 
 ## Cara Instalasi
 
@@ -98,7 +98,21 @@ docker-compose stop
 
 ## Screenshot Tampilan Aplikasi
 
-    - Screenshot tampilan aplikasi (tidak perlu semua kasus, minimal 1 per halaman), dan
+#### Dashboard
+
+![Dashboard](./docs/dashboard.jpg)
+
+#### Search
+
+![Search](./docs/search.jpg)
+
+#### Detail
+
+![Detail](./docs/detail.jpg)
+
+#### Purchase
+
+![Purchase](./docs/purchase.jpg)
 
 ## Pembagian Tugas
 
