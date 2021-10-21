@@ -96,7 +96,7 @@
                     btnSubmit.style.cursor = "not-allowed";
                     btnSubmit.innerHTML = "Ubah Stok"
                 } 
-                else if (this.responseText == "quantity-valid") {
+                else{
                     btnSubmit.disabled = false;
                     btnSubmit.style.background = "#45b54a";
                     btnSubmit.style.cursor = "pointer";
