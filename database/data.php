@@ -29,6 +29,35 @@
    }
    /* END DORAYAKI TABLE*/
 
+   /* START DORAYAKI ALL TABLE*/
+   $sql =<<<EOF
+      INSERT INTO DORAYAKI_ALL VALUES
+      (1, 'Dorayaki Rasa Nanas', 'Dorayaki ini rasanya seperti nanas', 5000, 200, '1.jpg'),
+      (2, 'Dorayaki Rasa Ikan', 'Dorayaki ini rasanya seperti makhluk laut', 10000, 250, '2.png'),
+      (3, 'Dorayaki Crispy', 'Dorayaki ini gurih dan renyah', 3000, 100, '3.jpg'),
+      (4, 'Dorayaki Rasa Nasi Goreng', 'Dorayaki ini rasanya seperti nasi goreng bawang putih', 15000, 180, '4.jpg'),
+      (5, 'Dorayaki Supreme', 'Dorayaki ini mahal dan terbatas', 50000, 50, '5.jpg'),
+      (6, 'Dorayaki Kayu', 'Dorayaki ini estetik dengan bau kayu-kayuan', 1000, 150, '6.png'),
+      (7, 'Dorayaki Biasa', 'Dorayaki ini biasa aja bro', 1000, 500, '7.jpeg'),
+      (8, 'Dorayaki Cokelat Mayonais', 'Dorayaki ini sangat lezat, sehat, dan bergizi', 5000, 250, '8.png'),
+      (9, 'Dorayaki Wortel Jelly', 'Dorayaki ini manis dan sehat', 3000, 350, '9.jpg'),
+      (10, 'Dorayaki Palsu', 'Dorayaki KW gan', 500, 550, '10.jpg'),
+      (11, 'Dorayaki Doraemon', 'Dorayaki ini dicuri dari Doraemon', 50000, 950, '11.png'),
+      (12, 'Dorayaki Teppanyaki', 'Dorayaki ini dibuat oleh koki Jepang yang hebat', 10550, 150, '12.jpg'),
+      (13, 'Dorayaki Dorayaki', 'Dorayaki ini rekursif', 19500, 450, '13.jpg'),
+      (14, 'Dorayaki Isi Kacang Merah', 'Dorayaki ini bukan berisi kacang hijau', 5000, 350, '14.jpg'),
+      (15, 'Dorayaki Isi Kacang Hijau', 'Dorayaki ini bukan berisi kacang merah', 8150, 500, '15.jpg'),
+      (16, 'Dorayaki Asus', 'Dorayaki ini canggih', 19000, 500,'16.jpg' )
+      ;
+   EOF;
+
+   try {
+      $res = $db->exec($sql);
+      echo "Successfully inserted dummy data to DorayakiAll table<br/>";   
+   } catch (PDOException $e) {
+      echo "Error: " . $e->getMessage();
+   }
+   /* END DORAYAKI ALL TABLE*/
 
    /* START ACCOUNT TABLE*/
    $sql =<<<EOF
@@ -89,7 +118,7 @@
 
    try {
       $res = $db->exec($sql);
-      echo "Successfully inserted dummy data to Change Stock table<br/>";   
+      echo "Successfully inserted dummy data to ChangeStock table<br/>";   
    } catch (PDOException $e) {
       echo "Error: " . $e->getMessage();
    }

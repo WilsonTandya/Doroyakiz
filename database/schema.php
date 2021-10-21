@@ -6,8 +6,8 @@
          ID INTEGER PRIMARY KEY AUTOINCREMENT,
          NAME CHAR(255) NOT NULL,
          DESCRIPTION TEXT,
-         PRICE REAL NOT NULL CHECK(PRICE>0),
-         STOCK INTEGER NOT NULL CHECK(STOCK>0),
+         PRICE REAL NOT NULL CHECK(PRICE>=0),
+         STOCK INTEGER NOT NULL CHECK(STOCK>=0),
          IMG_FILE VARCHAR(255) NOT NULL
       );
    EOF;
@@ -19,6 +19,27 @@
       echo "Error: " . $e->getMessage();
    }
    /* END DORAYAKI TABLE*/
+
+   /* START DORAYAKI ALL TABLE*/
+   $sql =<<<EOF
+      CREATE TABLE IF NOT EXISTS DORAYAKI_ALL
+      (
+         ID INTEGER PRIMARY KEY AUTOINCREMENT,
+         NAME CHAR(255) NOT NULL,
+         DESCRIPTION TEXT,
+         PRICE REAL NOT NULL CHECK(PRICE>=0),
+         STOCK INTEGER NOT NULL CHECK(STOCK>=0),
+         IMG_FILE VARCHAR(255) NOT NULL
+      );
+   EOF;
+
+   try {
+      $res = $db->exec($sql);
+      echo "Successfully created DorayakiAll table<br/>";
+   } catch (PDOException $e) {
+      echo "Error: " . $e->getMessage();
+   }
+   /* END DORAYAKI ALL TABLE*/
 
 
    /* START ACCOUNT TABLE*/
@@ -52,6 +73,7 @@
          BUYER_ID INTEGER,
          QUANTITY INTEGER NOT NULL CHECK(QUANTITY>0),
          CREATED_AT DATETIME NOT NULL,
+         FOREIGN KEY (DORAYAKI_ID) REFERENCES DORAYAKI_ALL(ID),
          FOREIGN KEY (BUYER_ID) REFERENCES Account(ID)
       );
    EOF;
@@ -73,6 +95,7 @@
          CHANGER_ID INTEGER,
          QUANTITY INTEGER NOT NULL CHECK(QUANTITY>0),
          CREATED_AT DATETIME NOT NULL,
+         FOREIGN KEY (DORAYAKI_ID) REFERENCES DORAYAKI_ALL(ID),
          FOREIGN KEY (CHANGER_ID) REFERENCES Account(ID)
       );
    EOF;
