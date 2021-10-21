@@ -128,19 +128,19 @@ docker-compose stop
 
 #### Login
 
-![Login](./docs/login.jpg)
+![Login](./docs/login.JPG)
 
 #### Register
 
-![Register](./docs/register.jpg)
+![Register](./docs/register.JPG)
 
 #### Riwayat Pembelian
 
-![Riwayat Pembelian](./docs/riwayat_pembelian.jpg)
+![Riwayat Pembelian](./docs/riwayat_pembelian.JPG)
 
 #### Riwayat Perubahan
 
-![Riwayat Perubahan](./docs/riwayat_perubahan.jpg)
+![Riwayat Perubahan](./docs/riwayat_perubahan.JPG)
 
 ## Pembagian Tugas
 

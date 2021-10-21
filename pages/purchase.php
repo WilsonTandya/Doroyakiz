@@ -70,7 +70,7 @@ $userid = $_SESSION["user"]["id"];
                     <p class="purchase-price">Harga satuan</p>
                     <p class="purchase-price">Rp<?php echo formatPrice($res->PRICE) ?></p>
                 </div>
-                <div class="row" style="justify-content: center;" id="amount-container">
+                <div class="row" id="amount-container">
                     <p class="purchase-price" style="margin-top: 25px;">Jumlah</p>
                     <?php if ($res->STOCK > 0): ?>
                     <form class="purchase-form" id="purchase-form" oninput="updateTotalPrice(event)">

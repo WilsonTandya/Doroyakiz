@@ -60,7 +60,7 @@
         <h2 id="login-title">Login</h2>
         <form action="login.php" method="post" oninput="handleChangeFormLogin(event)">
             <div class="form-box" id="form-top">
-                <p class="label">Username atau Email</p>
+                <p class="label">Username</p>
                 <div class="search-box">
                     <input placeholder="Masukkan Username Anda" name="username" autocomplete="off"/>
                 </div>
