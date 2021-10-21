@@ -1,0 +1,11 @@
+version: "3.1"
+
+services:
+  php:
+    image: php:8.0-apache
+    container_name: tubes1_wbd_g20
+    ports:
+      - 80:80
+    volumes:
+      - .:/var/www/html/
+      - ./config.ini:/usr/local/etc/php/conf.d/custom.ini

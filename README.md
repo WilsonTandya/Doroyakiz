@@ -1,10 +1,12 @@
-# IF3110-2021-01-20
+# Tugas Besar WBD 1 - IF3110-2021-01-20
+
+## Dorayakiz: Dorayaki Management System
 
 ## Kelompok 20: haissem
 
--   13519058 - Dionisius Darryl Hermansyah
--   13519190 - Gregorius Dimas Baskara
--   13519209 - Wilson Tandya
+- 13519058 - Dionisius Darryl Hermansyah
+- 13519190 - Gregorius Dimas Baskara
+- 13519209 - Wilson Tandya
 
 ## Deskripsi Aplikasi web
 
@@ -28,13 +30,25 @@ Fitur yang dimiliki aplikasi antara lain:
 
 ## Daftar Requirement
 
--   PHP 8
--   SQLite3
--   XAMPP (Untuk menjalankan server secara lokal)
+- PHP 8
+- SQLite3
+
+Untuk menjalankan server secara lokal tanpa Docker:
+
+- XAMPP
+
+Untuk menjalankan dengan Docker:
+
+- OS Ubuntu / Windows dengan WSL2
+- Docker
+- Docker Compose
 
 ## Cara Instalasi
 
-## Aktivasi SQLite3 pada PHP
+### XAMPP
+
+**Aktivasi SQLite3 pada PHP**
+Jika extension SQLite3 belum teraktivasi pada PHP:
 
 1. Buka php.ini in C:\xampp\php
 2. Tambahkan / uncomment kode ini
@@ -48,6 +62,32 @@ sqlite3.extension_dir = "C:\xampp\php\ext"
 [Referensi tambahan](https://www.nyingspot.com/2017/10/cara-mengaktifkan-sqlite3-di-php-windows/)
 
 ## Cara Menjalankan server
+
+### XAMPP
+
+1. Clone repository ini pada directory htdocs XAMPP anda. Contohnya: `C:\xampp\htdocs\`
+2. Buka XAMPP Control Panel dan Start service Apache
+3. Aplikasi akan dijalankan pada `localhost/tugas-besar-1`
+4. Untuk mengakses laman utama aplikasi, buka `localhost/tugas-besar-1/pages`
+
+### Docker
+
+1. Clone repository ini
+2. Masuk ke directory utama (root) dari repository
+3. Untuk menjalankan aplikasi, jalankan:
+
+```bash
+docker-compose up --build -d
+```
+
+4. Container akan berjalan dengan nama `tubes1_wbd_g20`
+5. Aplikasi akan berjalan pada `localhost:80`
+6. Untuk mengakses laman utama aplikasi, buka `localhost:80/pages` atau `localhost/pages`
+7. Untuk menghentikan aplikasi, jalankan:
+
+```bash
+docker-compose stop
+```
 
 ## Screenshot Tampilan Aplikasi
 
