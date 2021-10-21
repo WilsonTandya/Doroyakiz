@@ -91,10 +91,15 @@
             if (this.readyState == 4 && this.status == 200) {
                 let btnSubmit = document.getElementsByName("submit-button")[0]
                 if (this.responseText == "quantity-invalid") {
-                    btnSubmit.innerHTML ="WTESTTSE";
                     btnSubmit.disabled = true;
                     btnSubmit.style.background = "#777";
                     btnSubmit.style.cursor = "not-allowed";
+                    btnSubmit.innerHTML = "Ubah Stok"
+                } 
+                else if (this.responseText == "quantity-valid") {
+                    btnSubmit.disabled = false;
+                    btnSubmit.style.background = "#45b54a";
+                    btnSubmit.style.cursor = "pointer";
                     btnSubmit.innerHTML = "Ubah Stok"
                 } 
             }
