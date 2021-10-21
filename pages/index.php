@@ -47,14 +47,16 @@
         echo "<navbar-component></navbar-component>";
     ?>
     <div class="container">
+        <img src="../assets/jumbotron-1.png" class="jumbotron" alt="Jumbotron" />
+        <img src="../assets/jumbotron-2.png" class="jumbotron" style="display: none;" alt="Jumbotron" />
         <div class="flex-box">
-            <h2 class="page-header">Top 10 Dorayaki</h2>
+            <h2 class="page-header">Dorayaki Terpopuler Untukmu!</h2>
             <?php if ($isadmin): ?>
-                <div class="admin">
-                    <a href="add_variant.php" id="add_var">
-                        <button>Tambah varian</button>
-                    </a>
-                </div>
+            <div class="admin">
+                <a href="add_variant.php" id="add_var">
+                    <button>Tambah varian</button>
+                </a>
+            </div>
             <?php endif; ?>
         </div>
         <?php
@@ -81,5 +83,23 @@
         ?>
     </div>
 </body>
+
+<script>
+let images = document.getElementsByClassName("jumbotron");
+
+// switch jumbotron images every 1.8 sec
+let i = 0;
+setInterval(function() {
+    images[i].style.display = "none";
+
+    if (i + 1 < images.length) {
+        i++;
+    } else {
+        i = 0;
+    }
+
+    images[i].style.display = "inline-block";
+}, 1800);
+</script>
 
 </html>

@@ -96,6 +96,15 @@ docker-compose up --build -d
 docker-compose stop
 ```
 
+## Akun Testing
+
+Akun dapat dibuat melalui registrasi atau menggunakan akun yang sudah disediakan di bawah ini
+
+| Jenis | Username | Password |
+| ----- | -------- | -------- |
+| User  | bob      | bob      |
+| Admin | john_d   | 123      |
+
 ## Screenshot Tampilan Aplikasi
 
 #### Dashboard
@@ -146,38 +155,38 @@ docker-compose stop
 
 #### Server-side
 
-| Item                        | NIM                |
-| --------------------------- | ------------------ |
-| Login                       | 13519190           |
-| Register                    | 13519190           |
-| Dashboard                   | 13519058, 13519209 |
-| Pencarian Dorayaki          | 13519058           |
-| Daftar Dorayaki             | 13519058           |
-| Detail Dorayaki             | 13519058           |
-| Tambah Varian Dorayaki      | 13519209           |
-| Edit Stok Dorayaki          | 13519209           |
-| Delete Dorayaki             | 13519209           |
-| Pembelian Dorayaki          | 13519058           |
-| Setup Basis Data            | 13519058           |
-| Riwayat Pembelian           | 13519190           |
-| Riwayat Perubahan           | 13519190           |
-| Bonus: Data Expire Time     | 13519209           |
-| Bonus: Docker               | 13519058           |
-| Bonus: Riwayat              | 13519190           |
+| Item                    | NIM                |
+| ----------------------- | ------------------ |
+| Login                   | 13519190           |
+| Register                | 13519190           |
+| Dashboard               | 13519058, 13519209 |
+| Pencarian Dorayaki      | 13519058           |
+| Daftar Dorayaki         | 13519058           |
+| Detail Dorayaki         | 13519058           |
+| Tambah Varian Dorayaki  | 13519209           |
+| Edit Stok Dorayaki      | 13519209           |
+| Delete Dorayaki         | 13519209           |
+| Pembelian Dorayaki      | 13519058           |
+| Setup Basis Data        | 13519058           |
+| Riwayat Pembelian       | 13519190           |
+| Riwayat Perubahan       | 13519190           |
+| Bonus: Data Expire Time | 13519209           |
+| Bonus: Docker           | 13519058           |
+| Bonus: Riwayat          | 13519190           |
 
 #### Client-side
 
-| Item                        | NIM                          |
-| --------------------------- | ---------------------------- |
-| Init Directories, Styles    | 13519190                     |
-| Login                       | 13519190                     |
-| Register                    | 13519190                     |
-| Dashboard                   | 13519058, 13519190, 13519209 |
-| Pencarian Dorayaki          | 13519058                     |
-| Daftar Dorayaki             | 13519058                     |
-| Detail Dorayaki             | 13519058, 13519209           |
-| Pembelian Dorayaki          | 13519058                     |
-| Tambah Varian Dorayaki      | 13519209                     |
-| Edit Stok Dorayaki          | 13519209                     |
-| Bonus: Responsif            | 13519190                     |
-| Bonus: Riwayat              | 13519190                     |
+| Item                     | NIM                          |
+| ------------------------ | ---------------------------- |
+| Init Directories, Styles | 13519190                     |
+| Login                    | 13519190                     |
+| Register                 | 13519190                     |
+| Dashboard                | 13519058, 13519190, 13519209 |
+| Pencarian Dorayaki       | 13519058                     |
+| Daftar Dorayaki          | 13519058                     |
+| Detail Dorayaki          | 13519058, 13519209           |
+| Pembelian Dorayaki       | 13519058                     |
+| Tambah Varian Dorayaki   | 13519209                     |
+| Edit Stok Dorayaki       | 13519209                     |
+| Bonus: Responsif         | 13519190                     |
+| Bonus: Riwayat           | 13519190                     |
