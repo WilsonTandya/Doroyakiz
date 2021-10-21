@@ -104,14 +104,26 @@ docker-compose stop
 
 #### Server-side
 
-| Item     | NIM                |
-| -------- | ------------------ |
-| Login    | 13519xxx, 13519xxx |
-| Register | 13519xxx           |
+| Item               | NIM                |
+| ------------------ | ------------------ |
+| Login              | 13519xxx, 13519xxx |
+| Register           | 13519xxx           |
+| Dashboard          | 13519058           |
+| Pencarian Dorayaki | 13519058           |
+| Daftar Dorayaki    | 13519058           |
+| Detail Dorayaki    | 13519058           |
+| Pembelian Dorayaki | 13519058           |
+| Setup Basis Data   | 13519058           |
+| Bonus: Docker      | 13519058           |
 
 #### Client-side
 
-| Item     | NIM                |
-| -------- | ------------------ |
-| Login    | 13519xxx, 13519xxx |
-| Register | 13519xxx           |
+| Item               | NIM                |
+| ------------------ | ------------------ |
+| Login              | 13519xxx, 13519xxx |
+| Register           | 13519xxx           |
+| Dashboard          | 13519058           |
+| Pencarian Dorayaki | 13519058           |
+| Daftar Dorayaki    | 13519058           |
+| Detail Dorayaki    | 13519058           |
+| Pembelian Dorayaki | 13519058           |
