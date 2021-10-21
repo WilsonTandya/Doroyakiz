@@ -70,7 +70,7 @@
                     <p class="purchase-price" style="margin-right: auto; margin-top: 25px;">Jumlah Stok Baru</p>
                     <form class="purchase-form" id="purchase-form" action=<?php echo "edit_stock.php?id=" . $id ?>
                         method="post">
-                        <input type="number" name="quantity" min="1" step="1" value="1" />
+                        <input type="number" name="quantity" min="0" step="1" value="1" />
                     </form>
                 </div>
                 <hr class="solid">
