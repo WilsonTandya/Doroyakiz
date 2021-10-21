@@ -139,6 +139,10 @@ Akun dapat dibuat melalui registrasi atau menggunakan akun yang sudah disediakan
 
 ![Edit Stock](./docs/edit_stock.jpg)
 
+#### Edit Detail
+
+![Edit Detail](./docs/edit_detail.jpg)
+
 #### Delete
 
 ![Delete](./docs/delete.jpg)
@@ -155,12 +159,13 @@ Akun dapat dibuat melalui registrasi atau menggunakan akun yang sudah disediakan
 
 ### Bonus
 
-| Item                    | NIM      |
-| ----------------------- | -------- |
-| Bonus: Data Expire Time | 13519209 |
-| Bonus: Responsif        | 13519190 |
-| Bonus: Docker           | 13519058 |
-| Bonus: Riwayat          | 13519190 |
+| Item                      | NIM      |
+| ------------------------- | -------- |
+| Bonus: Edit Detail Varian | 13519209 |
+| Bonus: Data Expire Time   | 13519209 |
+| Bonus: Responsif          | 13519190 |
+| Bonus: Docker             | 13519058 |
+| Bonus: Riwayat            | 13519190 |
 
 #### Server-side
 
