@@ -107,6 +107,14 @@ Akun dapat dibuat melalui registrasi atau menggunakan akun yang sudah disediakan
 
 ## Screenshot Tampilan Aplikasi
 
+#### Login
+
+![Login](./docs/login.JPG)
+
+#### Register
+
+![Register](./docs/register.JPG)
+
 #### Dashboard
 
 ![Dashboard](./docs/dashboard.jpg)
@@ -134,14 +142,6 @@ Akun dapat dibuat melalui registrasi atau menggunakan akun yang sudah disediakan
 #### Purchase
 
 ![Purchase](./docs/purchase.jpg)
-
-#### Login
-
-![Login](./docs/login.JPG)
-
-#### Register
-
-![Register](./docs/register.JPG)
 
 #### Riwayat Pembelian
 

@@ -69,7 +69,7 @@
                 <div class="row" id="amount-container">
                     <p class="purchase-price">Jumlah Stok Baru</p>
                     <form class="purchase-form" id="purchase-form" action=<?php echo "edit_stock.php?id=" . $id ?>
-                        method="post">
+                        method="post" oninput="cekValidity(event)">
                         <input type="number" name="quantity" min="0" step="1" value="1" />
                     </form>
                 </div>
@@ -85,6 +85,30 @@
 </body>
 
 <script>
+    function cekValidity(event) {
+        let xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                let btnSubmit = document.getElementsByName("submit-button")[0]
+                if (this.responseText == "quantity-invalid") {
+                    btnSubmit.innerHTML ="WTESTTSE";
+                    btnSubmit.disabled = true;
+                    btnSubmit.style.background = "#777";
+                    btnSubmit.style.cursor = "not-allowed";
+                    btnSubmit.innerHTML = "Ubah Stok"
+                } 
+            }
+        };
+        xhttp.open("POST", "../ajax/ajax_edit_stock.php", true);
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        let qtyVal = document.getElementsByName("quantity")[0].value;
+        let qty = qtyVal ? qtyVal : 0;
+        let id = <?php echo $id; ?>;
+        let userid = <?php echo $userid; ?>;
+        let param = `id=${id}&userid=${userid}&qty=${qty}`;
+        xhttp.send(param);
+    }   
+
     function ubah_stok(event) {
     let xhttp = new XMLHttpRequest();
     let qtyVal = document.getElementsByName("quantity")[0].value;
