@@ -43,7 +43,7 @@ $userid = $_SESSION["user"]["id"];
     <link href="https://fonts.googleapis.com/css2?family=Manrope&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../styles/global.css">
     <link rel="stylesheet" href="../styles/purchase.css">
-    <link rel="stylesheet" href="../styles/not-available.css">
+    <link rel="stylesheet" href="../styles/not_available.css">
     <script src="../components/navbar.js" type="text/javascript" defer></script>
     <title>Doroyaki</title>
 </head>
@@ -72,18 +72,35 @@ $userid = $_SESSION["user"]["id"];
                 </div>
                 <div class="row" style="justify-content: center;">
                     <p class="purchase-price" style="margin-right: auto; margin-top: 25px;">Jumlah</p>
+                    <?php if ($res->STOCK > 0): ?>
                     <form class="purchase-form" id="purchase-form" oninput="updateTotalPrice(event)">
                         <input type="number" name="quantity" min="1" step="1" value="1" />
                     </form>
+                    <?php else: ?>
+                    <form class="purchase-form" id="purchase-form">
+                        <input type="number" name="quantity" min="1" step="1" value="1" />
+                    </form>
+                    <?php endif; ?>
                 </div>
                 <hr class="solid">
                 <div class="row" style="margin-top: 25px;">
                     <span class="purchase-total" style="margin-right: auto;">Total harga</span>
+                    <?php if ($res->STOCK > 0): ?>
                     <span class="purchase-total" name="purchase-total">Rp<?php echo formatPrice($res->PRICE) ?></span>
+                    <?php else: ?>
+                    <span class="purchase-total" name="purchase-total" style="color: #d8414a;">Stok dorayaki
+                        habis!</span>
+                    <?php endif; ?>
                 </div>
+                <?php if ($res->STOCK > 0): ?>
                 <button name="submit-button" onclick="buy(event)">
                     Beli
                 </button>
+                <?php else: ?>
+                <button name="submit-button" style="background: #777; cursor: not-allowed;" disabled>
+                    Beli
+                </button>
+                <?php endif; ?>
                 <p class="purchase-success"></p>
             </div>
         </div>
@@ -114,18 +131,21 @@ function updateTotalPrice(event) {
                 btnSubmit.disabled = true;
                 btnSubmit.style.background = "#777";
                 btnSubmit.style.cursor = "not-allowed";
+                btnSubmit.innerHTML = "Beli"
             } else if (this.responseText == "quantity-invalid") {
                 textPurchaseTotal.innerHTML = "Kuantitas pembelian tidak valid!";
                 textPurchaseTotal.style.color = "#d8414a";
                 btnSubmit.disabled = true;
                 btnSubmit.style.background = "#777";
                 btnSubmit.style.cursor = "not-allowed";
+                btnSubmit.innerHTML = "Beli"
             } else {
                 textPurchaseTotal.innerHTML = this.responseText;
                 textPurchaseTotal.style.color = "#000";
                 btnSubmit.disabled = false;
                 btnSubmit.style.background = "#45b54a";
                 btnSubmit.style.cursor = "pointer";
+                btnSubmit.innerHTML = "Beli"
             }
         }
     };
@@ -133,10 +153,10 @@ function updateTotalPrice(event) {
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     let priceVal = <?php echo $res->PRICE ?>;
     let qtyVal = document.getElementsByName("quantity")[0].value;
-    let stock = <?php echo $res->STOCK ?>;
     let price = priceVal ? priceVal : 0;
     let qty = qtyVal ? qtyVal : 0;
-    let param = `price=${price}&qty=${qty}&stock=${stock}`;
+    let id = <?php echo $id; ?>;
+    let param = `id=${id}&price=${price}&qty=${qty}`;
     xhttp.send(param);
 }
 
@@ -150,18 +170,18 @@ function buy(event) {
     xhttp.onreadystatechange = function() {
         let btnSubmit = document.getElementsByName("submit-button")[0]
         let textPurchaseSuccess = document.getElementsByClassName("purchase-success")[0]
+        let textPurchaseTotal = document.getElementsByName("purchase-total")[0]
         btnSubmit.innerHTML = "Sedang membeli..."
         btnSubmit.disabled = true
         btnSubmit.style.cursor = "not-allowed"
-        btnSubmit.style.background = "rgba(0,0,0,0.3)"
+        btnSubmit.style.background = "#777"
         textPurchaseSuccess.innerHTML = "Memproses"
         if (this.readyState == 4 && this.status == 200) {
             document.getElementsByName("purchase-stock")[0].innerHTML = this.responseText
             textPurchaseSuccess.innerHTML = `*Pembelian ${qty} buah dorayaki berhasil!`
-            btnSubmit.innerHTML = "Beli"
-            btnSubmit.disabled = false
-            btnSubmit.style.cursor = "pointer"
-            btnSubmit.style.background = "#45b54a"
+            btnSubmit.innerHTML = "Masukkan kuantitas"
+            document.getElementsByName("quantity")[0].value = 0
+            textPurchaseTotal.innerHTML = "Rp0";
         }
     };
     xhttp.open("POST", "../ajax/ajax_purchase.php", true);

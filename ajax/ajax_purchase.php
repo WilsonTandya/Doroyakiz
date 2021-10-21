@@ -4,8 +4,9 @@
 
     $dorayaki = new Dorayaki();
 
-    if (isset($_POST["price"]) && isset($_POST["qty"]) && isset($_POST["stock"])) {
-        if ($_POST["stock"] < $_POST["qty"]) {
+    if (isset($_POST["price"]) && isset($_POST["qty"]) && isset($_POST["id"])) {
+        $res = $dorayaki->detail($_POST["id"]);
+        if ($res->STOCK < $_POST["qty"]) {
             echo "quantity-exceed";
         } else if ($_POST["qty"] < 1) {
             echo "quantity-invalid";
