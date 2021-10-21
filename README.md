@@ -169,6 +169,7 @@ docker-compose stop
 
 | Item                        | NIM                          |
 | --------------------------- | ---------------------------- |
+| Init Directories, Styles    | 13519190                     |
 | Login                       | 13519190                     |
 | Register                    | 13519190                     |
 | Dashboard                   | 13519058, 13519190, 13519209 |
