@@ -114,30 +114,51 @@ docker-compose stop
 
 ![Purchase](./docs/purchase.jpg)
 
+#### Login
+
+![Login](./docs/login.jpg)
+
+#### Register
+
+![Register](./docs/register.jpg)
+
+#### Riwayat Pembelian
+
+![Riwayat Pembelian](./docs/riwayat_pembelian.jpg)
+
+#### Riwayat Perubahan
+
+![Riwayat Perubahan](./docs/riwayat_perubahan.jpg)
+
 ## Pembagian Tugas
 
 #### Server-side
 
 | Item               | NIM                |
 | ------------------ | ------------------ |
-| Login              | 13519xxx, 13519xxx |
-| Register           | 13519xxx           |
-| Dashboard          | 13519058           |
+| Login              | 13519190           |
+| Register           | 13519190           |
+| Dashboard          | 13519058, 13519190 |
 | Pencarian Dorayaki | 13519058           |
 | Daftar Dorayaki    | 13519058           |
 | Detail Dorayaki    | 13519058           |
 | Pembelian Dorayaki | 13519058           |
 | Setup Basis Data   | 13519058           |
+| Riwayat Pembelian  | 13519190           |
+| Riwayat Perubahan  | 13519190           |
 | Bonus: Docker      | 13519058           |
+| Bonus: Riwayat     | 13519190           |
 
 #### Client-side
 
 | Item               | NIM                |
 | ------------------ | ------------------ |
-| Login              | 13519xxx, 13519xxx |
-| Register           | 13519xxx           |
-| Dashboard          | 13519058           |
+| Login              | 13519190           |
+| Register           | 13519190           |
+| Dashboard          | 13519058, 13519190 |
 | Pencarian Dorayaki | 13519058           |
 | Daftar Dorayaki    | 13519058           |
 | Detail Dorayaki    | 13519058           |
 | Pembelian Dorayaki | 13519058           |
+| Bonus: Responsif   | 13519190           |
+| Bonus: Riwayat     | 13519190           |

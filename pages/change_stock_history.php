@@ -42,7 +42,7 @@
     <?php
         echo "<navbar-component></navbar-component>";
     ?>
-    <?php if ($res != null): ?>
+    <?php if ($res != null || $_SESSION["user"]["is_admin"] == 1): ?>
     <div class="container">
         <div class="flex-row" id="flex-between">
             <h2 class="page-header">Riwayat Perubahan</h2>
@@ -59,6 +59,7 @@
                 }
             ?>
         </div>
+        <?php if ($res != null): ?>
         <table class="change-table">
             <tr>
                 <th>Varian</th>
@@ -84,27 +85,26 @@
                 }
             ?>
         </table>
-    </div>
-    <?php else: ?>
-        <?php if ($_SESSION["user"]["is_admin"] == 0): ?>
-        <div class="container-not-available">
-            <img src="../assets/not_available.png"/>
-            <p class="title">Halaman ini tidak tersedia</p>
-            <p class="subtitle">Mari berselancar ke halaman lain!</p>
-            <a href="index.php">
-                <p class="button">Menu Utama</p>
-            </a>
-        </div>
         <?php else: ?>
         <div class="container-not-available">
             <img src="../assets/not_available.png"/>
-            <p class="title">Ups, Riwayat perubahan kamu masih kosong.</p>
+            <p class="title">Riwayat perubahan masih kosong.</p>
             <p class="subtitle">Mari merubah stok Doroyaki!</p>
             <a href="index.php">
                 <p class="button">Menu Utama</p>
             </a>
         </div>
         <?php endif; ?>
+    </div>
+    <?php else: ?>
+    <div class="container-not-available">
+        <img src="../assets/not_available.png"/>
+        <p class="title">Halaman ini tidak tersedia</p>
+        <p class="subtitle">Mari berselancar ke halaman lain!</p>
+        <a href="index.php">
+            <p class="button">Menu Utama</p>
+        </a>
+    </div>
     <?php endif; ?>
 </body>
 </html>

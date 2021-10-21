@@ -42,7 +42,7 @@
     <?php
         echo "<navbar-component></navbar-component>";
     ?>
-    <?php if ($res != null): ?>
+    <?php if ($res != null || $_SESSION["user"]["is_admin"] == 1): ?>
     <div class="container">
         <div class="flex-row" id="flex-between">
             <h2 class="page-header">Riwayat Pembelian</h2>
@@ -59,6 +59,7 @@
                 }
             ?>
         </div>
+        <?php if ($res != null): ?>
         <table class="purchase-table">
             <tr>
                 <th>Varian</th>
@@ -87,6 +88,15 @@
                 }
             ?>
         </table>
+        <?php else: ?>
+        <div class="container-not-available">
+            <img src="../assets/not_available.png"/>
+            <p class="title">Riwayat pembelian pengguna masih kosong.</p>
+            <a href="index.php">
+                <p class="button">Menu Utama</p>
+            </a>
+        </div>
+        <?php endif; ?>
     </div>
     <?php else: ?>
     <div class="container-not-available">

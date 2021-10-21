@@ -14,8 +14,8 @@
             
             $_SESSION = array(
                 "login" => true,
-                "data" => array("time" => time()+60*10) //10 menit expiry time
-              );
+                "data" => array("time" => time()+60*10) // 10 minute expiry time
+            );
 
             $_SESSION["user"] = array("id" => $res->ID, "username" => $res->USERNAME, "is_admin" => $res->ISADMIN);
             header("Location: " . "index.php");

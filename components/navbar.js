@@ -160,7 +160,7 @@ navbarTemplate.innerHTML = `
   <header>
     <nav>
         <a href="index.php">
-          <h1>Doroyakiz</h1>
+          <h1>Dorayakiz</h1>
         </a>
         <div class="nav-button-container">
           <form class="nav-search" id="form-search" name="form-search" action="list.php" method="GET" autocomplete="off" >
