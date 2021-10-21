@@ -67,6 +67,24 @@ class Dorayaki extends Controller {
 		return $res;
     }
 
+    public function detail_all($id) 
+    {
+        $sql =<<<EOF
+        SELECT IFNULL(SUM(QUANTITY), 0) AS SOLD, DORAYAKI_ALL.ID, NAME, DESCRIPTION, PRICE, STOCK, IMG_FILE
+        FROM DORAYAKI_ALL
+        LEFT JOIN PURCHASE P ON DORAYAKI_ALL.ID = P.DORAYAKI_ID
+        WHERE DORAYAKI_ALL.ID = (?)
+        GROUP BY DORAYAKI_ALL.ID
+        ;
+        EOF;
+
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute(array($id));
+        $res = $stmt->fetch(PDO::FETCH_OBJ);
+
+		return $res;
+    }
+
     public function list_popular() 
     {
         $sql =<<<EOF
@@ -98,9 +116,20 @@ class Dorayaki extends Controller {
         $stmt = $this->db->prepare($sql);
         $stmt->bindParam(":dorayaki_id", $dorayaki_id);
         $stmt->bindParam(":qty", $qty);
-        $res = $stmt->execute();
+        $res1 = $stmt->execute();
 
-        return $res;
+        $sql =<<<EOF
+        UPDATE DORAYAKI_ALL
+        SET STOCK = STOCK - :qty
+        WHERE ID = :dorayaki_id;
+        EOF;
+
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindParam(":dorayaki_id", $dorayaki_id);
+        $stmt->bindParam(":qty", $qty);
+        $res2 = $stmt->execute();
+
+        return $res1 && $res2;
     }
 
     public function make_purchase($dorayaki_id, $buyer_id, $qty) 
@@ -260,26 +289,5 @@ class Dorayaki extends Controller {
         return $addVariantSuccess;
     }
 }
-
-/* TEST CONSTANT */
-// $page_no = 1;
-// $n_records_per_page = 5;
-// $offset = ($page_no-1) * $n_records_per_page;
-
-// $test = new Dorayaki();
-// $res = $test->search("Rasa",$offset,$n_records_per_page);
-// print_r($res);
-// $res = $test->search_total_records("doR");
-// print_r($res);
-// echo "<br/>";
-// $res = $test->detail(3);
-// print_r($res); 
-// echo "<br/>";
-// $res = $test->list_popular();
-// echo "<br/>" . $res[0]->NAME . "<br/>";
-// $res = $test->buy(7,3,1);
-// echo "<br/>" .  $res . "<br/>";
-// $res = $test->change_stock(4,1,1000);
-// echo $res;
 
 ?>
