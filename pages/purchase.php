@@ -60,18 +60,18 @@ $userid = $_SESSION["user"]["id"];
             </a>
             <h2 class="page-header">Beli</h2>
         </div>
-        <div class="row">
+        <div class="purchase-container">
             <img class="purchase-image" src=<?php echo "../assets/dorayaki/" . $res->IMG_FILE ?> alt="Dorayaki" />
             <div class="purchase-info">
                 <h4 class="purchase-name"><?php echo $res->NAME ?></h4>
                 <p class="purchase-stock">Stok: <span class="subtitle" name="purchase-stock"><?php echo $res->STOCK ?>
                         buah</span></p>
-                <div class="row">
-                    <p class="purchase-price" style="margin-right: auto;">Harga satuan</p>
+                <div class="row" id="amount-row-container">
+                    <p class="purchase-price">Harga satuan</p>
                     <p class="purchase-price">Rp<?php echo formatPrice($res->PRICE) ?></p>
                 </div>
-                <div class="row" style="justify-content: center;">
-                    <p class="purchase-price" style="margin-right: auto; margin-top: 25px;">Jumlah</p>
+                <div class="row" style="justify-content: center;" id="amount-container">
+                    <p class="purchase-price" style="margin-top: 25px;">Jumlah</p>
                     <?php if ($res->STOCK > 0): ?>
                     <form class="purchase-form" id="purchase-form" oninput="updateTotalPrice(event)">
                         <input type="number" name="quantity" min="1" step="1" value="1" />
@@ -83,8 +83,8 @@ $userid = $_SESSION["user"]["id"];
                     <?php endif; ?>
                 </div>
                 <hr class="solid">
-                <div class="row" style="margin-top: 25px;">
-                    <span class="purchase-total" style="margin-right: auto;">Total harga</span>
+                <div class="row" style="margin-top: 25px;" id="amount-row-container">
+                    <span class="purchase-total">Total harga</span>
                     <?php if ($res->STOCK > 0): ?>
                     <span class="purchase-total" name="purchase-total">Rp<?php echo formatPrice($res->PRICE) ?></span>
                     <?php else: ?>

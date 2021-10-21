@@ -60,14 +60,14 @@
             </a>
             <h2 class="page-header">Ubah Stok</h2>
         </div>
-        <div class="row">
+        <div class="purchase-container">
             <img class="purchase-image" src=<?php echo "../assets/dorayaki/" . $res->IMG_FILE ?> alt="Dorayaki" />
             <div class="purchase-info">
                 <h4 class="purchase-name"><?php echo $res->NAME ?></h4>
                 <p class="purchase-stock">Stok: <span class="subtitle" name="purchase-stock"><?php echo $res->STOCK ?>
                         buah</span></p>
-                <div class="row" style="justify-content: center;">
-                    <p class="purchase-price" style="margin-right: auto; margin-top: 25px;">Jumlah Stok Baru</p>
+                <div class="row" id="amount-container">
+                    <p class="purchase-price">Jumlah Stok Baru</p>
                     <form class="purchase-form" id="purchase-form" action=<?php echo "edit_stock.php?id=" . $id ?>
                         method="post">
                         <input type="number" name="quantity" min="0" step="1" value="1" />

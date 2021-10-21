@@ -1,3 +1,10 @@
+.purchase-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin: 5px 0;
+}
+
 .purchase-title {
     color: rgba(49, 53, 59, 0.96);
     font-weight: bold;
@@ -15,6 +22,10 @@
     width: 100%;
 }
 
+#amount-container {
+    justify-content: space-between;
+}
+
 .purchase-name {
     font-weight: bold;
     font-size: 1.5em;
@@ -28,7 +39,7 @@
 
 .purchase-price {
     font-size: 1em;
-    margin: 0 0 2rem 0;
+    margin: 25px 0 2rem 0;
 }
 
 .purchase-total {
@@ -61,11 +72,11 @@
     border: none;
     background-color: #45b54a;
     color: #fcfeff;
-    width: inherit;
-    padding: 8px 0;
+    width: 100%;
+    padding: 8px 10px;
     border-radius: 5px;
     font-size: 16px;
-    font-weight: 500;
+    font-weight: bold;
     letter-spacing: 2px;
     cursor: pointer;
     transition-duration: 0.2s;
@@ -104,4 +115,122 @@
     left: 50%;
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
+}
+
+@media screen and (max-width: 1280px) {
+    .purchase-image {
+        width: 300px;
+        height: 300px;
+        object-fit: cover;
+        border-radius: 10px;
+        margin-right: 50px;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .purchase-image {
+        width: 250px;
+        height: 250px;
+        object-fit: cover;
+        border-radius: 10px;
+        margin-right: 50px;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .purchase-image {
+        width: 200px;
+        height: 170px;
+        object-fit: cover;
+        border-radius: 10px;
+        margin-right: 0;
+    }
+
+    .purchase-container {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        margin: 5px 0;
+    }
+
+    .purchase-name {
+        margin: 1rem 0 1rem 0;
+    }
+
+    h4 {
+        text-align: center;
+    }
+
+    p {
+        margin-block-start: 0;
+        text-align: center;
+    }
+
+    .admin {
+        display: flex;
+        justify-content: center;
+    }
+
+    .purchase-info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .purchase-info a {
+        width: 90px;
+        margin: 0 5px;
+    }
+
+    .purchase-info .admin button {
+        width: 90px; 
+    }
+
+    #sold-stock {
+        justify-content: center;
+    }
+
+    .purchase-sold, .purchase-stock {
+        margin-bottom: 1rem;
+    }
+
+    .purchase-price {
+        margin-bottom: 1rem;
+        margin-top: 10px;
+    }
+
+    .purchase-desc {
+        margin: 0 0 1.5rem 0;
+    }
+
+    .purchase-dot {
+        margin: 0 0.5rem 1rem 0.5rem;
+    }
+
+    hr {
+        display: none;
+    }
+
+    #amount-row-container {
+        justify-content: center;
+    }
+
+    #amount-row-container .purchase-price, #amount-row-container .purchase-total {
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+
+    #amount-container {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .purchase-form {
+        justify-content: center;
+    }
+
+    .purchase-info button {
+        width: auto;
+        margin-top: 1rem;
+    }
 }
