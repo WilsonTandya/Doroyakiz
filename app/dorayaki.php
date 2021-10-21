@@ -277,16 +277,30 @@ class Dorayaki extends Controller {
         VALUES ((?), (?), (?), (?), (?))
         EOF;
 
-        $addVariantSuccess = false;
+        $addVariantSuccess1 = false;
         try {
             $stmt = $this->db->prepare($sql);
             $stmt->execute(array($name, $desc, $price, $qty, $img));
-            $addVariantSuccess = true; 
+            $addVariantSuccess1 = true; 
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
         }
 
-        return $addVariantSuccess;
+        $sql =<<<EOF
+        INSERT INTO DORAYAKI_ALL (NAME, DESCRIPTION, PRICE, STOCK, IMG_FILE)
+        VALUES ((?), (?), (?), (?), (?))
+        EOF;
+
+        $addVariantSuccess2 = false;
+        try {
+            $stmt = $this->db->prepare($sql);
+            $stmt->execute(array($name, $desc, $price, $qty, $img));
+            $addVariantSuccess2 = true; 
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+
+        return $addVariantSuccess1 && $addVariantSuccess2;
     }
 }
 
