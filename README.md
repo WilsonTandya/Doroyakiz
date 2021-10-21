@@ -110,6 +110,18 @@ docker-compose stop
 
 ![Detail](./docs/detail.jpg)
 
+#### Add Variant
+
+![Add Variant](./docs/add_variant.jpg)
+
+#### Edit Stock
+
+![Edit Stock](./docs/edit_stock.jpg)
+
+#### Delete
+
+![Delete](./docs/delete.jpg)
+
 #### Purchase
 
 ![Purchase](./docs/purchase.jpg)
@@ -118,26 +130,33 @@ docker-compose stop
 
 #### Server-side
 
-| Item               | NIM                |
-| ------------------ | ------------------ |
-| Login              | 13519xxx, 13519xxx |
-| Register           | 13519xxx           |
-| Dashboard          | 13519058           |
-| Pencarian Dorayaki | 13519058           |
-| Daftar Dorayaki    | 13519058           |
-| Detail Dorayaki    | 13519058           |
-| Pembelian Dorayaki | 13519058           |
-| Setup Basis Data   | 13519058           |
-| Bonus: Docker      | 13519058           |
+| Item                        | NIM                |
+| --------------------------- | ------------------ |
+| Login                       | 13519xxx, 13519xxx |
+| Register                    | 13519xxx           |
+| Dashboard                   | 13519058, 13519209 |
+| Pencarian Dorayaki          | 13519058           |
+| Daftar Dorayaki             | 13519058           |
+| Detail Dorayaki             | 13519058           |
+| Tambah Varian Dorayaki      | 13519209           |
+| Edit Stok Dorayaki          | 13519209           |
+| Delete Dorayaki             | 13519209           |
+| Pembelian Dorayaki          | 13519058           |
+| Setup Basis Data            | 13519058           |
+| Bonus: Data Expire Time     | 13519209           |
+| Bonus: Responsive Design    | 13519190           |
+| Bonus: Docker               | 13519058           |
 
 #### Client-side
 
-| Item               | NIM                |
-| ------------------ | ------------------ |
-| Login              | 13519xxx, 13519xxx |
-| Register           | 13519xxx           |
-| Dashboard          | 13519058           |
-| Pencarian Dorayaki | 13519058           |
-| Daftar Dorayaki    | 13519058           |
-| Detail Dorayaki    | 13519058           |
-| Pembelian Dorayaki | 13519058           |
+| Item                        | NIM                |
+| --------------------------- | ------------------ |
+| Login                       | 13519xxx, 13519xxx |
+| Register                    | 13519xxx           |
+| Dashboard                   | 13519058, 13519209 |
+| Pencarian Dorayaki          | 13519058           |
+| Daftar Dorayaki             | 13519058           |
+| Detail Dorayaki             | 13519058, 13519209 |
+| Tambah Varian Dorayaki      | 13519209           |
+| Edit Stok Dorayaki          | 13519209           |
+| Pembelian Dorayaki          | 13519058           |
