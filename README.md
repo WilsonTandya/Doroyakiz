@@ -127,6 +127,10 @@ Akun dapat dibuat melalui registrasi atau menggunakan akun yang sudah disediakan
 
 ![Detail](./docs/detail.jpg)
 
+#### Purchase
+
+![Purchase](./docs/purchase.jpg)
+
 #### Add Variant
 
 ![Add Variant](./docs/add_variant.jpg)
@@ -138,10 +142,6 @@ Akun dapat dibuat melalui registrasi atau menggunakan akun yang sudah disediakan
 #### Delete
 
 ![Delete](./docs/delete.jpg)
-
-#### Purchase
-
-![Purchase](./docs/purchase.jpg)
 
 #### Riwayat Pembelian
 
