@@ -153,26 +153,32 @@ Akun dapat dibuat melalui registrasi atau menggunakan akun yang sudah disediakan
 
 ## Pembagian Tugas
 
+### Bonus
+
+| Item                    | NIM      |
+| ----------------------- | -------- |
+| Bonus: Data Expire Time | 13519209 |
+| Bonus: Responsif        | 13519190 |
+| Bonus: Docker           | 13519058 |
+| Bonus: Riwayat          | 13519190 |
+
 #### Server-side
 
-| Item                    | NIM                |
-| ----------------------- | ------------------ |
-| Login                   | 13519190           |
-| Register                | 13519190           |
-| Dashboard               | 13519058, 13519209 |
-| Pencarian Dorayaki      | 13519058           |
-| Daftar Dorayaki         | 13519058           |
-| Detail Dorayaki         | 13519058           |
-| Tambah Varian Dorayaki  | 13519209           |
-| Edit Stok Dorayaki      | 13519209           |
-| Delete Dorayaki         | 13519209           |
-| Pembelian Dorayaki      | 13519058           |
-| Setup Basis Data        | 13519058           |
-| Riwayat Pembelian       | 13519190           |
-| Riwayat Perubahan       | 13519190           |
-| Bonus: Data Expire Time | 13519209           |
-| Bonus: Docker           | 13519058           |
-| Bonus: Riwayat          | 13519190           |
+| Item                   | NIM                |
+| ---------------------- | ------------------ |
+| Login                  | 13519190           |
+| Register               | 13519190           |
+| Dashboard              | 13519058, 13519209 |
+| Pencarian Dorayaki     | 13519058           |
+| Daftar Dorayaki        | 13519058           |
+| Detail Dorayaki        | 13519058           |
+| Tambah Varian Dorayaki | 13519209           |
+| Edit Stok Dorayaki     | 13519209           |
+| Delete Dorayaki        | 13519209           |
+| Pembelian Dorayaki     | 13519058           |
+| Setup Basis Data       | 13519058           |
+| Riwayat Pembelian      | 13519190           |
+| Riwayat Perubahan      | 13519190           |
 
 #### Client-side
 
@@ -188,5 +194,3 @@ Akun dapat dibuat melalui registrasi atau menggunakan akun yang sudah disediakan
 | Pembelian Dorayaki       | 13519058                     |
 | Tambah Varian Dorayaki   | 13519209                     |
 | Edit Stok Dorayaki       | 13519209                     |
-| Bonus: Responsif         | 13519190                     |
-| Bonus: Riwayat           | 13519190                     |
