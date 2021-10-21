@@ -98,6 +98,14 @@ docker-compose stop
 
 ## Screenshot Tampilan Aplikasi
 
+#### Login
+
+![Login](./docs/login.JPG)
+
+#### Register
+
+![Register](./docs/register.JPG)
+
 #### Dashboard
 
 ![Dashboard](./docs/dashboard.jpg)
@@ -125,14 +133,6 @@ docker-compose stop
 #### Purchase
 
 ![Purchase](./docs/purchase.jpg)
-
-#### Login
-
-![Login](./docs/login.JPG)
-
-#### Register
-
-![Register](./docs/register.JPG)
 
 #### Riwayat Pembelian
 
