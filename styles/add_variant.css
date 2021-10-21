@@ -95,7 +95,7 @@
     margin-left: 5px;
 }
 
-.inter {
+.inter, .inter-disabled {
     width: 400px;
     height: 40px;
     background: #41b54a;
@@ -110,8 +110,12 @@
     margin-left: 20px;
 }
 
-.inter:hover,
-.inter:focus {
+.inter-disabled {
+    background: rgba(49,53,59,0.4);
+    cursor: not-allowed;
+}
+
+.inter:hover, .inter:focus {
     outline: none;
 }
 

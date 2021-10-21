@@ -79,7 +79,26 @@
        <div class="box">
         <h2 class="add_variant-title">Menambah Varian Dorayaki</h2>
 
-        <form action="add_variant.php" method="post" enctype="multipart/form-data">
+        <script>
+            function handleChangeForm(event) {
+                var nameValue = document.getElementsByName("dorayaki_name")[0].value;
+                var priceValue = document.getElementsByName("dorayaki_harga")[0].value;
+                var stockValue = document.getElementsByName("dorayaki_stok")[0].value;
+                var descValue = document.getElementsByName("dorayaki_deskripsi")[0].value;
+                var imgValue = document.getElementsByName("dorayaki_gambar")[0].value;
+                console.log(nameValue, priceValue, stockValue, descValue, imgValue);
+                if (nameValue != "" && priceValue != "" && stockValue != "" && descValue != "" && imgValue != "") {
+                    document.getElementById("submit-button").className = "inter";
+                    document.getElementById("submit-button").disabled = false;
+                }
+                else {
+                    document.getElementById("submit-button").className = "inter-disabled";
+                    document.getElementById("submit-button").disabled = true;
+                }
+            }
+        </script>
+
+        <form action="add_variant.php" method="post" enctype="multipart/form-data" oninput="handleChangeForm(event)">
             <div class="form-box" id="form-top">
                 <p class="label">Nama Dorayaki</p>
                 <div class="search-box">
@@ -112,7 +131,7 @@
                 </div>
             </div>
             
-            <input type="submit" class="inter" value="Submit" name="dorayaki_submit"/>
+            <input type="submit" class="inter-disabled" value="Submit" name="dorayaki_submit" id="submit-button"/>
     </div>
     
 </body>
