@@ -302,6 +302,47 @@ class Dorayaki extends Controller {
 
         return $addVariantSuccess1 && $addVariantSuccess2;
     }
+
+    public function update_dorayaki($dorayaki_id, $name, $price, $desc, $img) 
+    {
+        $sql =<<<EOF
+        UPDATE DORAYAKI
+        SET NAME = :name, PRICE = :price, DESCRIPTION = :desc, IMG_FILE = :img
+        WHERE ID = :dorayaki_id;
+        EOF;
+
+        try{
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindParam(":dorayaki_id", $dorayaki_id);
+        $stmt->bindParam(":name", $name);
+        $stmt->bindParam(":price", $price);
+        $stmt->bindParam(":desc", $desc);
+        $stmt->bindParam(":img", $img);
+        $res1 = $stmt->execute();
+        } catch (PDOException $e) {
+            echo "Error: ". $e->getMessage();
+        }
+
+        $sql =<<<EOF
+        UPDATE DORAYAKI_ALL
+        SET NAME = :name, PRICE = :price, DESCRIPTION = :desc, IMG_FILE = :img
+        WHERE ID = :dorayaki_id;
+        EOF;
+
+        try{
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindParam(":dorayaki_id", $dorayaki_id);
+        $stmt->bindParam(":name", $name);
+        $stmt->bindParam(":price", $price);
+        $stmt->bindParam(":desc", $desc);
+        $stmt->bindParam(":img", $img);
+        $res2 = $stmt->execute();
+        } catch (PDOException $e) {
+            echo "Error: ". $e->getMessage();
+        }
+
+        return $res1 && $res2;
+    }
 }
 
 ?>

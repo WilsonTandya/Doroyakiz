@@ -75,7 +75,10 @@ if(isset($_GET['id'])){
                 <?php if ($isadmin): ?>
                 <div class="admin">
                     <a href=<?php echo "edit_stock.php?id=" . $id ?> id="Edit">
-                        <button>Edit</button>
+                        <button>Ubah Stok</button>
+                    </a>
+                    <a href=<?php echo "edit_data.php?id=" . $id ?> id="Edit">
+                        <button>Ubah Detail</button>
                     </a>
                     <a href=<?php echo "delete.php?id=" . $id ?> id="Delete">
                         <button>Hapus</button>
