@@ -28,6 +28,13 @@ Fitur yang dimiliki aplikasi antara lain:
 6. User dapat melakukan pembelian dorayaki
 7. User dapat melihat riwayat pembelian dorayaki.
 
+Spesifikasi bonus yang tersedia yaitu:
+
+1. Data Expire Time
+2. Responsive Design
+3. Docker
+4. Halaman Riwayat Pengubahan Stok / Pembelian Dorayaki
+
 ## Daftar Requirement
 
 - PHP 8
@@ -47,7 +54,7 @@ Untuk menjalankan dengan Docker:
 
 ### XAMPP
 
-**Aktivasi SQLite3 pada PHP**
+**Aktivasi SQLite3 pada PHP**  
 Jika extension SQLite3 belum teraktivasi pada PHP:
 
 1. Buka php.ini in C:\xampp\php
