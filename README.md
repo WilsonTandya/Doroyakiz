@@ -30,10 +30,11 @@ Fitur yang dimiliki aplikasi antara lain:
 
 Spesifikasi bonus yang tersedia yaitu:
 
-1. Data Expire Time
-2. Responsive Design
-3. Docker
-4. Halaman Riwayat Pengubahan Stok / Pembelian Dorayaki
+1. Edit Detail Varian
+2. Data Expire Time
+3. Responsive Design
+4. Docker
+5. Halaman Riwayat Pengubahan Stok / Pembelian Dorayaki
 
 ## Daftar Requirement
 
