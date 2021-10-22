@@ -104,7 +104,7 @@
                 } 
             }
         };
-        xhttp.open("POST", "../ajax/ajax_edit_stock.php", true);
+        xhttp.open("POST", "../ajax/ajax_edit_stock.php", false);
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         let qtyVal = document.getElementsByName("quantity")[0].value;
         let qty = qtyVal ? qtyVal : 0;
